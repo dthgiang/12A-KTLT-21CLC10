@@ -11,8 +11,12 @@
 
 using namespace std;
 
-void LoginGUI();
+void LoginGUI(User &User);
 
 void InsertUserName(string& Username);
 
 void InsertPassword(string& Password);
+
+int CheckStatusLogin(User& User);
+
+void LoginLoop(User& User);

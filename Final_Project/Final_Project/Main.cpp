@@ -6,7 +6,8 @@ int main()
 	FixConsoleWindow();
 	//cout << "Group 12A" << endl;
 	//DrawText("_assets//login_bg.txt", 25, 5);
-	LoginGUI();
+	User dthgiang;
+	LoginLoop(dthgiang);
 	
 	return 0;
 }
