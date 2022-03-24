@@ -94,7 +94,7 @@ void FixConsoleWindow() {
 	SetWindowLong(consoleWindow, GWL_STYLE, style);
 }
 
-void DrawText(const char* filename, int x, int y)
+void DrawTextFile(const char* filename, int x, int y)
 {
 	fstream file(filename);
 	//file.open("character\\test.txt", ios::in);
