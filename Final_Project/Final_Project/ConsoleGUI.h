@@ -14,7 +14,7 @@ void textColor(int color);
 
 void textBgColor(int colorText, int colorBG);
 
-void drawRectangle(int positionX, int positionY, int width, int height, int color);
+void drawRectangle(double positionX, double positionY, int width, int height, int color);
 
 int ReturnX();
 

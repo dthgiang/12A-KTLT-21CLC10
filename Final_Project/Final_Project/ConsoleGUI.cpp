@@ -40,7 +40,7 @@ void drawBoder(int positionX, int positionY, int width, int height, int color)
 	textBgColor(0, color);
 }
 
-void drawRectangle(int positionX, int positionY, int width, int height, int color)
+void drawRectangle(double positionX, double positionY, int width, int height, int color)
 {
 	textBgColor(0, color);
 	gotoxy(positionX, positionY);
