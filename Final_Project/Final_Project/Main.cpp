@@ -2,7 +2,8 @@
 
 int main()
 {
-	//ciut
-	cout << "Group 12A" << endl;
+	
+	//cout << "Group 12A" << endl;
+	DrawText("_assets//login_bg.txt", 25, 5);
 	return 0;
 }
