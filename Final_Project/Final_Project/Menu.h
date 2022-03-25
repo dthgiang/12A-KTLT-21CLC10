@@ -8,4 +8,5 @@
 
 using namespace std;
 
-void drawASCIIStaffMenu(); 
+void DrawStaffMenu(); 
+void StaffMenu(User& staff);

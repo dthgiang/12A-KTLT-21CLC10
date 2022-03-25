@@ -1,4 +1,7 @@
 #include "Login.h"
+#include "ConsoleGUI.h"
+#include "Menu.h"
+#include "Graphics.h"
 
 void LoginGUI(User &User)
 {
@@ -152,5 +155,7 @@ void LoginLoop(User& User)
     cout << "LOGIN SUCCESSFUL!";
     hidePointer();
     Sleep(900);
-   
+    system("cls");
+    if (User.role == 1) return;// menuStudent(user);
+    else StaffMenu(User);
 }

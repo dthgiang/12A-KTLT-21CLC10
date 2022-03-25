@@ -29,3 +29,5 @@ void drawBoder(int positionX, int positionY, int width, int height, int color);
 void FixConsoleWindow();
 
 void DrawTextFile(const char* filename, int x, int y);
+
+void printtext(string str, int x, int y);

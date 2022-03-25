@@ -111,3 +111,8 @@ void DrawTextFile(const char* filename, int x, int y)
 	}
 	file.close();
 }
+
+void printtext(string str, int x, int y) {
+	gotoxy(x, y);
+	cout << str << endl;
+}

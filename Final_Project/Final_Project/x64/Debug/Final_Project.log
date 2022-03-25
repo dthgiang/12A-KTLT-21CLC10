@@ -1,11 +1,2 @@
-﻿  ConsoleGUI.cpp
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(46,20): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(46,9): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(51,36): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(51,21): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
-  Login.cpp
-  Main.cpp
-  Menu.cpp
-  Staff.cpp
-  Generating Code...
+﻿  Main.cpp
   Final_Project.vcxproj -> C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\x64\Debug\Final_Project.exe
