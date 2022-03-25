@@ -4,9 +4,8 @@
 #include <fstream>
 #include <string>
 #include "Graphics.h"
+#include "ConsoleGUI.h"
 
 using namespace std;
 
-void drawASCIIStaffMenu() {
-	
-}
+void drawASCIIStaffMenu(); 

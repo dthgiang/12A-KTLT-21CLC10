@@ -143,6 +143,7 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Staff.h" />
     <ClInclude Include="System_Function.h" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,7 @@
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Staff.cpp" />
     <ClCompile Include="System_Function.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

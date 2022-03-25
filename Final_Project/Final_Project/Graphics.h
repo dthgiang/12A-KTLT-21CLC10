@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <iostream>
 #include <fstream>
+#include <string>
 
 #define ENTER 13
 #define ESC 27
