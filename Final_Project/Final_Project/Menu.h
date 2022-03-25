@@ -9,4 +9,6 @@
 using namespace std;
 
 void DrawStaffMenu(); 
+void DrawStudentMenu();
 void StaffMenu(User& staff);
+void StudentMenu(User& student);

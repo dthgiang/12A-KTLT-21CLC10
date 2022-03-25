@@ -156,6 +156,6 @@ void LoginLoop(User& User)
     hidePointer();
     Sleep(900);
     system("cls");
-    if (User.role == 1) return;// menuStudent(user);
+    if (User.role == 1) StudentMenu(User);
     else StaffMenu(User);
 }
