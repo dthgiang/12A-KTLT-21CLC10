@@ -33,6 +33,15 @@
     <ClInclude Include="Staff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Add_Student.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="List_Class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="course_func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -51,6 +60,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Staff.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Add_Student.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="List_Class.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="course_func.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

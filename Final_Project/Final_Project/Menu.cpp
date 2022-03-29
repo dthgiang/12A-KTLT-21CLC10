@@ -100,5 +100,6 @@ void StudentMenu(User& student)
 		drawMenu(MenuStudent, 4, 50, 10, 2, &DrawStudentMenu);
 		option = Select(4, MenuStudent, 50, 10, 2);
 	} while (!isExit);
+	DisplayYearSemester(SchYr.year, SchYr.semester.Name);
 	LoginLoop(student);
 }
