@@ -47,8 +47,8 @@ void StaffMenu(User& staff)
 {
 	showPointer();
 	bool isExit = false;
-	/*SchoolYear SchYr;
-	DisplayYearSemester(SchYr.year, SchYr.semester.Name);*/
+	SchoolYear SchYr;
+	DisplayYearSemester(SchYr.year, SchYr.semester.Name);
 	//read_info(user, SY);
 	int option;
 	string MenuStaff[] = { "YOUR INFO","NEW","CLASS INFO","COURSE INFO","RESULT OF STUDENTS","LOG OUT" };

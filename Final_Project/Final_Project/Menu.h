@@ -5,6 +5,7 @@
 #include <string>
 #include "Graphics.h"
 #include "ConsoleGUI.h"
+#include "Graphics.h"
 
 using namespace std;
 

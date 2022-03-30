@@ -1,18 +1,18 @@
 #pragma once
 #include "Graphics.h"
-#include<iostream>
-#include<fstream>
-#include<string>
+#include <iostream>
+#include <fstream>
+#include <string>
 #include <iostream>
 #include <direct.h>
 
 using namespace std;
 
+typedef void (*fun_show_class)(User, SchoolYear, string);
+
 void DisplayYearSemester(string& Year, string& Semester);
 
 string CheckSem();
-
-typedef void (*fun_show_class)(User, SchoolYear, string);
 
 void determineYearSemesterNow(string& Year, string& semester);
 

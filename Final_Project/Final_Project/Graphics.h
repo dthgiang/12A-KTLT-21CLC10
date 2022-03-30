@@ -38,6 +38,7 @@ Chú thích cho hàm Set Color:
         thì màu nền là Purple, màu chữ là Black.
 
 */
+
 struct Mark {
 	string ID;// linh hoạt trong điểm của sinh viên thì là id môn học, còn trong môn học thì là id sinh viên
 	string Name;
@@ -105,6 +106,6 @@ struct SchoolYear {
 struct User {
 	string ID;
 	string Password;
-	int role;// 0 là giáo viên quản trị. 1 là học sinh
+	int role;
 	Data info;
 };

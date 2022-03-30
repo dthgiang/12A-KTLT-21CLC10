@@ -5,7 +5,7 @@
 #include <cmath>
 #include <fstream>
 #include <string>
-#include"Graphics.h"
+#include "Graphics.h"
 
 
 void gotoxy(short int x, short int y);
