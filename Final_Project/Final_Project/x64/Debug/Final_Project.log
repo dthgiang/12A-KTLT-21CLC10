@@ -1,2 +1,24 @@
-﻿  Menu.cpp
-  Final_Project.vcxproj -> C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\x64\Debug\Final_Project.exe
+﻿  Add_Student.cpp
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Login.h(14,6): error C2182: 'LoginGUI': illegal use of type 'void'
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Login.h(14,15): error C2065: 'User': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Login.h(14,21): error C2065: 'User': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Login.h(20,22): error C2065: 'User': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Login.h(20,28): error C2065: 'User': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Login.h(22,6): error C2182: 'LoginLoop': illegal use of type 'void'
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Login.h(22,16): error C2065: 'User': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Login.h(22,22): error C2065: 'User': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.h(14,6): error C2182: 'StaffMenu': illegal use of type 'void'
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.h(14,16): error C2065: 'User': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.h(14,22): error C2065: 'staff': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.h(15,6): error C2182: 'StudentMenu': illegal use of type 'void'
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.h(15,18): error C2065: 'User': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.h(15,24): error C2065: 'student': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(11,32): error C2065: 'User': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(11,38): error C2065: 'SchoolYear': undeclared identifier
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(11,50): error C2275: 'std::string': illegal use of this type as an expression
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xstring(4920): message : see declaration of 'std::string'
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(11,56): error C2513: 'void *': no variable declared before '='
+C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(11,56): fatal error C1903: unable to recover from previous error(s); stopping compilation
+  INTERNAL COMPILER ERROR in 'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\bin\HostX64\x64\CL.exe'
+      Please choose the Technical Support command on the Visual C++
+      Help menu, or open the Technical Support help file for more information
