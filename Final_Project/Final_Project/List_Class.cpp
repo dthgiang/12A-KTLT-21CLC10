@@ -1,7 +1,7 @@
 #include "List_Class.h"
+#include "System_Function.h"
 using namespace std;
 
-const string csv_tail = ".csv";
 
 void drawMenuView() {
 	textBgColor(0, 5);
@@ -43,14 +43,30 @@ int CheckRowInFile(string filename)
 
 void drawASCIIMenuView()
 {
-	textBgColor(0, 6);
-	DrawTextFile("_assets\\objects\\class.txt", 40, 4);
+	//textBgColor(0, 6);
+	//DrawTextFile("_assets\\objects\\class.txt", 40, 4);
+}
+
+string CheckSem()
+{
+	fstream Fclass;
+	Fclass.open("_assets//year-semester.csv");
+	string YearTem, SemTem;
+	string CheckSem;
+	while (!Fclass.eof())
+	{
+		getline(Fclass, YearTem, ',');
+		Fclass >> SemTem;
+		CheckSem = SemTem;
+	}
+	Fclass.close();
+	return CheckSem;
 }
 
 void ImportRandom(string& YearCourse, string& Class)
 {
 	fstream ofs, ifs;
-	string NameClass = "_assets//SchoolYear//" + YearCourse + "//" + Class + csv_tail;
+	string NameClass = "_assets//SchoolYear//" + YearCourse + "//" + Class + ".csv";
 	ofs.open(NameClass, ios::app);
 	ifs.open("_assets//InforNewStudent.csv", ios::in);
 	string  NameSt, BirthSt, SexSt, IdSocialSt;
@@ -211,10 +227,10 @@ void ImportRandom(string& YearCourse, string& Class)
 	}
 	string CheckSe = CheckSem();
 	fstream F, FILE;
-	string S = "_assets//SchoolYear//" + YearCourse + "//Semester" + CheckSe + "//Class//" + Class + csv_tail;
+	string S = "_assets//SchoolYear//" + YearCourse + "//Semester" + CheckSe + "//Class//" + Class + ".csv";
 	F.open(S, ios::app);
 	int countF = CheckRowInFile(S);
-	string SS = "_assets//SchoolYear//" + YearCourse + "//" + Class + csv_tail;
+	string SS = "_assets//SchoolYear//" + YearCourse + "//" + Class + ".csv";
 	FILE.open(SS, ios::in);
 	string CheckNo, CheckID, CheckName, CheckBirth, CheckSex, CheckIDso;
 	while (!FILE.eof())
@@ -328,7 +344,7 @@ void CreateAutoClassAndImportRandomInfo()
 						{
 							string s = to_string(i);
 							string NameClasses = CheckYear + name + s;
-							string FileName = "_assets//SchoolYear//" + Year + "//" + NameClasses + csv_tail;
+							string FileName = "_assets//SchoolYear//" + Year + "//" + NameClasses + ".csv";
 							fstream f1;
 							f1.open(FileName, ios::out);
 							f1 << "No" << "," << "ID" << "," << "Name" << "," << "Birth" << "," << "Sex" << "," << "IDSocial";;
@@ -443,7 +459,7 @@ void CreateNewClass() {
 							if (CheckSe == "0") break;
 							else
 							{
-								string CreateClass = "_assets//SchoolYear//" + year + "//Semester" + CheckSe + "//Class//" + name + csv_tail;
+								string CreateClass = "_assets//SchoolYear//" + year + "//Semester" + CheckSe + "//Class//" + name + ".csv";
 								fstream fCreate;
 								fCreate.open(CreateClass, ios::out);
 								fCreate.close();
@@ -474,7 +490,7 @@ int RunMenuCreateClass()
 		string MenuView[] = { "1. Create 1 Class",
 			"2. Create Auto Classes And Import Info",
 			"3. Exit" };
-		drawMenu(MenuView, 3, 47, 12, 1, &drawASCIIMenuView);
+		//drawMenu(MenuView, 3, 47, 12, 1, &drawASCIIMenuView);
 		command = Select(3, MenuView, 47, 12, 1);
 		switch (command)
 		{

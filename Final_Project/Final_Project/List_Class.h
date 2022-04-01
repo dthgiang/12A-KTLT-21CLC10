@@ -6,7 +6,10 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <conio.h>
 #include "Graphics.h"
+#include "ConsoleGUI.h"
+#include "Staff.h"
 
 using namespace std;
 
