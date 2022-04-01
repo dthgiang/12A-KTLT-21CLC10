@@ -2,13 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "Add_Student.h"
-#include "ListClass.h"
-#include "Login.h"
-#include "Menu.h"
-#include "System_Function.h"
-#include "ConsoleGUI.h"
-#include "Staff.h"
 
 #define ENTER 13
 #define ESC 27

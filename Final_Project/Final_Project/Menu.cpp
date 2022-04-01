@@ -68,7 +68,7 @@ void StaffMenu(User& staff)
 		system("cls");
 		gotoxy(0, 7);
 
-		drawMenu(MenuStaff, 6, 50, 10, 1, &DrawStaffMenu);
+		//drawMenu(MenuStaff, 6, 50, 10, 1, &DrawStaffMenu);
 		option = Select(6, MenuStaff, 50, 10, 1);
 	} while (!isExit);
 	LoginLoop(staff);
@@ -97,7 +97,7 @@ void StudentMenu(User& student)
 	do
 	{
 		system("cls");
-		drawMenu(MenuStudent, 4, 50, 10, 2, &DrawStudentMenu);
+		//drawMenu(MenuStudent, 4, 50, 10, 2, &DrawStudentMenu);
 		option = Select(4, MenuStudent, 50, 10, 2);
 	} while (!isExit);
 	DisplayYearSemester(SchYr.year, SchYr.semester.Name);
