@@ -35,3 +35,5 @@ void MoveUp(int X, int& Y, int dis);
 void MoveDown(int X, int& Y, int dis);
 
 int Select(int a, string A[], int _X, int _Y, int dis);
+
+void enroll_course(User& user, SchoolYear SchYr);

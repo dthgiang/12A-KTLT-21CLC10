@@ -4,6 +4,7 @@
 #include "System_Function.h"
 #include "List_Class.h"
 
+
 void DrawStaffMenu() {
     /*SchoolYear SchYr;
     DisplayYearSemester(SchYr.year, SchYr.semester.Name);*/
@@ -49,6 +50,22 @@ void DrawEditScore()
 	textBgColor(19, 0);
 	DrawTextFile("_assets\\menu_edit_score.txt", 20, 4);
 	textBgColor(0, 15);
+}
+
+void DrawFailEnrol()
+{
+	textBgColor(6, 0);
+	DrawTextFile("_assets\\menu_failed_enrol.txt", 35, 15);
+	printtext("        The course has been registered before.           ", 35, 21);
+	printtext("                                                         ", 35, 22);
+	textBgColor(0, 15);
+}
+
+void DrawEnrolCourse()
+{
+	textBgColor(4, 6);
+	DrawTextFile("_assets\\menu_enrol_course.txt", 20, 3);
+	printtext("Choose the course you want to enrol. Enter to choose.", 35, 28);
 }
 
 void DrawListCourse()
@@ -211,7 +228,7 @@ void StaffMenu(User& staff)
 					}
 					case 1: {
 						try {
-							Course* SLC = select_course(staff, SchYr, &read_file_List_course, &DrawListCourse);
+							Course* SLC = select_course(staff, SchYr, &Read_File_List_Course, &DrawListCourse);
 							if (SLC == NULL) {
 								break;
 							}

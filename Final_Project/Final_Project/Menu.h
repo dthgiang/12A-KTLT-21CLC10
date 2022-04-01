@@ -7,9 +7,13 @@
 #include "ConsoleGUI.h"
 #include "Graphics.h"
 #include "Change_Password.h"
+#include "Read_Data.h"
+#include "Add_Student.h"
 
 using namespace std;
 
+void DrawFailEnrol();
+void DrawEnrolCourse();
 void DrawListCourse();
 void DrawEditScore();
 void DrawStaffMenu(); 
