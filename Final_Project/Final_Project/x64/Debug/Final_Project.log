@@ -1,6 +1,16 @@
 ﻿  Add_Student.cpp
   List_Class.cpp
+  Login.cpp
+  Main.cpp
   Menu.cpp
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(101,21): error C2065: 'user': undeclared identifier
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(101,5): error C3861: 'change_password': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(148,5): error C3861: 'RunMenuAddInfoStudentToClass': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(214,51): error C2065: 'read_file_List_course': undeclared identifier
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(300,5): error C3861: 'change_password': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(320,21): error C2065: 'user': undeclared identifier
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(320,27): error C2065: 'SY': undeclared identifier
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(320,7): error C3861: 'enroll_course': identifier not found
   System_Function.cpp
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(782,2): error C3861: 'get_score': identifier not found
   Generating Code...
-C:\Users\Admin\OneDrive - VNU-HCMUS\Documents\GitHub\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(811): error C4716: 'view_all_score_of_1_student': must return a value
