@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Add_Student.h" />
+    <ClInclude Include="Change_Password.h" />
     <ClInclude Include="ConsoleGUI.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="List_Class.h" />
@@ -150,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Add_Student.cpp" />
+    <ClCompile Include="Change_Password.cpp" />
     <ClCompile Include="ConsoleGUI.cpp" />
     <ClCompile Include="List_Class.cpp" />
     <ClCompile Include="Login.cpp" />

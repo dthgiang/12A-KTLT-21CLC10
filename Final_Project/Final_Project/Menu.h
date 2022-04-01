@@ -6,6 +6,7 @@
 #include "Graphics.h"
 #include "ConsoleGUI.h"
 #include "Graphics.h"
+#include "Change_Password.h"
 
 using namespace std;
 

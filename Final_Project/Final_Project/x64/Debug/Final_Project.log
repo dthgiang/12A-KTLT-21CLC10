@@ -1,4 +1,10 @@
 ﻿  Add_Student.cpp
+  Change_Password.cpp
+  ConsoleGUI.cpp
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(46,20): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(46,9): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(51,36): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(51,21): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
   List_Class.cpp
   Login.cpp
   Main.cpp
@@ -11,6 +17,7 @@ C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(300,
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(320,21): error C2065: 'user': undeclared identifier
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(320,27): error C2065: 'SY': undeclared identifier
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(320,7): error C3861: 'enroll_course': identifier not found
+  Staff.cpp
   System_Function.cpp
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(782,2): error C3861: 'get_score': identifier not found
   Generating Code...

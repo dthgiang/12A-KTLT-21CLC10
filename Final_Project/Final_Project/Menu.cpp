@@ -98,7 +98,7 @@ void StaffMenu(User& staff)
 			}
 			case 1: {
 				// lenh thay mat khau
-				change_password(user);
+				Change_Password(staff);
 				break;
 			}
 			case 2: {
@@ -297,7 +297,7 @@ void StudentMenu(User& student)
 			}
 			case 1: {
 				// lenh thay mat khau
-				change_password(student);
+				Change_Password(student);
 				break;
 			}
 			case 2: {
@@ -317,7 +317,7 @@ void StudentMenu(User& student)
 				try {
 					int check = checkCourseSession();
 					if (check == 1) {
-						enroll_course(user, SY);
+						enroll_course(student, SchYr);
 					}
 					else {
 						drawRectangle(35, 15, 50, 5, 4);
