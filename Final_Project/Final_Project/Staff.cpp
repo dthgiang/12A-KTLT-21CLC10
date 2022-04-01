@@ -1,5 +1,38 @@
 #include "Staff.h"
 
+void CopyContentFileToFile(string src_path, string des_path)
+{
+    fstream fileSource, fileDestination;
+    fileSource.open(src_path, ios::in);
+    fileDestination.open(des_path, ios::out);
+    if (!fileSource.is_open()) return;
+    string data;
+    getline(fileSource, data);
+    fileDestination << data;
+    while (!fileSource.eof()) {
+        getline(fileSource, data);
+        fileDestination << endl << data;
+    }
+    fileSource.close();
+    fileDestination.close();
+}
+
+void createFolder(string namefolder) {
+    const char* NameFolder = namefolder.c_str();
+    int check = _mkdir(NameFolder);
+    if (check) {
+        cout << "Could not create folder" << endl;
+        exit(1);
+    }
+    return;
+}
+
+bool IsPathExist(const std::string& s)
+{
+    struct stat buffer;
+    return (stat(s.c_str(), &buffer) == 0);
+}
+
 void DisplayYearSemester(string& Year, string& Semester)
 {
     fstream fi;
@@ -45,7 +78,7 @@ int insertSchoolYear(string& SchoolYear) {
     char word;
     showPointer();
     do {
-        word = getch();
+        word = _getch();
         if (word == 8) {
             if (SchoolYear.size() > 0) {
                 SchoolYear.pop_back();
@@ -95,7 +128,7 @@ void addSchoolYear(SchoolYear& Y) {
                 printtext("Error: Format YYYY-YYYY", 40, 13);
                 printtext("ENTER to try again", 40, 14);
                 hidePointer();
-                ch = getch();
+                ch = _getch();
                 drawRectangle(40, 11, 50, 1, 15);
                 drawRectangle(40, 13, 60, 1, 11);
                 drawRectangle(40, 14, 60, 1, 11);
@@ -117,7 +150,7 @@ void addSchoolYear(SchoolYear& Y) {
                 textBgColor(4, 11);
                 printtext("SCHOOL YEAR EXIST ! PRESS ENTER TO TRY AGAIN", 40, 14);
                 hidePointer();
-                ch = getch();
+                ch = _getch();
                 drawRectangle(40, 11, 50, 1, 15);
                 drawRectangle(40, 14, 60, 1, 11);
                 showPointer();
@@ -156,40 +189,8 @@ void addSchoolYear(SchoolYear& Y) {
     hidePointer();
     textBgColor(4, 11);
     printtext("CREATE SCHOOL YEAR SUCCESSFUL,PRESS ENTER TO BACK TO MENU !!!", 40, 14);
-    ch = getch();
+    ch = _getch();
     textBgColor(0, 15);
 }
 
-void createFolder(string namefolder) {
-    const char* NameFolder = namefolder.c_str();
-    int check = _mkdir(NameFolder);
-    if (check) {
-        cout << "Could not create folder" << endl;
-        exit(1);
-    }
-    return;
-}
-
-bool IsPathExist(const std::string& s)
-{
-    struct stat buffer;
-    return (stat(s.c_str(), &buffer) == 0);
-}
-
-void CopyContentFileToFile(string src_path, string des_path)
-{
-    fstream fileSource, fileDestination;
-    fileSource.open(src_path, ios::in);
-    fileDestination.open(des_path, ios::out);
-    if (!fileSource.is_open()) return;
-    string data;
-    getline(fileSource, data);
-    fileDestination << data;
-    while (!fileSource.eof()) {
-        getline(fileSource, data);
-        fileDestination << endl << data;
-    }
-    fileSource.close();
-    fileDestination.close();
-}
 

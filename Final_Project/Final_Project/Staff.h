@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include <direct.h>
+#include "ConsoleGUI.h"
+#include <conio.h>
 
 using namespace std;
 
@@ -16,7 +18,7 @@ string CheckSem();
 
 void determineYearSemesterNow(string& Year, string& semester);
 
-void addSchoolYear(SchoolYear& Y);
+//void addSchoolYear(SchoolYear& Y);
 
 int insertSchoolYear(string& SchoolYear);
 
