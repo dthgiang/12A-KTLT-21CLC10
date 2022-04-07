@@ -138,3 +138,104 @@ void read1CourseInfor(Course& A, ifstream& f)
 	getline(f, A.session[1]);
 	A.Schedule = A.session[0] + ';' + A.session[1] + '-' + A.DayOfWeek;
 }
+
+void Back_A_Semester(SchoolYear& S) {
+	if (S.semester.Name.back() == '1' || S.semester.Name.back() == '0') {
+		string year = "";
+		for (int i = 0; i < 4; i++) {
+			year += S.year[i];
+		}
+		int Y = atoi(year.c_str());
+		Y--;
+		S.year = to_string(Y) + "-" + year;
+		S.semester.Name = "Semester3";
+	}
+	else {
+		if (S.semester.Name.back() == '2') {
+			S.semester.Name.pop_back();
+			S.semester.Name.push_back('1');
+		}
+		else if (S.semester.Name.back() == '3') {
+			S.semester.Name.pop_back();
+			S.semester.Name.push_back('2');
+		}
+	}
+}
+void get_all_course(User& A, SchoolYear SY) {
+	int i = 0;
+	int count = 0;
+	do {
+		i = get_course(A, SY, 1);
+		if (i == -1) {
+			break;
+		}
+		Back_A_Semester(SY);
+	} while (i != -1);
+}
+
+Course* get_course_of_student(User A, SchoolYear SY, int& n) {
+	string fileName = "database/SchoolYear/" + SY.year + '/' + SY.semester.Name + "/course_info" + csv_tail;
+	ifstream f;
+	f.open(fileName, ios::in);
+	if (!f.good()) {
+		return NULL;
+	}
+	string temp;
+	get_course(A, SY);
+	if (A.info.phead == NULL) {
+		return NULL;
+	}
+	n = 0;
+	MarkNode* count = A.info.phead;
+	while (count != NULL) {
+		n++;
+		count = count->pNext;
+	}
+	count = A.info.phead;
+	Course* M = new Course[n];
+	int i = 0;
+	while (i < n && !f.eof()) {
+		getline(f, M[i].ID_course, ',');
+		if (_strcmpi(M[i].ID_course.c_str(), count->data.ID.c_str()) == 0) {
+			getline(f, M[i].name, ',');
+			getline(f, M[i].teacher, ',');
+			getline(f, temp, ',');
+			M[i].Num_of_creadit = atoi(temp.c_str());
+			getline(f, temp, ',');
+			M[i].Max_student = atoi(temp.c_str());
+			getline(f, M[i].DayOfWeek, ',');
+			getline(f, M[i].session[0], ',');
+			getline(f, M[i].session[1]);
+			i++;
+			count = count->pNext;
+			f.close();
+			f.open(fileName, ios::in);
+		}
+		else {
+			getline(f, temp);
+		}
+	}
+	return M;
+}
+Data* read_file_student_info_of_course(SchoolYear SY, string IDcourse, int& n) {
+	string fileName = "database/SchoolYear/" + SY.year + '/' + SY.semester.Name + "/Course/" + IDcourse + csv_tail;
+	ifstream f;
+	f.open(fileName, ios::in);
+	if (!f.good()) {
+		return NULL;
+	}
+	n = countLine(fileName) - 1;
+	Data* M = new Data[n];
+	string temp;
+	getline(f, temp);
+	for (int i = 0; i < n; i++) {
+		getline(f, M[i].IDstd, ',');
+		getline(f, M[i].name, ',');
+		getline(f, M[i].Bir, ',');
+		getline(f, M[i].sex, ',');
+		getline(f, M[i].IDsocial);
+		M[i].NO_inclass = i + 1;
+	}
+	f.close();
+	return M;
+}
