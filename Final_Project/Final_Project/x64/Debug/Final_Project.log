@@ -1,4 +1,18 @@
-﻿  Staff.cpp
+﻿  Menu.cpp
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(272,4): error C2059: syntax error: '}'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(275,3): error C2046: illegal case
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(280,2): error C2059: syntax error: '}'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(280,4): error C2059: syntax error: 'while'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(281,17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(281,2): error C2365: 'LoginLoop': redefinition; previous definition was 'function'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Login.h(22): message : see declaration of 'LoginLoop'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(281,12): error C2065: 'staff': undeclared identifier
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(282,1): error C2059: syntax error: '}'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(282,1): error C2143: syntax error: missing ';' before '}'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(285,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(285,1): error C2447: '{': missing function header (old-style formal list?)
+  Read_Data.cpp
+  Staff.cpp
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(96,5): error C3861: 'getLineInfo': identifier not found
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(103,5): error C3861: 'getLineInfo': identifier not found
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(113,5): error C3861: 'getLineInfo': identifier not found

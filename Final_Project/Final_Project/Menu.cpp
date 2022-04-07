@@ -229,9 +229,9 @@ void StaffMenu(User& staff)
 					int choose = Select(3, edit, 45, 20, 2);
 					switch (choose)
 					{
-					case 0: {
+					/*case 0: {
 						listClass(staff, SchYr, &showScoreOfClass);
-						break;
+						break;*/
 					}
 					case 1: {
 						try {
@@ -254,16 +254,16 @@ void StaffMenu(User& staff)
 					}
 					break;
 				}
-				case 1: {
-					//xuat diem hoc sinh vao file
-					exportScoreboardInterface(staff, SchYr.year, SchYr.semester.Name, 2, 1);
-					break;
-				}
-				case 2: {
-					//xuat diem hoc sinh vao file
-					importScoreBoardUI();
-					break;
-				}
+				//case 1: {
+				//	//xuat diem hoc sinh vao file
+				//	exportScoreboardInterface(staff, SchYr.year, SchYr.semester.Name, 2, 1);
+				//	break;
+				//}
+				//case 2: {
+				//	//xuat diem hoc sinh vao file
+				//	importScoreBoardUI();
+				//	break;
+				//}
 				case 3: {
 					checkMenu = false;
 					break;
