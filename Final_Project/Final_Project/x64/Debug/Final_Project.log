@@ -1,4 +1,10 @@
-﻿  Staff.cpp
+﻿  Add_Student.cpp
+  List_Class.cpp
+  Login.cpp
+  Main.cpp
+  Menu.cpp
+  Read_Data.cpp
+  Staff.cpp
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(96,5): error C3861: 'getLineInfo': identifier not found
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(103,5): error C3861: 'getLineInfo': identifier not found
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(113,5): error C3861: 'getLineInfo': identifier not found
