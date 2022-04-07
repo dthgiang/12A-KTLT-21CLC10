@@ -21,7 +21,7 @@ string CheckSem();
 
 void determineYearSemesterNow(string& Year, string& semester);
 
-//void addSchoolYear(SchoolYear& Y);
+void addSchoolYear(SchoolYear& Y);
 
 int insertSchoolYear(string& SchoolYear);
 

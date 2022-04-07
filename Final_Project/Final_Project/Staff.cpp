@@ -1116,3 +1116,99 @@ int insertString(string& data, int limit) {
     } while (true);
     return 1;
 }
+
+void addSchoolYear(SchoolYear& Y) {
+    SchoolYear schoolyear;
+    char ch;
+    system("cls");
+    textBgColor(13, 15);
+    DrawTextFile("_assets\\menu_schoolyear.txt", 35, 2);
+    
+    while (true) {
+        textBgColor(0, 11);
+        drawRectangle(35, 8, 70, 7, 11);
+        schoolyear.year = "";
+        printtext("Enter school year (Ex:2020-2021,..) : ", 40, 10);
+        drawRectangle(40, 11, 50, 1, 15);
+
+        while (true) {
+            showPointer();
+            textBgColor(0, 15);
+            gotoxy(40, 11);
+            schoolyear.year = "";
+            if (insertSchoolYear(schoolyear.year) == 0) return;
+            string a, b;
+            for (int i = 0; i < 4; i++) a.push_back(schoolyear.year[i]);
+            for (int i = 5; i < 9; i++) b.push_back(schoolyear.year[i]);
+            //Không thõa mãn định dạng nhập yyyy-yyyy
+            if (!(stoi(a, 0, 10) >= stoi(b, 0, 10) || schoolyear.year[4] != 45 || (stoi(a, 0, 10) < 1000 || stoi(a, 0, 10) > 9999) || (stoi(b, 0, 10) < 1000 || stoi(b, 0, 10) > 9999)))
+                break;
+            else {
+                textBgColor(4, 11);
+                printtext("ERROR:SCHOOL YEAR MUST HAVE FORMAT LIKE YYYY-YYYY", 40, 13);
+                printtext("PRESS ENTER TO TRY AGAIN", 40, 14);
+                hidePointer();
+                ch = _getch();
+                drawRectangle(40, 11, 50, 1, 15);
+                drawRectangle(40, 13, 60, 1, 11);
+                drawRectangle(40, 14, 60, 1, 11);
+                showPointer();
+            }
+        }
+
+        fstream file1, file2;
+        bool check = true;
+        file1.open("database//year-semester.csv", ios::in);
+        file2.open("database//year-semester.csv", ios::in);
+
+        string row, column;
+        getline(file1, row);
+        getline(file2, column);
+        while (!file1.eof()) {
+            getline(file2, column, ',');
+            if (column.compare(schoolyear.year) == 0) {
+                textBgColor(4, 11);
+                printtext("SCHOOL YEAR EXIST ! PRESS ENTER TO TRY AGAIN", 40, 14);
+                hidePointer();
+                ch = _getch();
+                drawRectangle(40, 11, 50, 1, 15);
+                drawRectangle(40, 14, 60, 1, 11);
+                showPointer();
+                check = false;
+                break;
+            }
+            getline(file1, row);
+            getline(file2, column);
+        }
+        if (check == true) break;
+    }
+
+    string nameFolder = "database//SchoolYear//" + schoolyear.year;
+    createFolder(nameFolder);
+
+    fstream file;
+    string data;
+    file.open("database//year-semester.csv", ios::app);
+    file << endl << schoolyear.year << ",0";
+    file.close();
+
+
+    file.open("database/SchoolYear/" + Y.year + "/class_info.csv", ios::in);
+    getline(file, data);
+    while (!file.eof()) {
+        getline(file, data, ',');
+        getline(file, data, ',');
+        string source = "database/SchoolYear/" + Y.year + "/" + data + ".csv", destination = "database/SchoolYear/" + schoolyear.year + "/" + data + ".csv";
+        CopyContentFileToFile(source, destination);
+        getline(file, data);
+    }
+    CopyContentFileToFile("database/SchoolYear/" + Y.year + "/staff.csv", "database/SchoolYear/" + schoolyear.year + "/staff.csv");
+    CopyContentFileToFile("database/SchoolYear/" + Y.year + "/class_info.csv", "file_save/SchoolYear/" + schoolyear.year + "/class_info.csv");
+    Y.year = schoolyear.year;
+    Y.semester.Name = "Semester0";
+    hidePointer();
+    textBgColor(4, 11);
+    printtext("CREATE SCHOOL YEAR SUCCESSFUL,PRESS ENTER TO BACK TO MENU !!!", 40, 14);
+    ch = _getch();
+    textBgColor(0, 15);
+}

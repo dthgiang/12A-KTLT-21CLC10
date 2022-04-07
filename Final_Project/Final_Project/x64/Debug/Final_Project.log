@@ -1,18 +1,4 @@
-﻿  Menu.cpp
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(272,4): error C2059: syntax error: '}'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(275,3): error C2046: illegal case
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(280,2): error C2059: syntax error: '}'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(280,4): error C2059: syntax error: 'while'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(281,17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(281,2): error C2365: 'LoginLoop': redefinition; previous definition was 'function'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Login.h(22): message : see declaration of 'LoginLoop'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(281,12): error C2065: 'staff': undeclared identifier
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(282,1): error C2059: syntax error: '}'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(282,1): error C2143: syntax error: missing ';' before '}'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(285,1): error C2143: syntax error: missing ';' before '{'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(285,1): error C2447: '{': missing function header (old-style formal list?)
-  Read_Data.cpp
-  Staff.cpp
+﻿  Staff.cpp
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(96,5): error C3861: 'getLineInfo': identifier not found
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(103,5): error C3861: 'getLineInfo': identifier not found
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(113,5): error C3861: 'getLineInfo': identifier not found
@@ -27,6 +13,8 @@ C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u1ED1' cannot be represented in the current code page (1252)
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u1ECD' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1120,6): error C2084: function 'void addSchoolYear(SchoolYear &)' already has a body
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(509): message : see previous definition of 'addSchoolYear'
   System_Function.cpp
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(782,2): error C3861: 'get_score': identifier not found
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1099,6): error C2084: function 'void enroll_course(User &,SchoolYear)' already has a body

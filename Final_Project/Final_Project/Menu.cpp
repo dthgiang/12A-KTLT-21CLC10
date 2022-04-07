@@ -232,7 +232,7 @@ void StaffMenu(User& staff)
 					/*case 0: {
 						listClass(staff, SchYr, &showScoreOfClass);
 						break;*/
-					}
+					//}
 					case 1: {
 						try {
 							Course* SLC = select_course(staff, SchYr, &Read_File_List_Course, &DrawListCourse);
