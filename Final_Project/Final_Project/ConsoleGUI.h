@@ -30,4 +30,4 @@ void FixConsoleWindow();
 
 void DrawTextFile(const char* filename, int x, int y);
 
-void printtext(string str, int x, int y);
+void printtext(string str, double x, double y);

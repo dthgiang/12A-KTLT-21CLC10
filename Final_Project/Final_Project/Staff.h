@@ -1,4 +1,7 @@
 #pragma once
+
+#define _CRT_SECURE_NO_DEPRECATE
+
 #include "Graphics.h"
 #include <iostream>
 #include <fstream>

@@ -1097,7 +1097,7 @@ void view_student_info_of_course(Data* M, int n) {
 }
 
 void enroll_course(User& user, SchoolYear SchYr) {
-	string semester_path = "file_save/SchoolYear/" + SchYr.year + '/' + SchYr.semester.Name + '/';
+	string semester_path = "database/SchoolYear/" + SchYr.year + '/' + SchYr.semester.Name + '/';
 	string class_path = semester_path + "Class/";
 	string course_path = semester_path + "Course/";
 	//hàm trang trí
@@ -1126,6 +1126,6 @@ void enroll_course(User& user, SchoolYear SchYr) {
 	rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, 1);
 	string file_cousre = course_path + course_input->ID_course;
 	rewrite_course_file(A, file_cousre, 1);
-	drawASCIIsuccessful();
+	DrawSuccessfulEnrol();
 	Sleep(3000);
 }

@@ -52,6 +52,13 @@ void DrawEditScore()
 	textBgColor(0, 15);
 }
 
+void DrawSuccessfulEnrol()
+{
+	textBgColor(6, 0);
+	DrawTextFile("_assets\\menu_successful.txt", 20, 15);
+	textBgColor(0, 15);
+}
+
 void DrawFailEnrol()
 {
 	textBgColor(6, 0);

@@ -142,7 +142,7 @@ int editCourse(User A, string& year, string& semester) {
             printtext(column[i], b[i], y + lineInConsole);
         do {
             hidePointer();
-            ch = getch();
+            ch = _getch();
             //[ESC]
             if (ch == 27) {
                 textBgColor(0, 15);
@@ -223,7 +223,7 @@ int editCourse(User A, string& year, string& semester) {
                     if (line == 1) {
                         textBgColor(4, 15);
                         printtext("THERE ISN'T ANY COURSE EXIST, PRESS ENTER TO BACK TO MENU.", 30, 14);
-                        ch = getch();
+                        ch = _getch();
                         textBgColor(0, 15);
                         checkOut = 1;
                         break;
@@ -272,7 +272,7 @@ int insertNum(int& n) {
     string num = "";
     do {
         showPointer();
-        c = getch();
+        c = _getch();
         if (c == 8) {
             if (num.size() > 0) {
                 num.pop_back();
@@ -317,7 +317,7 @@ int insertNameSemester(string& name) {
     char word;
     do {
         showPointer();
-        word = getch();
+        word = _getch();
         if (word == 8) {
             if (name.size() > 0) {
                 name.pop_back();
@@ -345,7 +345,7 @@ int insertDate(string& Date) {
     char word;
     showPointer();
     do {
-        word = getch();
+        word = _getch();
         if (word == 8) {
             if (Date.size() > 0) {
                 Date.pop_back();
@@ -636,7 +636,7 @@ void addSemester(string& yearNow, string& semesterNow) {
                 printtext("ERROR:SEMESTER WAS EXISTED IN SCHOOL YEAR, PRESS ENTER TO TRY AGAIN", 30, 19);
             else if (check == -3)
                 printtext("ERROR:SEMESTER ISN'T COME UP,PRESS ENTER TO TRY AGAIN", 30, 19);
-            ch = getch();
+            ch = _getch();
             drawRectangle(30, 19, 75, 1, 11);
             drawRectangle(35, 13, 10, 1, 15);
             textBgColor(0, 15);
@@ -656,7 +656,7 @@ void addSemester(string& yearNow, string& semesterNow) {
             hidePointer();
             cout << "ERROR: DATE MUST HAVE FORMAT LIKE DD/MM/YYYY (01/02/2020)";
             printtext("PRESS ENTER TO TRY AGAIN", 35, 19);
-            ch = getch();
+            ch = _getch();
             drawRectangle(30, 18, 70, 1, 11);
             drawRectangle(30, 19, 70, 1, 11);
             drawRectangle(35, 15, 10, 1, 15);
@@ -677,7 +677,7 @@ void addSemester(string& yearNow, string& semesterNow) {
             hidePointer();
             cout << "ERROR: DATE MUST HAVE FORMAT LIKE DD/MM/YYYY (01/02/2020)";
             printtext("PRESS ENTER TO TRY AGAIN", 35, 19);
-            ch = getch();
+            ch = _getch();
             drawRectangle(30, 18, 70, 1, 11);
             drawRectangle(30, 19, 70, 1, 11);
             drawRectangle(35, 17, 10, 1, 15);
@@ -732,7 +732,7 @@ void addSemester(string& yearNow, string& semesterNow) {
     hidePointer();
     textBgColor(10, 11);
     printtext("CREATE SEMESTER SUCCESSFUL,PRESS ENTER BACK TO MENU !!!", 35, 19);
-    ch = getch();
+    ch = _getch();
     textBgColor(0, 15);
 }
 
@@ -777,7 +777,7 @@ void createRegistrationCourse() {
     if (stoi(semester.substr(8, 1), 0, 10) == 0) {
         textBgColor(4, 15);
         printtext("YOU HAVEN'T CREATED SEMESTER YET, PRESS ENTER TO BACK TO MENU.", 40, 10);
-        ch = getch();
+        ch = _getch();
     }
     else {
         drawRectangle(30, 20, 50, 7, 11);
@@ -797,7 +797,7 @@ void createRegistrationCourse() {
                 gotoxy(20, 28);
                 hidePointer();
                 cout << "ERROR: DATE MUST HAVE FORMAT LIKE DD/MM/YYYY (01/02/2020,..), PRESS ENTER TO TRY AGAIN";
-                ch = getch();
+                ch = _getch();
                 drawRectangle(20, 28, 90, 1, 15);
                 drawRectangle(35, 22, 40, 1, 15);
                 textBgColor(0, 15);
@@ -816,7 +816,7 @@ void createRegistrationCourse() {
                 gotoxy(20, 28);
                 hidePointer();
                 cout << "ERROR: DATE MUST HAVE FORMAT LIKE DD/MM/YYYY (01/02/2020,..), PRESS ENTER TO TRY AGAIN";
-                ch = getch();
+                ch = _getch();
                 drawRectangle(20, 28, 90, 1, 15);
                 drawRectangle(35, 25, 40, 1, 15);
                 textBgColor(0, 15);
@@ -834,7 +834,7 @@ void createRegistrationCourse() {
         file.close();
         textBgColor(9, 15);
         printtext("CREATE COURSE REGISTRATION SESSION SUCCESSFUL !!! ,PRESS ENTER TO BACK TO MENU", 20, 28);
-        ch = getch();
+        ch = _getch();
     }
     textBgColor(0, 15);
 }
@@ -851,7 +851,7 @@ void addCourse() {
     if (stoi(semester.substr(8, 1), 0, 10) == 0) {
         textBgColor(4, 15);
         printtext("YOU HAVEN'T CREATED SEMESTER YET, PRESS ENTER TO BACK TO MENU.", 40, 10);
-        ch = getch();
+        ch = _getch();
     }
 
     else {
@@ -894,7 +894,7 @@ void addCourse() {
                 textBgColor(4, 15);
                 hidePointer();
                 printtext("ERROR: COURSE ALREADY EXISTS,PRESS ENTER TO TRY AGAIN.", 25, 27);
-                ch = getch();
+                ch = _getch();
                 textBgColor(0, 15);
                 drawRectangle(25, 27, 80, 1, 15);
                 drawRectangle(30, 11, 50, 1, 15);
@@ -927,7 +927,7 @@ void addCourse() {
                 textBgColor(4, 15);
                 hidePointer();
                 printtext("ERROR: YOUR DAY MUST HAVE FORMAT LIKE (MON,TUE,..),PRESS ENTER TO TRY AGAIN.", 25, 27);
-                ch = getch();
+                ch = _getch();
                 textBgColor(0, 15);
                 drawRectangle(25, 27, 80, 1, 15);
                 drawRectangle(30, 21, 50, 1, 15);
@@ -953,7 +953,7 @@ void addCourse() {
                 hidePointer();
                 printtext("ERROR: YOUR SESSION MUST HAVE FORMAT LIKE (S1,S2,..),PRESS ENTER TO TRY AGAIN.", 25, 27);
                 textBgColor(0, 15);
-                ch = getch();
+                ch = _getch();
                 drawRectangle(25, 27, 80, 1, 15);
                 drawRectangle(30, 23, 50, 1, 15);
             }
@@ -983,7 +983,7 @@ void addCourse() {
                 else
                     printtext("ERROR: YOUR SESSION IS THE SAME AS LAST SESSION ,PRESS ENTER TO TRY AGAIN.", 25, 27);
                 textBgColor(0, 15);
-                ch = getch();
+                ch = _getch();
                 drawRectangle(25, 27, 80, 1, 15);
                 drawRectangle(30, 24, 50, 1, 15);
             }
@@ -997,7 +997,7 @@ void addCourse() {
         file << "ID STUDENT,NAME,BIRTHDAY,SEX,ID SOCIAL";
         file.close();
         printtext("CREATE COURSE SUCCESSFUL !!!, PRESS ENTER TO BACK TO MENU.", 25, 27);
-        ch = getch();
+        ch = _getch();
     }
     textBgColor(0, 15);
 }
@@ -1043,7 +1043,7 @@ void listCourse(User A, string year, string semester) {
     if (stoi(semester.substr(8, 1), 0, 10) == 0) {
         textBgColor(4, 15);
         printtext("YOU HAVEN'T CREATED SEMESTER YET, PRESS ENTER TO BACK TO MENU.", 30, 14);
-        ch = getch();
+        ch = _getch();
         textBgColor(0, 15);
         return;
     }
@@ -1070,7 +1070,7 @@ void listCourse(User A, string year, string semester) {
         if (lineNum == 1) {
             textBgColor(4, 15);
             printtext("THERE ISN'T ANY COURSE EXIST, PRESS ENTER TO BACK TO MENU.", 30, 14);
-            ch = getch();
+            ch = _getch();
             textBgColor(0, 15);
             break;
         }
@@ -1088,7 +1088,7 @@ int insertString(string& data, int limit) {
     do
     {
         showPointer();
-        ch = getch();
+        ch = _getch();
         if (ch == 8) {
             if (data.size() > 0) {
                 data.pop_back();

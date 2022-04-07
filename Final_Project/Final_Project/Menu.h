@@ -12,6 +12,7 @@
 
 using namespace std;
 
+void DrawSuccessfulEnrol();
 void DrawFailEnrol();
 void DrawEnrolCourse();
 void DrawListCourse();

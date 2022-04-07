@@ -1,23 +1,26 @@
-﻿  Add_Student.cpp
-  Change_Password.cpp
-  ConsoleGUI.cpp
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(46,20): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(46,9): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(51,36): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\ConsoleGUI.cpp(51,21): warning C4244: 'argument': conversion from 'double' to 'short', possible loss of data
-  List_Class.cpp
-  Login.cpp
-  Main.cpp
-  Menu.cpp
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(101,21): error C2065: 'user': undeclared identifier
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(101,5): error C3861: 'change_password': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(148,5): error C3861: 'RunMenuAddInfoStudentToClass': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(214,51): error C2065: 'read_file_List_course': undeclared identifier
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(300,5): error C3861: 'change_password': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(320,21): error C2065: 'user': undeclared identifier
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(320,27): error C2065: 'SY': undeclared identifier
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Menu.cpp(320,7): error C3861: 'enroll_course': identifier not found
-  Staff.cpp
+﻿  Staff.cpp
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(96,5): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(103,5): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(113,5): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(119,5): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(138,9): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(162,25): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(182,25): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(194,21): error C3861: 'editInforCourse': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(203,21): error C3861: 'change_Year_Semester': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(234,21): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u1ED1' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u1ECD' cannot be represented in the current code page (1252)
   System_Function.cpp
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(782,2): error C3861: 'get_score': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1099,6): error C2084: function 'void enroll_course(User &,SchoolYear)' already has a body
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(676): message : see previous definition of 'enroll_course'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1111,2): error C3861: 'get_all_course': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1123,21): error C2065: 'A': undeclared identifier
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1123,2): error C3861: 'add_Tail_List_Mark': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1125,45): error C2065: 'A': undeclared identifier
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1126,33): error C2065: 'A': undeclared identifier
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1128,22): error C2065: 'A': undeclared identifier
   Generating Code...
