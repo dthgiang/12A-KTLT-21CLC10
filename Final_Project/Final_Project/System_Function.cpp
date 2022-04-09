@@ -81,6 +81,55 @@ int Select(int a, string A[], int _X, int _Y, int dis)
 	}
 }
 
+void get_1_score(MarkNode*& A, string ID, ifstream& f) {
+	string temp;
+	getline(f, temp);
+	while (!f.eof()) {
+		getline(f, temp, ',');// doc stt
+		getline(f, temp, ',');//doc mssv
+		if (_strcmpi(temp.c_str(), ID.c_str()) == 0) {
+			getline(f, temp, ',');//doc ten
+			getline(f, temp, ',');//doc lop
+			getline(f, temp, ',');
+			A->data.Midterm_Mark = atof(temp.c_str());
+			getline(f, temp, ',');
+			A->data.Final_Mark = atof(temp.c_str());
+			getline(f, temp, ',');
+			A->data.Other_Mark = atof(temp.c_str());
+			getline(f, temp);
+			A->data.Total_Mark = atof(temp.c_str());
+			return;
+		}
+		else {
+			getline(f, temp);
+		}
+	}
+}
+
+void get_score(User& A, SchoolYear s_y, int& i) {
+	ifstream f;
+	string semester_path = "_assets/SchoolYear/" + s_y.year + '/' + s_y.semester.Name + '/';
+	string course_path = semester_path + "Course/score/";
+	i = 0;
+	MarkNode* temp = A.info.phead;
+	while (temp != NULL) {
+		string fileName = course_path + temp->data.ID + csv_tail;
+		f.open(fileName, ios::in);
+		if (f.good()) {
+			get_1_score(temp, A.ID, f);
+		}
+		else {
+			temp->data.Final_Mark = 0;
+			temp->data.Midterm_Mark = 0;
+			temp->data.Other_Mark = 0;
+			temp->data.Total_Mark = 0;
+		}
+		f.close();
+		i++;
+		temp = temp->pNext;
+	}
+}
+
 void rewrite_course_of_student_file(User user, string fileName, string data, int command_flag) {
 	fstream file_prv, file_aft;
 	string oldName = fileName + ".csv";
@@ -1096,36 +1145,36 @@ void view_student_info_of_course(Data* M, int n) {
 	} while (true);
 }
 
-void enroll_course(User& user, SchoolYear SchYr) {
-	string semester_path = "database/SchoolYear/" + SchYr.year + '/' + SchYr.semester.Name + '/';
-	string class_path = semester_path + "Class/";
-	string course_path = semester_path + "Course/";
-	//hàm trang trí
-	//hàm hiện danh sách các môn học.
-
-	Course* course_input = select_course(user, SchYr, &Read_File_List_Course, &DrawEnrolCourse);
-	if (course_input == NULL) {
-		return;
-	}
-	//kiểm tra xem trong danh sách môn học của sinh viên đã có môn này hay chưa
-	get_all_course(user, SchYr);
-	MarkNode* Mtemp = user.info.phead;
-	while (Mtemp != NULL) {
-		if (_strcmpi(course_input->ID_course.c_str(), Mtemp->data.ID.c_str()) == 0) {
-			//nếu có thì return.
-			DrawFailEnrol();
-			Sleep(1800);
-			return;
-		}
-		Mtemp = Mtemp->pNext;
-	}
-	//chưa có thì thêm vào danh sách.
-	add_Tail_List_Mark(A.info.phead, course_input->ID_course, course_input->name, to_string(course_input->Num_of_creadit));
-	//ghi them vao file;
-	string file_cousre_of_class = class_path + A.info.Class;
-	rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, 1);
-	string file_cousre = course_path + course_input->ID_course;
-	rewrite_course_file(A, file_cousre, 1);
-	DrawSuccessfulEnrol();
-	Sleep(3000);
-}
+//void enroll_course(User& user, SchoolYear SchYr) {
+//	string semester_path = "database/SchoolYear/" + SchYr.year + '/' + SchYr.semester.Name + '/';
+//	string class_path = semester_path + "Class/";
+//	string course_path = semester_path + "Course/";
+//	//hàm trang trí
+//	//hàm hiện danh sách các môn học.
+//
+//	Course* course_input = select_course(user, SchYr, &Read_File_List_Course, &DrawEnrolCourse);
+//	if (course_input == NULL) {
+//		return;
+//	}
+//	//kiểm tra xem trong danh sách môn học của sinh viên đã có môn này hay chưa
+//	get_all_course(user, SchYr);
+//	MarkNode* Mtemp = user.info.phead;
+//	while (Mtemp != NULL) {
+//		if (_strcmpi(course_input->ID_course.c_str(), Mtemp->data.ID.c_str()) == 0) {
+//			//nếu có thì return.
+//			DrawFailEnrol();
+//			Sleep(1800);
+//			return;
+//		}
+//		Mtemp = Mtemp->pNext;
+//	}
+//	//chưa có thì thêm vào danh sách.
+//	add_Tail_List_Mark(A.info.phead, course_input->ID_course, course_input->name, to_string(course_input->Num_of_creadit));
+//	//ghi them vao file;
+//	string file_cousre_of_class = class_path + A.info.Class;
+//	rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, 1);
+//	string file_cousre = course_path + course_input->ID_course;
+//	rewrite_course_file(A, file_cousre, 1);
+//	DrawSuccessfulEnrol();
+//	Sleep(3000);
+//}
