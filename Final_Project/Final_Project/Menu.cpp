@@ -1,9 +1,11 @@
-#include "Menu.h"
+﻿#include "Menu.h"
 #include "Staff.h"
 #include "Login.h"
 #include "System_Function.h"
 #include "List_Class.h"
 
+
+void DrawBlank(){}// không draw gì cả
 
 void DrawStaffMenu() {
     /*SchoolYear SchYr;
@@ -14,7 +16,7 @@ void DrawStaffMenu() {
 	drawRectangle(3, 22, 115, 1, 11);
 
 	drawRectangle(3, 9, 115, 14, 15);
-	drawRectangle(3, 26, 115, 1, 11);
+	drawRectangle(3, 26, 115, 1, 11);	
     drawRectangle(3, 26, 115, 1, 11);
 	textBgColor(2, 11);
     
