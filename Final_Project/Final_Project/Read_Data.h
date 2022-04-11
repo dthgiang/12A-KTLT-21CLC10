@@ -35,3 +35,7 @@ void get_all_course(User& A, SchoolYear SY);
 
 void delete_Mark_node(MarkNode*& head, string ID);
 
+void init_List_Mark(MarkNode*& head);
+
+void add_Tail_List_Mark(MarkNode*& head, string ID, string name, string num_of_creadit);
+

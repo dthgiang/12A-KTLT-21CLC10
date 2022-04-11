@@ -799,10 +799,10 @@ void Output_info(User A) {
 	int a = 0;
 	if (A.role == 1) {
 		drawRectangle(30, 12, 50, 16, 11);
-		printtext("Ma so sinh vien: " + A.info.IDstd, 35, 15);
-		printtext("Lop: " + A.info.Class, 35, 17);
+		printtext("Student ID: " + A.info.IDstd, 35, 15);
+		printtext("Class: " + A.info.Class, 35, 17);
 		a = 2;
-		printtext("Chuc vu: Hoc sinh", 35, 21 + a);
+		printtext("Role: Hoc sinh", 35, 21 + a);
 	}
 	else {
 		drawRectangle(30, 12, 50, 13, 11);
@@ -816,112 +816,6 @@ void Output_info(User A) {
 	printtext("CMND/CCCD: " + A.info.IDsocial, 35, 23 + a);
 	textBgColor(0, 15);
 	system("pause");
-}
-void view_1_line(Mark M, int x, int y) {
-	printtext(M.ID, x, y);
-	printtext(M.Name, x + 12, y);//12 ki tu cho id
-	printtext(to_string(M.Midterm_Mark), x + 42, y);//30 ki tu cho ten
-	printtext(to_string(M.Final_Mark), x + 56, y);//14 ki tu cho 1 diem
-	printtext(to_string(M.Other_Mark), x + 70, y);//14 ki tu cho 1 diem
-	printtext(to_string(M.Total_Mark), x + 84, y);//14 ki tu cho 1 diem
-}
-Mark* view_all_score_of_1_student(User A, SchoolYear Y) {
-	system("cls");
-	int n;
-	get_score(A, Y, n);
-
-	int x = 15;
-	int y = 14;
-	textBgColor(4, 6);
-	drawRectangle(0, 13, 120, n + 3, 11);
-	textBgColor(0, 11);
-	printtext("ID", x, y);
-	printtext("Name of Course", x + 12, y);//12 ki tu cho id
-	printtext("Midterm Mark", x + 42, y);//30 ki tu cho ten
-	printtext("Final Mark", x + 56, y);//14 ki tu cho 1 diem
-	printtext("Other Mark", x + 70, y);//14 ki tu cho 1 diem
-	printtext("Total Mark", x + 84, y);//14 ki tu cho 1 diem
-	y++;
-	if (n == 0) {
-		drawRectangle(0, 17, 120, 3, 6);
-		printtext("You has not registered for any courses this semester ", 30, 18);
-		textBgColor(0, 15);
-		return NULL;
-	}
-	Mark* M = new Mark[n];
-	MarkNode* temp = A.info.phead;
-	for (int i = 0; i < n; i++) {
-		M[i] = temp->data;
-		view_1_line(M[i], x, y + i);
-		temp = temp->pNext;
-	}
-	textBgColor(0, 15);
-	return M;
-}
-void view_1_score_of_course(Mark M, int x, int y) {
-	printtext(M.ID, x, y);
-	printtext(M.Name, x + 12, y);//12 ki tu cho id
-	printtext(M.C, x + 42, y);
-	printtext(to_string(M.Midterm_Mark), x + 52, y);//30 ki tu cho ten
-	printtext(to_string(M.Final_Mark), x + 66, y);//14 ki tu cho 1 diem
-	printtext(to_string(M.Other_Mark), x + 80, y);//14 ki tu cho 1 diem
-	printtext(to_string(M.Total_Mark), x + 94, y);//14 ki tu cho 1 diem
-}
-void view_10_score_of_course(Mark* M, int i, int n, int x, int y) {
-	if (n - i >= 10) {
-		for (int j = 0; j < 10; j++) {
-			view_1_score_of_course(M[i + j], x, y + j);
-		}
-	}
-	else {
-		for (int j = 0; j < n - i; j++) {
-			view_1_score_of_course(M[i + j], x, y + j);
-		}
-	}
-}
-int view_score_of_course_in_year(Mark* M, int n) {
-	textBgColor(0, 15);
-	system("cls");
-	int x = 10;
-	int y = 14;
-	textBgColor(4, 6);
-	textBgColor(0, 11);
-	printtext("ID", x, y - 1);
-	printtext("Name", x + 12, y - 1);//12 ki tu cho id
-	printtext("Class", x + 42, y - 1);
-	printtext("Midterm Mark", x + 52, y - 1);//30 ki tu cho ten
-	printtext("Final Mark", x + 66, y - 1);//14 ki tu cho 1 diem
-	printtext("Other Mark", x + 80, y - 1);//14 ki tu cho 1 diem
-	printtext("Total Mark", x + 94, y - 1);//14 ki tu cho 1 diem
-	char ch;
-	int tab_now = 0;
-	view_10_score_of_course(M, tab_now * 10, n, x, y);
-	do {
-		hidePointer();
-		ch = _getch();
-		//[ESC]
-		if (ch == 27) {
-			return-1;
-		}
-		else {
-			//Control Up down 
-			if (ch == 72 && tab_now > 0) //up
-			{
-				tab_now--;
-				drawRectangle(0, y, 120, 11, 11);
-				view_10_score_of_course(M, tab_now * 10, n, x, y);
-			}
-			if (ch == 80 && tab_now < (n - 1) / 10) //down
-			{
-				tab_now++;
-				drawRectangle(0, y, 120, 11, 11);
-				view_10_score_of_course(M, tab_now * 10, n, x, y);
-			}
-			if (ch == 13) {
-				return tab_now;
-			}
-		}
-	} while (true);
 }
 void view_1_course_of_list_course(Course M, int x, int y) {
 	printtext(M.ID_course, x, y);

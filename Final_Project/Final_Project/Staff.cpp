@@ -45,7 +45,7 @@ int insertNum2(string& data, int limit) {
     char ch;
     do
     {
-        ch = getch();
+        ch = _getch();
         if (ch == 8) {
             if (data.size() > 0) {
                 data.pop_back();
@@ -71,7 +71,7 @@ int insertDay(string& data, int limit) {
     bool check = false;
     do
     {
-        ch = getch();
+        ch = _getch();
         if (ch == 8) {
             if (data.size() > 0) {
                 data.pop_back();
@@ -100,7 +100,7 @@ int insertSession(string& data, int limit) {
     bool check = false;
     do
     {
-        ch = getch();
+        ch = _getch();
         if (ch == 8) {
             if (data.size() > 0) {
                 data.pop_back();
@@ -131,7 +131,7 @@ void editInforCourse(int y, int currentLine, string column[], string year, strin
     printtext(column[2], pos[currentColumn], y);
     do
     {
-        ch = getch();
+        ch = _getch();
         //ESC
         if (ch == 27)
             break;
@@ -242,6 +242,41 @@ void change_Year_Semester(SchoolYear& S) {
     S.semester.Name = semester_of_year[i];
 }
 
+void DisPlay_Course_Of_Student(SchoolYear Y, User A)
+{
+    char ch;
+    hidePointer();
+    get_course(A, Y);
+    read_course(A, Y);
+    do {
+        drawRectangle(27, 29, 60, 1, 10);
+        textColor(496);
+        string text = Y.semester.Name + "; Year: " + Y.year + ".   Press[C] to change!";
+        printtext(text, 32, 29);
+        ch = _getch();
+        //[ESC]
+        if (ch == 27) {
+            return;
+        }
+        else {
+            //Control Up down 
+            if (ch == 'c' || ch == 'C') //up
+            {
+                change_Year_Semester(Y);
+                int a = get_course(A, Y);
+                if (a == -1) {
+                    drawRectangle(3, 14, 115, 3, 4);
+                    printtext("Invalid school year ", 50, 15);
+                    textBgColor(0, 15);
+                    Sleep(1800);
+                    determineYearSemesterNow(Y.year, Y.semester.Name);
+                }
+                read_course(A, Y);
+            }
+        }
+    } while (true);
+}
+
 void renameFile(string oldName, string newName) {
     char* a = new char[oldName.size() + 1];
     strcpy(a, oldName.c_str());
@@ -328,14 +363,14 @@ void deleteCourse(string filename, string courseName, int currentLine, string ye
 }
 
 void moveUp(string filename, int& currentLine, int columnNum, int indexB[], int y, string column[], int lineInConsole, int width, int x) {
-    getLineInfo(filename, currentLine + 1, column, columnNum);
+    getLineInfoForStudent(filename, currentLine + 1, column, columnNum);
     drawRectangle(x, y + lineInConsole + 1, width, 1, 11);
     textBgColor(0, 11);
     for (int i = 0; i < columnNum; i++) {
         printtext(column[i], indexB[i], y + lineInConsole + 1);
     }
 
-    getLineInfo(filename, currentLine, column, columnNum);
+    getLineInfoForStudent(filename, currentLine, column, columnNum);
     drawRectangle(x, y + lineInConsole, width, 1, 14);
     textBgColor(0, 14);
     for (int i = 0; i < columnNum; i++) {
@@ -345,13 +380,13 @@ void moveUp(string filename, int& currentLine, int columnNum, int indexB[], int 
 
 void moveDown(string filename, int& currentLine, int columnNum, int indexB[], int y, string column[], int lineInConsole, int width, int x) {
 
-    getLineInfo(filename, currentLine - 1, column, columnNum);
+    getLineInfoForStudent(filename, currentLine - 1, column, columnNum);
     drawRectangle(x, y - 1 + lineInConsole, width, 1, 11);
     textBgColor(0, 11);
     for (int i = 0; i < columnNum; i++) {
         printtext(column[i], indexB[i], y + lineInConsole - 1);
     }
-    getLineInfo(filename, currentLine, column, columnNum);
+    getLineInfoForStudent(filename, currentLine, column, columnNum);
     drawRectangle(x, y + lineInConsole, width, 1, 14);
     textBgColor(0, 14);
     for (int i = 0; i < columnNum; i++) {
@@ -370,7 +405,7 @@ int editCourse(User A, string& year, string& semester) {
         int lineInConsole = 1;
         int a[8] = { 2,13,32,55,76,91,98,108 };
         int b[8] = { 1,9,32,63,79,91,101,111 };
-        getLineInfo("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
+        getLineInfoForStudent("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
         drawRectangle(1, y + lineInConsole, 110, 1, 14);
         textBgColor(0, 14);
         for (int i = 0; i < 8; i++)
@@ -394,7 +429,7 @@ int editCourse(User A, string& year, string& semester) {
                         drawRectangle(0, 10, 120, 15, 15);
                         drawRectangle(0, 10, 120, 15, 11);
                         drawList(8, "_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", y, a, b, line, currentLine - 11);
-                        getLineInfo("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
+                        getLineInfoForStudent("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
                         drawRectangle(1, y + lineInConsole, 110, 1, 14);
                         textBgColor(0, 14);
                         for (int i = 0; i < 8; i++) {
@@ -414,7 +449,7 @@ int editCourse(User A, string& year, string& semester) {
                         drawRectangle(0, 10, 120, 15, 15);
                         drawRectangle(0, 10, 120, 15, 11);
                         drawList(8, "_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", y, a, b, line, currentLine);
-                        getLineInfo("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
+                        getLineInfoForStudent("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
                         drawRectangle(1, y + lineInConsole, 110, 1, 14);
                         textBgColor(0, 14);
                         for (int i = 0; i < 8; i++) {
@@ -466,7 +501,7 @@ int editCourse(User A, string& year, string& semester) {
                     drawList(8, filename, y, a, b, line, currentLine - lineInConsole + 1);
                     drawRectangle(1, y + lineInConsole, 110, 1, 14);
                     textBgColor(0, 14);
-                    getLineInfo(filename, currentLine, column, 8);
+                    getLineInfoForStudent(filename, currentLine, column, 8);
                     for (int i = 0; i < 8; i++)
                         printtext(column[i], b[i], y + lineInConsole);
                 }
@@ -476,7 +511,7 @@ int editCourse(User A, string& year, string& semester) {
     return checkOut;
 }
 
-void getLineInfo(string filename, int line, string column[], int columnNum) {
+void getLineInfoForStudent(string filename, SchoolYear Y, int line, string column[], int columnNum) {
     if (line > countLine(filename)) cout << "Not exist line";
     int numLine = countLine(filename);
     fstream file;
@@ -1352,101 +1387,107 @@ int insertString(string& data, int limit) {
     return 1;
 }
 
-void addSchoolYear(SchoolYear& Y) {
-    SchoolYear schoolyear;
-    char ch;
-    system("cls");
-    textBgColor(13, 15);
-    DrawTextFile("_assets\\menu_schoolyear.txt", 35, 2);
-    
-    while (true) {
-        textBgColor(0, 11);
-        drawRectangle(35, 8, 70, 7, 11);
-        schoolyear.year = "";
-        printtext("Enter school year (Ex:2020-2021,..) : ", 40, 10);
-        drawRectangle(40, 11, 50, 1, 15);
-
-        while (true) {
-            showPointer();
-            textBgColor(0, 15);
-            gotoxy(40, 11);
-            schoolyear.year = "";
-            if (insertSchoolYear(schoolyear.year) == 0) return;
-            string a, b;
-            for (int i = 0; i < 4; i++) a.push_back(schoolyear.year[i]);
-            for (int i = 5; i < 9; i++) b.push_back(schoolyear.year[i]);
-            //Không thõa mãn định dạng nhập yyyy-yyyy
-            if (!(stoi(a, 0, 10) >= stoi(b, 0, 10) || schoolyear.year[4] != 45 || (stoi(a, 0, 10) < 1000 || stoi(a, 0, 10) > 9999) || (stoi(b, 0, 10) < 1000 || stoi(b, 0, 10) > 9999)))
-                break;
-            else {
-                textBgColor(4, 11);
-                printtext("ERROR:SCHOOL YEAR MUST HAVE FORMAT LIKE YYYY-YYYY", 40, 13);
-                printtext("PRESS ENTER TO TRY AGAIN", 40, 14);
-                hidePointer();
-                ch = _getch();
-                drawRectangle(40, 11, 50, 1, 15);
-                drawRectangle(40, 13, 60, 1, 11);
-                drawRectangle(40, 14, 60, 1, 11);
-                showPointer();
-            }
-        }
-
-        fstream file1, file2;
-        bool check = true;
-        file1.open("database//year-semester.csv", ios::in);
-        file2.open("database//year-semester.csv", ios::in);
-
-        string row, column;
-        getline(file1, row);
-        getline(file2, column);
-        while (!file1.eof()) {
-            getline(file2, column, ',');
-            if (column.compare(schoolyear.year) == 0) {
-                textBgColor(4, 11);
-                printtext("SCHOOL YEAR EXIST ! PRESS ENTER TO TRY AGAIN", 40, 14);
-                hidePointer();
-                ch = _getch();
-                drawRectangle(40, 11, 50, 1, 15);
-                drawRectangle(40, 14, 60, 1, 11);
-                showPointer();
-                check = false;
-                break;
-            }
-            getline(file1, row);
-            getline(file2, column);
-        }
-        if (check == true) break;
+int checkCourseSession()
+{
+    string year, semester;
+    determineYearSemesterNow(year, semester);
+    if (stoi(semester.substr(8, 1), 0, 10) == 0) {
+        textBgColor(4, 15);
+        printtext("HAVEN'T CREATE SEMESTER YET, PRESS ENTER TO BACK TO MENU.", 40, 10);
+        char ch = _getch();
     }
-
-    string nameFolder = "database//SchoolYear//" + schoolyear.year;
-    createFolder(nameFolder);
-
-    fstream file;
-    string data;
-    file.open("database//year-semester.csv", ios::app);
-    file << endl << schoolyear.year << ",0";
-    file.close();
-
-
-    file.open("database/SchoolYear/" + Y.year + "/class_info.csv", ios::in);
-    getline(file, data);
-    while (!file.eof()) {
-        getline(file, data, ',');
-        getline(file, data, ',');
-        string source = "database/SchoolYear/" + Y.year + "/" + data + ".csv", destination = "database/SchoolYear/" + schoolyear.year + "/" + data + ".csv";
-        CopyContentFileToFile(source, destination);
+    else {
+        fstream file;
+        file.open("file_save/SchoolYear/" + year + "/" + semester + "/RegistrationCourseSession.txt", ios::in);
+        string data;
         getline(file, data);
+        if (stoi(data, 0, 10) == 0) return 0;//not open session yet
+        else {
+            getline(file, data);
+            string dateStart = data.substr(12, 10);
+            getline(file, data);
+            string dateEnd = data.substr(9, 10);
+            if (checkTimeStart(dateStart.substr(0, 2), dateStart.substr(3, 2), dateStart.substr(6, 4)) == false) return -1;//It's not time to start yet
+            else {
+                if (checkTimeEnd(dateEnd.substr(0, 2), dateEnd.substr(3, 2), dateEnd.substr(6, 4)) == false) return -2;//It was late to register the course
+                else return 1;//can register the course 
+            }
+        }
     }
-    CopyContentFileToFile("database/SchoolYear/" + Y.year + "/staff.csv", "database/SchoolYear/" + schoolyear.year + "/staff.csv");
-    CopyContentFileToFile("database/SchoolYear/" + Y.year + "/class_info.csv", "_assets/SchoolYear/" + schoolyear.year + "/class_info.csv");
-    Y.year = schoolyear.year;
-    Y.semester.Name = "Semester0";
-    hidePointer();
-    textBgColor(4, 11);
-    printtext("CREATE SCHOOL YEAR SUCCESSFUL,PRESS ENTER TO BACK TO MENU !!!", 40, 14);
-    ch = _getch();
     textBgColor(0, 15);
+
 }
+
+bool checkTimeEnd(string date, string month, string year)
+{
+    int Month = stoi(month, 0, 10);
+    int Year = stoi(year, 0, 10);
+    int Date = stoi(date, 0, 10);
+    time_t now = time(0);
+    tm* ltm = localtime(&now);
+    //Năm hiện tại nhỏ hơn
+    if (ltm->tm_year + 1900 < Year)
+        return true;
+    else {
+        //Năm hiện tại lớn hơn
+        if (ltm->tm_year + 1900 > Year)
+            return false;
+        //Năm hiện tại bằng
+        else {
+            //Tháng hiện tại nhỏ hơn
+            if (ltm->tm_mon + 1 < Month)
+                return true;
+            else {
+                //Tháng hiện tại lớn hơn
+                if (ltm->tm_mon + 1 > Month)
+                    return false;
+                //Tháng hiện tại bằng
+                else {
+                    if (ltm->tm_mday <= Date)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
+    }
+}
+
+bool checkTimeStart(string date, string month, string year)
+{
+    int Month = stoi(month, 0, 10);
+    int Year = stoi(year, 0, 10);
+    int Date = stoi(date, 0, 10);
+    time_t now = time(0);
+    tm* ltm = localtime(&now);
+    //Năm hiện tại lớn hơn
+    if (ltm->tm_year + 1900 > Year)
+        return true;
+    else {
+        //Năm hiện tại nhỏ hơn
+        if (ltm->tm_year + 1900 < Year)
+            return false;
+        //Năm hiện tại bằng
+        else {
+            //Tháng hiện tại lớn hơn
+            if (ltm->tm_mon + 1 > Month)
+                return true;
+            else {
+                //Tháng hiện tại nhỏ hơn
+                if (ltm->tm_mon + 1 < Month)
+                    return false;
+                //Tháng hiện tại bằng
+                else {
+                    if (ltm->tm_mday >= Date)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
+    }
+}
+
 
 void listClass(User A, SchoolYear Y, fun_show_class Fun) {
     bool checkOut = false;
@@ -1568,7 +1609,7 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
 
         int currentLine = 2, lineInConsole = 1;
         string column[6];
-        getLineInfo(filename, currentLine, column, 6);
+        getLineInfoForStudent(filename, currentLine, column, 6);
         drawRectangle(8, y + lineInConsole, 100, 1, 14);
         textBgColor(0, 14);
         for (int i = 0; i < 6; i++)
@@ -1576,7 +1617,7 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
 
         do {
             hidePointer();
-            ch = getch();
+            ch = _getch();
             //[ESC]
             if (ch == 27) {
                 textBgColor(0, 15);
@@ -1593,7 +1634,7 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
                     drawRectangle(8, 10, 100, 15, 15);
                     drawRectangle(8, 10, 100, 15, 11);
                     drawList(6, filename, y, a, b, lineNum, currentLine - 11);
-                    getLineInfo(filename, currentLine, column, 6);
+                    getLineInfoForStudent(filename, currentLine, column, 6);
                     drawRectangle(8, y + lineInConsole, 100, 1, 14);
                     textBgColor(0, 14);
                     for (int i = 0; i < 6; i++) {
@@ -1612,7 +1653,7 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
                     drawRectangle(8, 10, 100, 15, 15);
                     drawRectangle(8, 10, 100, 15, 11);
                     drawList(6, filename, y, a, b, lineNum, currentLine);
-                    getLineInfo(filename, currentLine, column, 6);
+                    getLineInfoForStudent(filename, currentLine, column, 6);
                     drawRectangle(8, y + lineInConsole, 100, 1, 14);
                     textBgColor(0, 14);
                     for (int i = 0; i < 6; i++) {

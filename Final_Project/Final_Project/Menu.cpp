@@ -90,8 +90,8 @@ void StaffMenu(User& staff)
 	DisplayYearSemester(SchYr.year, SchYr.semester.Name);
 	//read_info(user, SY);
 	int option;
-	string MenuStaff[] = { "YOUR INFO","NEW","CLASS INFO","COURSE INFO","RESULT OF STUDENTS","LOG OUT" };
-	string MenuStaff1[] = { "1. Profile info", "2. Change password","3.Back to Menu" };
+	string MenuStaff[] = { "YOUR INFO","NEW","CLASS INFO","COURSE INFO","LOG OUT" };
+	string MenuStaff1[] = { "1. Profile info", "2. Change password","3. Back to Menu" };
 	string MenuStaff2[] = {
 	"1. Create school - year",
 	"2. Create semester ", "3. Create course registration session", "4. Create course",
@@ -99,16 +99,15 @@ void StaffMenu(User& staff)
 	};
 	string MenuStaff4[] = {
 	"1. View List Course And List Student in Course",
-	 "2. Delete or Edit Course info","3.Back to Menu" };
-	string MenuStaff5[] = { "1. View and edit student's marks", "2. Export student list mark", "3. Import student list mark", "4. Back to Menu" };
+	 "2. Delete or Edit Course info","3. Back to Menu" };
 	do
 	{
 		showPointer();
 		system("cls");
 		gotoxy(0, 7);
 
-		drawMenu(MenuStaff, 6, 50, 10, 1, &DrawStaffMenu);
-		option = Select(6, MenuStaff, 50, 10, 1);
+		drawMenu(MenuStaff, 5, 50, 10, 1, &DrawStaffMenu);
+		option = Select(5, MenuStaff, 50, 10, 1);
 		switch (option)
 		{
 		case 0: {
@@ -143,7 +142,7 @@ void StaffMenu(User& staff)
 			{
 			case 0: {
 				// lenh tao nam
-				//addSchoolYear(SY);
+				addSchoolYear(SchYr);
 				break;
 			}
 			case 1: {
@@ -212,69 +211,6 @@ void StaffMenu(User& staff)
 			break;
 		}
 		case 4:
-			/*system("cls");
-			RunMenuViewListClass();
-			break;*/
-		{
-			bool checkMenu = true;
-			do {
-				system("cls");
-				drawMenu(MenuStaff5, 4, 40, 10, 2, &DrawStaffMenu);
-				int option1 = Select(4, MenuStaff5, 40, 10, 2);
-				switch (option1)
-				{
-				case 0: //edit diem sinh vien
-				{
-					system("cls");
-					string edit[] = { "1. From List Class.","2. From List Course.","3. Exit to Menu." };
-					drawMenu(edit, 3, 45, 20, 2, &DrawEditScore);
-					int choose = Select(3, edit, 45, 20, 2);
-					switch (choose)
-					{
-					/*case 0: {
-						listClass(staff, SchYr, &showScoreOfClass);
-						break;*/
-					//}
-					case 1: {
-						try {
-							Course* SLC = select_course(staff, SchYr, &Read_File_List_Course, &DrawListCourse);
-							if (SLC == NULL) {
-								break;
-							}
-							edit_score_in_list_course(staff, SchYr, SLC->ID_course);
-						}
-						catch (const char* err) {
-							drawRectangle(3, 14, 115, 3, 4);
-							printtext(err, 50, 15);
-							textBgColor(0, 15);
-							Sleep(1800);
-						}
-						break;
-					}
-					default:
-						break;
-					}
-					break;
-				}
-				//case 1: {
-				//	//xuat diem hoc sinh vao file
-				//	exportScoreboardInterface(staff, SchYr.year, SchYr.semester.Name, 2, 1);
-				//	break;
-				//}
-				//case 2: {
-				//	//xuat diem hoc sinh vao file
-				//	importScoreBoardUI();
-				//	break;
-				//}
-				case 3: {
-					checkMenu = false;
-					break;
-				}
-				}
-			} while (checkMenu == true);
-			break;
-		}
-		case 5:
 			isExit = true;
 			break;
 			//default: std::cout << "your choice is invalid!!!\n";
@@ -287,7 +223,7 @@ void StudentMenu(User& student)
 {
 	showPointer();
 	SchoolYear SchYr;
-	//DisplayYearSemester(SchYr.year, SchYr.semester.Name);
+	DisplayYearSemester(SchYr.year, SchYr.semester.Name);
 	if (SchYr.semester.Name == "Semester0") {
 		drawRectangle(3, 14, 115, 3, 4);
 		printtext("The school year hasn't started yet ", 40, 15);
@@ -295,8 +231,8 @@ void StudentMenu(User& student)
 		LoginLoop(student);
 		return;
 	}
-	//read_info(user, SY);
-	//init_List_Mark(user.info.phead);
+	read_info(student, SchYr);
+	init_List_Mark(student.info.phead);
 	bool isExit = false;
 	int option;
 	string MenuStudent[] = { "YOUR INFO", "COURSE" , "YOUR RESULTS","LOG OUT" };
@@ -339,7 +275,7 @@ void StudentMenu(User& student)
 			switch (option1)
 			{
 			case 0: {
-				//enroll_course(user, SY);
+				enroll_course(student, SchYr);
 				try {
 					int check = checkCourseSession();
 					if (check == 1) {
@@ -404,17 +340,16 @@ void StudentMenu(User& student)
 			}
 			break;
 		}
-		case 2: {
-			// lenh show bang diem
-			DisPlay_Mark_Of_Student(SchYr, student);
-			break;
-		}
+		//case 2: {
+		//	// lenh show bang diem
+		//	DisPlay_Mark_Of_Student(SchYr, student);
+		//	break;
+		//}
 		case 3: {
 			isExit = true;
 			break;
 		}
 		}
 	} while (!isExit);
-	//DisplayYearSemester(SchYr.year, SchYr.semester.Name);
 	LoginLoop(student);
 }

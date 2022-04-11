@@ -1,33 +1,44 @@
-﻿  Add_Student.cpp
-  List_Class.cpp
-  Login.cpp
-  Main.cpp
-  Menu.cpp
-  Read_Data.cpp
-  Staff.cpp
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(96,5): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(103,5): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(113,5): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(119,5): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(138,9): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(162,25): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(182,25): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(194,21): error C3861: 'editInforCourse': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(203,21): error C3861: 'change_Year_Semester': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(234,21): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u1ED1' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(374,17): warning C4566: character represented by universal-character-name '\u1ECD' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1120,6): error C2084: function 'void addSchoolYear(SchoolYear &)' already has a body
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(509): message : see previous definition of 'addSchoolYear'
+﻿  Staff.cpp
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(167,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(171,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(175,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(179,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(183,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(366,71): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(373,67): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(383,71): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(389,67): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(408,121): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(432,137): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(452,137): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(504,75): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(644,17): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(644,17): warning C4566: character represented by universal-character-name '\u1ED1' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(644,17): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(644,17): warning C4566: character represented by universal-character-name '\u1ECD' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1292,5): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1300,9): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1511,22): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1511,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1511,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1511,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1517,9): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1540,21): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1559,21): error C3861: 'getLineInfo': identifier not found
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1525,18): error C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1612,63): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(514,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1637,75): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(514,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1656,75): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(514,6): message : see declaration of 'getLineInfoForStudent'
   System_Function.cpp
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(782,2): error C3861: 'get_score': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1099,6): error C2084: function 'void enroll_course(User &,SchoolYear)' already has a body
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(676): message : see previous definition of 'enroll_course'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1123,21): error C2065: 'A': undeclared identifier
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1123,2): error C3861: 'add_Tail_List_Mark': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1125,45): error C2065: 'A': undeclared identifier
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1126,33): error C2065: 'A': undeclared identifier
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\System_Function.cpp(1128,22): error C2065: 'A': undeclared identifier
   Generating Code...

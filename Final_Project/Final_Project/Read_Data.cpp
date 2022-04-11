@@ -273,6 +273,31 @@ void delete_Mark_node(MarkNode*& head, string ID)
 	}
 }
 
+void init_List_Mark(MarkNode*& head)
+{
+	head = NULL;
+}
+
+void add_Tail_List_Mark(MarkNode*& head, string ID, string name, string num_of_creadit)
+{
+	MarkNode* n1 = new MarkNode;
+	n1->data.ID = ID;
+	n1->data.Name = name;
+	n1->data.C = num_of_creadit; // so tin chi
+	n1->pNext = NULL;
+	MarkNode* temp = head;
+	if (head == NULL) {
+		head = n1;
+		return;
+	}
+	else {
+		while (temp->pNext != NULL) {
+			temp = temp->pNext;
+		}
+		temp->pNext = n1;
+	}
+}
+
 Course* get_course_of_student(User A, SchoolYear SY, int& n) {
 	string fileName = "database/SchoolYear/" + SY.year + '/' + SY.semester.Name + "/course_info" + csv_tail;
 	ifstream f;

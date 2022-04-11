@@ -43,6 +43,10 @@ int insertString(string& data, int limit);
 
 int checkCourseSession();
 
+bool checkTimeEnd(string date, string month, string year);
+
+bool checkTimeStart(string date, string month, string year);
+
 void listClass(User A, SchoolYear Y, fun_show_class Fun);
 
 void showStudentInclass(User user, SchoolYear Y, string classname);
