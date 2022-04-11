@@ -1,36 +1,36 @@
 ﻿#include "Read_Data.h"
 
-Course* read_file_List_course(User A, SchoolYear SY, int& n) {
-	string fileName = "file_save/SchoolYear/" + SY.year + '/' + SY.semester.Name + "/course_info" + csv_tail;
-	ifstream f;
-	f.open(fileName, ios::in);
-	if (!f.good()) {
+Course* Read_File_List_Course(User A, SchoolYear SchYr, int& n) {
+	string file = "file_save/SchoolYear/" + SchYr.year + '/' + SchYr.semester.Name + "/course_info" + csv_tail;
+	ifstream fi;
+	fi.open(file, ios::in);
+	if (!fi.good()) {
 		drawRectangle(3, 14, 115, 3, 4);
 		printtext("Can't open information file.", 47, 15);
 		textBgColor(0, 15);
 		Sleep(1800);
 		return NULL;
 	}
-	n = countLine(fileName) - 1;
+	n = countLine(file) - 1;
 	if (n == 0) {
 		return NULL;
 	}
 	Course* M = new Course[n];
 	string temp;
-	getline(f, temp);
+	getline(fi, temp);
 	for (int i = 0; i < n; i++) {
-		getline(f, M[i].ID_course, ',');
-		getline(f, M[i].name, ',');
-		getline(f, M[i].teacher, ',');
-		getline(f, temp, ',');
+		getline(fi, M[i].ID_course, ',');
+		getline(fi, M[i].name, ',');
+		getline(fi, M[i].teacher, ',');
+		getline(fi, temp, ',');
 		M[i].Num_of_creadit = atoi(temp.c_str());
-		getline(f, temp, ',');
+		getline(fi, temp, ',');
 		M[i].Max_student = atoi(temp.c_str());
-		getline(f, M[i].DayOfWeek, ',');
-		getline(f, M[i].session[0], ',');
-		getline(f, M[i].session[1]);
+		getline(fi, M[i].DayOfWeek, ',');
+		getline(fi, M[i].session[0], ',');
+		getline(fi, M[i].session[1]);
 	}
-	f.close();
+	fi.close();
 	return M;
 }
 
@@ -139,6 +139,92 @@ void read1CourseInfor(Course& A, ifstream& f)
 	A.Schedule = A.session[0] + ';' + A.session[1] + '-' + A.DayOfWeek;
 }
 
+int get_course(User& A, SchoolYear s_y, int flag)
+{
+	ifstream f;
+	string semester_path = "file_save/SchoolYear/" + s_y.year + '/' + s_y.semester.Name + '/';
+	string class_path = semester_path + "Class/";
+	string course_path = semester_path + "Course/";
+	string fileName = class_path + A.info.Class + csv_tail;
+	bool IDflag = false;
+	f.open(fileName, ios::in);
+	if (!f.is_open()) {
+		return -1;
+	}
+	if (flag == 0) {
+		init_List_Mark(A.info.phead);
+	}
+	while (f.eof() == false) {
+
+		string temp1;
+		getline(f, temp1);
+		size_t found = temp1.find(",");
+		if (found == std::string::npos) {
+			if (_strcmpi(temp1.c_str(), A.info.IDstd.c_str()) != 0) {
+				continue;
+			}
+			else {
+				return -2;
+			}
+		}
+		int length = f.tellg();
+		if (length == -1) {
+			f.close();
+			f.open(fileName, ios::in);
+			f.seekg(0, ios::end);
+			int a = f.tellg();
+			f.seekg(a - temp1.length(), ios::beg);
+		}
+		else {
+			f.seekg(length - temp1.length() - 2, ios::beg);
+		}
+		string temp;
+		getline(f, temp, ',');
+		if (temp.compare(A.info.IDstd) != 0) {
+			getline(f, temp);
+		}
+		else {
+			string temp1;
+			getline(f, temp1);
+			string IDtemp = "";
+			for (int i = 0; i < temp1.length(); i++) {
+				if (temp1[i] == ',' || i == temp1.length() - 1)
+				{
+					if (i == temp1.length() - 1) {
+						IDtemp += temp1[i];
+					}
+					ifstream fi;
+					string fileName = "file_save/SchoolYear/" + s_y.year + "/" + s_y.semester.Name + "/course_info.csv";
+					fi.open(fileName, ios::in);
+					string temp;
+					string num_of_creadit;
+					while (!fi.eof()) {
+						getline(fi, temp, ',');
+						if (_strcmpi(temp.c_str(), IDtemp.c_str()) == 0) {
+							getline(fi, temp, ',');
+							getline(fi, num_of_creadit, ',');
+							getline(fi, num_of_creadit, ',');
+							break;
+						}
+						else {
+							getline(fi, temp);
+						}
+					}
+					add_Tail_List_Mark(A.info.phead, IDtemp, temp, num_of_creadit);
+					IDtemp = "";
+					fi.close();
+				}
+				else if (temp1[i] != ',') {
+					IDtemp += temp1[i];
+				}
+			}
+			f.close();
+			return 0;
+		}
+	}
+
+}
+
 void Back_A_Semester(SchoolYear& S) {
 	if (S.semester.Name.back() == '1' || S.semester.Name.back() == '0') {
 		string year = "";
@@ -171,6 +257,20 @@ void get_all_course(User& A, SchoolYear SY) {
 		}
 		Back_A_Semester(SY);
 	} while (i != -1);
+}
+
+void delete_Mark_node(MarkNode*& head, string ID)
+{
+	MarkNode** res = &head;
+	while (*res != NULL) {
+		MarkNode* temp = *res;
+		if (_strcmpi(temp->data.ID.c_str(), ID.c_str()) == 0) {
+			*res = temp->pNext;
+			delete (temp);
+		}
+		else
+			res = &(temp->pNext);
+	}
 }
 
 Course* get_course_of_student(User A, SchoolYear SY, int& n) {
