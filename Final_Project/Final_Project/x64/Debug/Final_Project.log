@@ -4,41 +4,17 @@ C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(171
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(175,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(179,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(183,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(366,71): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(373,67): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(383,71): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(389,67): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(408,121): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(432,137): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(452,137): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(504,75): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.h(54,6): message : see declaration of 'getLineInfoForStudent'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(644,17): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(644,17): warning C4566: character represented by universal-character-name '\u1ED1' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(644,17): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(644,17): warning C4566: character represented by universal-character-name '\u1ECD' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1292,5): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1300,9): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1511,22): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1511,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1511,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1511,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1517,9): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1540,21): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1559,21): error C3861: 'getLineInfo': identifier not found
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1525,18): error C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1612,63): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(514,6): message : see declaration of 'getLineInfoForStudent'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1637,75): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(514,6): message : see declaration of 'getLineInfoForStudent'
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1656,75): error C2660: 'getLineInfoForStudent': function does not take 4 arguments
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(514,6): message : see declaration of 'getLineInfoForStudent'
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(647,17): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(647,17): warning C4566: character represented by universal-character-name '\u1ED1' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(647,17): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(647,17): warning C4566: character represented by universal-character-name '\u1ECD' cannot be represented in the current code page (1252)
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1514,22): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1514,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1514,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1514,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   System_Function.cpp
   Generating Code...
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1422): warning C4715: 'checkCourseSession': not all control paths return a value
+Staff.obj : error LNK2005: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl CheckSem(void)" (?CheckSem@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in List_Class.obj
+System_Function.obj : error LNK2005: "int __cdecl getyearData(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,int *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?getyearData@@YAHPEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEAHV12@@Z) already defined in Staff.obj
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\x64\Debug\Final_Project.exe : fatal error LNK1169: one or more multiply defined symbols found

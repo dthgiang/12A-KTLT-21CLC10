@@ -51,4 +51,8 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun);
 
 void showStudentInclass(User user, SchoolYear Y, string classname);
 
-void getLineInfoForStudent(string filename, SchoolYear Y, int line, string column[], int columnNum);
+void getLineInfoForStudent(string filename, int line, string column[], int columnNum);
+
+void moveUp(string filename, int& currentLine, int columnNum, int indexB[], int y, string column[], int lineInConsole, int width, int x);
+
+void moveDown(string filename, int& currentLine, int columnNum, int indexB[], int y, string column[], int lineInConsole, int width, int x);

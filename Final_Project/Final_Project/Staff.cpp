@@ -362,37 +362,7 @@ void deleteCourse(string filename, string courseName, int currentLine, string ye
     file.close();
 }
 
-void moveUp(string filename, int& currentLine, int columnNum, int indexB[], int y, string column[], int lineInConsole, int width, int x) {
-    getLineInfoForStudent(filename, currentLine + 1, column, columnNum);
-    drawRectangle(x, y + lineInConsole + 1, width, 1, 11);
-    textBgColor(0, 11);
-    for (int i = 0; i < columnNum; i++) {
-        printtext(column[i], indexB[i], y + lineInConsole + 1);
-    }
 
-    getLineInfoForStudent(filename, currentLine, column, columnNum);
-    drawRectangle(x, y + lineInConsole, width, 1, 14);
-    textBgColor(0, 14);
-    for (int i = 0; i < columnNum; i++) {
-        printtext(column[i], indexB[i], y + lineInConsole);
-    }
-}
-
-void moveDown(string filename, int& currentLine, int columnNum, int indexB[], int y, string column[], int lineInConsole, int width, int x) {
-
-    getLineInfoForStudent(filename, currentLine - 1, column, columnNum);
-    drawRectangle(x, y - 1 + lineInConsole, width, 1, 11);
-    textBgColor(0, 11);
-    for (int i = 0; i < columnNum; i++) {
-        printtext(column[i], indexB[i], y + lineInConsole - 1);
-    }
-    getLineInfoForStudent(filename, currentLine, column, columnNum);
-    drawRectangle(x, y + lineInConsole, width, 1, 14);
-    textBgColor(0, 14);
-    for (int i = 0; i < columnNum; i++) {
-        printtext(column[i], indexB[i], y + lineInConsole);
-    }
-}
 
 int editCourse(User A, string& year, string& semester) {
     int checkOut = -1;
@@ -511,7 +481,7 @@ int editCourse(User A, string& year, string& semester) {
     return checkOut;
 }
 
-void getLineInfoForStudent(string filename, SchoolYear Y, int line, string column[], int columnNum) {
+void getLineInfoForStudent(string filename, int line, string column[], int columnNum) {
     if (line > countLine(filename)) cout << "Not exist line";
     int numLine = countLine(filename);
     fstream file;
@@ -534,6 +504,39 @@ void getLineInfoForStudent(string filename, SchoolYear Y, int line, string colum
         else {
             getline(file, data);
         }
+    }
+}
+
+void moveUp(string filename, int& currentLine, int columnNum, int indexB[], int y, string column[], int lineInConsole, int width, int x)
+{
+    getLineInfoForStudent(filename, currentLine + 1, column, columnNum);
+    drawRectangle(x, y + lineInConsole + 1, width, 1, 11);
+    textBgColor(0, 11);
+    for (int i = 0; i < columnNum; i++) {
+        printtext(column[i], indexB[i], y + lineInConsole + 1);
+    }
+
+    getLineInfoForStudent(filename, currentLine, column, columnNum);
+    drawRectangle(x, y + lineInConsole, width, 1, 14);
+    textBgColor(0, 14);
+    for (int i = 0; i < columnNum; i++) {
+        printtext(column[i], indexB[i], y + lineInConsole);
+    }
+}
+
+void moveDown(string filename, int& currentLine, int columnNum, int indexB[], int y, string column[], int lineInConsole, int width, int x)
+{
+    getLineInfoForStudent(filename, currentLine - 1, column, columnNum);
+    drawRectangle(x, y - 1 + lineInConsole, width, 1, 11);
+    textBgColor(0, 11);
+    for (int i = 0; i < columnNum; i++) {
+        printtext(column[i], indexB[i], y + lineInConsole - 1);
+    }
+    getLineInfoForStudent(filename, currentLine, column, columnNum);
+    drawRectangle(x, y + lineInConsole, width, 1, 14);
+    textBgColor(0, 14);
+    for (int i = 0; i < columnNum; i++) {
+        printtext(column[i], indexB[i], y + lineInConsole);
     }
 }
 
@@ -1289,7 +1292,7 @@ void drawList(int columnNum, string filename, int y, int indexA[], int indexB[],
     string* column = new string[columnNum];
     textBgColor(4, 11);
 
-    getLineInfo(filename, 1, column, columnNum);
+    getLineInfoForStudent(filename, 1, column, columnNum);
     for (int i = 0; i < columnNum; i++) {
         printtext(column[i], indexA[i], y);
     }
@@ -1297,7 +1300,7 @@ void drawList(int columnNum, string filename, int y, int indexA[], int indexB[],
     y++;
     int j = flagLine, h = 1;
     while (j <= line && h <= 12) {
-        getLineInfo(filename, j, column, columnNum);
+        getLineInfoForStudent(filename, j, column, columnNum);
         for (int i = 0; i < columnNum; i++) {
             printtext(column[i], indexB[i], y);
         }
@@ -1514,7 +1517,7 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
 
         int currentLine = 2, lineInConsole = 1;
         string column[5];
-        getLineInfo(filename, currentLine, column, 5);
+        getLineInfoForStudent(filename, currentLine, column, 5);
         drawRectangle(8, y + lineInConsole, 95, 1, 14);
         textBgColor(0, 14);
         for (int i = 0; i < 5; i++)
@@ -1522,7 +1525,7 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
 
         do {
             hidePointer();
-            ch = getch();
+            ch = _getch();
             if (ch == 27) {
                 textBgColor(0, 15);
                 checkOut = true;
@@ -1537,7 +1540,7 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
                     drawRectangle(8, 10, 95, 15, 15);
                     drawRectangle(8, 10, 95, 15, 11);
                     drawList(5, filename, y, a, b, lineNum, currentLine - 11);
-                    getLineInfo(filename, currentLine, column, 5);
+                    getLineInfoForStudent(filename, currentLine, column, 5);
                     drawRectangle(8, y + lineInConsole, 95, 1, 14);
                     textBgColor(0, 14);
                     for (int i = 0; i < 5; i++) {
@@ -1556,7 +1559,7 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
                     drawRectangle(8, 10, 95, 15, 15);
                     drawRectangle(8, 10, 95, 15, 11);
                     drawList(5, filename, y, a, b, lineNum, currentLine);
-                    getLineInfo(filename, currentLine, column, 5);
+                    getLineInfoForStudent(filename, currentLine, column, 5);
                     drawRectangle(8, y + lineInConsole, 95, 1, 14);
                     textBgColor(0, 14);
                     for (int i = 0; i < 5; i++) {
