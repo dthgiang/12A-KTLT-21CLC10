@@ -107,7 +107,7 @@ int CheckStatusLogin(User& user) {
         {
             getline(filename2, nCol, ',');
             if (nCol.compare(user.ID) == 0) {
-                getline(filename2, nCol, '-');
+                getline(filename2, nCol, ',');
                 if (nCol.compare(user.Password) == 0) {
                     isCheck = 1;
                     getline(filename2, nCol, ',');
@@ -152,10 +152,12 @@ void LoginLoop(User& User)
         }
     } while (CheckStatusLogin(User) == -1);
     gotoxy(48, 20);
-    cout << "LOGIN SUCCESSFUL!";
+    cout << "LOGIN SUCCESSFUL!" << endl;
     hidePointer();
-    Sleep(900);
+    Sleep(1000);
     system("cls");
-    if (User.role == 1) StudentMenu(User);
-    else StaffMenu(User);
+    if (User.role == 0) 
+        StaffMenu(User);
+    else 
+        StudentMenu(User);
 }
