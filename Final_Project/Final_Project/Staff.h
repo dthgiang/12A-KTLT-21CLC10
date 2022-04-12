@@ -15,10 +15,6 @@ using namespace std;
 
 typedef void (*fun_show_class)(User, SchoolYear, string);
 
-void DisplayYearSemester(string& Year, string& Semester);
-
-string CheckSem();
-
 void determineYearSemesterNow(string& Year, string& semester);
 
 void addSchoolYear(SchoolYear& Y);

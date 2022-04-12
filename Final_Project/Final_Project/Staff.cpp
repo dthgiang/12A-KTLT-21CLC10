@@ -196,86 +196,56 @@ void deleteFile(string filename) {
     remove(a);
 }
 
-int getyearData(string* data1, int* data2, string filename) {
+//int getyearData(string* data1, int* data2, string filename) {
+//
+//    ifstream f;
+//    f.open(filename, ios::in);
+//    string temp;
+//    int i = 0;
+//    getline(f, temp);
+//    while (!f.eof()) {
+//        getline(f, data1[i], ',');
+//        getline(f, temp);
+//        data2[i] = atoi(temp.c_str());
+//        i++;
+//    }
+//    return i;
+//}
 
-    ifstream f;
-    f.open(filename, ios::in);
-    string temp;
-    int i = 0;
-    getline(f, temp);
-    while (!f.eof()) {
-        getline(f, data1[i], ',');
-        getline(f, temp);
-        data2[i] = atoi(temp.c_str());
-        i++;
-    }
-    return i;
-}
-
-void change_Year_Semester(SchoolYear& S) {
-    string* year;
-    int* semester;
-    string filename = "database/year-semester.csv";
-    int n = countLine(filename) - 1;
-    year = new string[n];
-    semester = new int[n];
-    getyearData(year, semester, filename);
-    system("cls");
-
-    drawMenu(year, n, 55, 15, 1, &DrawBlank);
-    int A = Select(n, year, 55, 15, 1);
-    if (A == -1) {
-        return;
-    }
-    string* semester_of_year = new string[semester[A]];
-    for (int i = 0; i < semester[A]; i++) {
-        semester_of_year[i] = "Semester" + to_string(i + 1);
-    }
-    system("cls");
-
-    drawMenu(semester_of_year, semester[A], 55, 15, 1, &DrawBlank);
-    int i = Select(semester[A], semester_of_year, 55, 15, 1);
-    if (i == -1) {
-        return;
-    }
-    S.year = year[A];
-    S.semester.Name = semester_of_year[i];
-}
-
-void DisPlay_Course_Of_Student(SchoolYear Y, User A)
-{
-    char ch;
-    hidePointer();
-    get_course(A, Y);
-    read_course(A, Y);
-    do {
-        drawRectangle(27, 29, 60, 1, 10);
-        textColor(496);
-        string text = Y.semester.Name + "; Year: " + Y.year + ".   Press[C] to change!";
-        printtext(text, 32, 29);
-        ch = _getch();
-        //[ESC]
-        if (ch == 27) {
-            return;
-        }
-        else {
-            //Control Up down 
-            if (ch == 'c' || ch == 'C') //up
-            {
-                change_Year_Semester(Y);
-                int a = get_course(A, Y);
-                if (a == -1) {
-                    drawRectangle(3, 14, 115, 3, 4);
-                    printtext("Invalid school year ", 50, 15);
-                    textBgColor(0, 15);
-                    Sleep(1800);
-                    determineYearSemesterNow(Y.year, Y.semester.Name);
-                }
-                read_course(A, Y);
-            }
-        }
-    } while (true);
-}
+//void DisPlay_Course_Of_Student(SchoolYear Y, User A)
+//{
+//    char ch;
+//    hidePointer();
+//    get_course(A, Y);
+//    read_course(A, Y);
+//    do {
+//        drawRectangle(27, 29, 60, 1, 10);
+//        textColor(496);
+//        string text = Y.semester.Name + "; Year: " + Y.year + ".   Press[C] to change!";
+//        printtext(text, 32, 29);
+//        ch = _getch();
+//        //[ESC]
+//        if (ch == 27) {
+//            return;
+//        }
+//        else {
+//            //Control Up down 
+//            if (ch == 'c' || ch == 'C') //up
+//            {
+//                change_Year_Semester(Y);
+//                int a = get_course(A, Y);
+//                if (a == -1) {
+//                    drawRectangle(3, 14, 115, 3, 4);
+//                    printtext("Invalid school year ", 50, 15);
+//                    textBgColor(0, 15);
+//                    Sleep(1800);
+//                    determineYearSemesterNow(Y.year, Y.semester.Name);
+//                }
+//                read_course(A, Y);
+//            }
+//        }
+//    } while (true);
+//}
 
 void renameFile(string oldName, string newName) {
     char* a = new char[oldName.size() + 1];
@@ -712,34 +682,20 @@ bool IsPathExist(const std::string& s)
     struct stat buffer;
     return (stat(s.c_str(), &buffer) == 0);
 }
-
-void DisplayYearSemester(string& Year, string& Semester)
-{
-    fstream fi;
-    string semester;
-    fi.open("database/year-semester.csv", ios::in);
-    getline(fi, semester);
-    while (!fi.eof()) {
-        getline(fi, semester);
-    }
-    Year = semester.substr(0, 9);
-    Semester = "Semester" + semester.substr(10, 1);
-}
-
-string CheckSem() {
-	fstream classx;
-	classx.open("database//year-semester.csv");
-	string YearTem, SemTem;
-	string CheckSem;
-	while (!classx.eof())
-	{
-		getline(classx, YearTem, ',');
-		classx >> SemTem;
-		CheckSem = SemTem;
-	}
-	classx.close();
-	return CheckSem;
-}
+//string CheckSem() {
+//	fstream classx;
+//	classx.open("database//year-semester.csv");
+//	string YearTem, SemTem;
+//	string CheckSem;
+//	while (!classx.eof())
+//	{
+//		getline(classx, YearTem, ',');
+//		classx >> SemTem;
+//		CheckSem = SemTem;
+//	}
+//	classx.close();
+//	return CheckSem;
+//}
 
 void determineYearSemesterNow(string& Year, string& semester) {
     fstream file1;

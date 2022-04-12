@@ -211,7 +211,7 @@ int getyearData(string* data1, int* data2, string filename) {
 void change_Year_Semester(SchoolYear& S) {
 	string* year;
 	int* semester;
-	string filename = "_assets/year-semester.csv";
+	string filename = "database/year-semester.csv";
 	int n = countLine(filename) - 1;
 	year = new string[n];
 	semester = new int[n];
@@ -272,36 +272,29 @@ void DisPlay_Course_Of_Student(SchoolYear Y, User A) {
 }
 
 void enroll_course(User& A, SchoolYear s_y) {
-	string semester_path = "file_save/SchoolYear/" + s_y.year + '/' + s_y.semester.Name + '/';
+	string semester_path = "database/HCMUS/" + s_y.year + '/' + s_y.semester.Name + '/';
 	string class_path = semester_path + "Class/";
 	string course_path = semester_path + "Course/";
-	//hàm trang trí
-	//hàm hiện danh sách các môn học.
 
 	Course* course_input = select_course(A, s_y, &Read_File_List_Course, &DrawBlank);
 	if (course_input == NULL) {
 		return;
 	}
-	//kiểm tra xem trong danh sách môn học của sinh viên đã có môn này hay chưa
 	get_all_course(A, s_y);
 	MarkNode* Mtemp = A.info.phead;
 	while (Mtemp != NULL) {
 		if (_strcmpi(course_input->ID_course.c_str(), Mtemp->data.ID.c_str()) == 0) {
-			//nếu có thì return.
-			//drawASCIIfailEnrol();
 			Sleep(1800);
 			return;
 		}
 		Mtemp = Mtemp->pNext;
 	}
-	//chưa có thì thêm vào danh sách.
 	add_Tail_List_Mark(A.info.phead, course_input->ID_course, course_input->name, to_string(course_input->Num_of_creadit));
-	//ghi them vao file;
 	string file_cousre_of_class = class_path + A.info.Class;
 	rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, 1);
 	string file_cousre = course_path + course_input->ID_course;
 	rewrite_course_file(A, file_cousre, 1);
-	//drawASCIIsuccessful();
+	DrawSuccessfulEnrol();
 	Sleep(3000);
 }
 void delete_course(User& A, SchoolYear s_y) {
