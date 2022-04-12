@@ -24,6 +24,7 @@ struct Database {
 Database Input();
 int RunMenuCreateClass();
 int CheckRowInFile(string filename);
-void drawMenuView();
+void drawASCIIMenuView();
 void ImportRandom(string& YearCourse, string& Class);
+string CheckSem();
 
