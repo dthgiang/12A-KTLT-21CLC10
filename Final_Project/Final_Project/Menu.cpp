@@ -8,8 +8,8 @@
 void DrawBlank(){}// không draw gì cả
 
 void DrawStaffMenu() {
-    /*SchoolYear SchYr;
-    DisplayYearSemester(SchYr.year, SchYr.semester.Name);*/
+    SchoolYear SchYr;
+	determineYearSemesterNow(SchYr.year, SchYr.semester.Name);
 
 	drawRectangle(3, 1, 115, 8, 11);
 	drawRectangle(3, 23.5, 115, 5, 11);
@@ -23,14 +23,14 @@ void DrawStaffMenu() {
     DrawTextFile("_assets\\menu_staff.txt", 20, 1);
     DrawTextFile("_assets\\login_bg2.txt", 9, 23);
 
-    //printtext("     " + SchYr.semester.Name + " - " + SchYr.year + "     ", 43, 22);
+    printtext("     " + SchYr.semester.Name + " - " + SchYr.year + "     ", 43, 22);
     textBgColor(0, 2);
 }
 
 void DrawStudentMenu()
 {
-	/*SchoolYear SchYr;
-	DisplayYearSemester(SchYr.year, SchYr.semester.Name);*/
+	SchoolYear SchYr;
+	determineYearSemesterNow(SchYr.year, SchYr.semester.Name);
 
 	drawRectangle(3, 1, 115, 8, 11);
 	drawRectangle(3, 23.5, 115, 5, 11);
@@ -43,7 +43,7 @@ void DrawStudentMenu()
 	DrawTextFile("_assets\\menu_student.txt", 10, 1);
 	DrawTextFile("_assets\\login_bg2.txt", 9, 23);
 
-	//printtext("     " + SchYr.semester.Name + " - " + SchYr.year + "     ", 43, 22);
+	printtext("     " + SchYr.semester.Name + " - " + SchYr.year + "     ", 43, 22);
 	textBgColor(0, 2);
 }
 
@@ -86,26 +86,25 @@ void StaffMenu(User& staff)
 {
 	showPointer();
 	bool isExit = false;
-	SchoolYear SchYr;
-	DisplayYearSemester(SchYr.year, SchYr.semester.Name);
-	//read_info(user, SY);
+	SchoolYear SY;
+	determineYearSemesterNow(SY.year, SY.semester.Name);
+	read_info(staff, SY);
 	int option;
-	string MenuStaff[] = { "YOUR INFO","NEW","CLASS INFO","COURSE INFO","LOG OUT" };
-	string MenuStaff1[] = { "1. Profile info", "2. Change password","3. Back to Menu" };
-	string MenuStaff2[] = {
-	"1. Create school - year",
-	"2. Create semester ", "3. Create course registration session", "4. Create course",
-	"5. Create Class","6. Add Student to class","7. Back to Menu"
+	string MenuStaff[] = { "YOUR INFO","CREATE NEW ONE","CLASS","COURSE","LOG OUT" };
+	string MenuStaff1[] = { "1. Profile", "2. Change password","3. Back" };
+	string MenuStaff2[] = {"1. Create school year","2. Create semester ", 
+		"3. Create course registration session", "4. Create course",
+		"5. Create Class","6. Add Student to class","7. Back"
 	};
 	string MenuStaff4[] = {
 	"1. View List Course And List Student in Course",
-	 "2. Delete or Edit Course info","3. Back to Menu" };
+	"2. Delete or Edit Course info","3.Back to Menu" };
+	string MenuStaff5[] = { "1. View and edit student's marks", "2. Export student list mark", "3. Import student list mark", "4. Back to Menu" };
 	do
 	{
 		showPointer();
 		system("cls");
 		gotoxy(0, 7);
-
 		drawMenu(MenuStaff, 5, 50, 10, 1, &DrawStaffMenu);
 		option = Select(5, MenuStaff, 50, 10, 1);
 		switch (option)
@@ -117,12 +116,10 @@ void StaffMenu(User& staff)
 			switch (option1)
 			{
 			case 0: {
-				// lenh show thong tin 
 				Output_info(staff);
 				break;
 			}
 			case 1: {
-				// lenh thay mat khau
 				Change_Password(staff);
 				break;
 			}
@@ -141,27 +138,22 @@ void StaffMenu(User& staff)
 			switch (option1)
 			{
 			case 0: {
-				// lenh tao nam
-				addSchoolYear(SchYr);
+				addSchoolYear(SY);
 				break;
 			}
 			case 1: {
-				//lenh them hoc ki
-				addSemester(SchYr.year, SchYr.semester.Name);
+				addSemester(SY.year, SY.semester.Name);
 				break;
 			}
 			case 2: {
-				// tao phien dang ki khoa hoc
 				createRegistrationCourse();
 				break;
 			}
 			case 3: {
-				// lenh them khoa hoc
 				addCourse();
 				break;
 			}
 			case 4: {
-				// lenh them lop hoc
 				RunMenuCreateClass();
 				break;
 			}
@@ -169,7 +161,6 @@ void StaffMenu(User& staff)
 			{
 
 				system("cls");
-				//AddStudentToClass();
 				RunMenuAddInfoStudentToClass();
 				break;
 			}
@@ -182,8 +173,7 @@ void StaffMenu(User& staff)
 		case 2:
 		{
 			system("cls");
-			//xem danh sach lop hoc va danh sach sinh vien trong lop
-			listClass(staff, SchYr, &showStudentInclass);
+			listClass(staff, SY, &showStudentInclass);
 			break;
 		}
 		case 3: {
@@ -194,14 +184,12 @@ void StaffMenu(User& staff)
 			{
 			case 0: {
 				system("cls");
-				//xem danh sach khoa hoc va danh sach sinh vien trong khoa
-				viewStudentInCourse(staff, SchYr);
+				viewStudentInCourse(staff, SY);
 				textBgColor(0, 15);
 				break;
 			}
 			case 1: {
-				//view danh sachs hoc phan
-				listCourse(staff, SchYr.year, SchYr.semester.Name);
+				listCourse(staff, SY.year, SY.semester.Name);
 				break;
 			}
 			case 2: {
@@ -210,10 +198,10 @@ void StaffMenu(User& staff)
 			}
 			break;
 		}
+
 		case 4:
 			isExit = true;
 			break;
-			//default: std::cout << "your choice is invalid!!!\n";
 		}
 	} while (!isExit);
 	LoginLoop(staff);
@@ -223,7 +211,7 @@ void StudentMenu(User& student)
 {
 	showPointer();
 	SchoolYear SchYr;
-	DisplayYearSemester(SchYr.year, SchYr.semester.Name);
+	determineYearSemesterNow(SchYr.year, SchYr.semester.Name);
 	if (SchYr.semester.Name == "Semester0") {
 		drawRectangle(3, 14, 115, 3, 4);
 		printtext("The school year hasn't started yet ", 40, 15);
@@ -235,15 +223,15 @@ void StudentMenu(User& student)
 	init_List_Mark(student.info.phead);
 	bool isExit = false;
 	int option;
-	string MenuStudent[] = { "YOUR INFO", "COURSE" , "YOUR RESULTS","LOG OUT" };
-	string MenuStd1[] = { "1. Profile info","2. Change password","3.Back to Menu" };
-	string MenuStd2[] = { "1. Enroll courses","2. Remove course","3. View your list of course","4.Back to Menu" };
+	string MenuStudent[] = { "YOUR INFO", "COURSE" ,"LOG OUT" };
+	string MenuStd1[] = { "1. Profile","2. Change password","3. Back" };
+	string MenuStd2[] = { "1. Enroll course","2. Remove course","3. View list of course you enrolled","4. Back" };
 
 	do
 	{
 		system("cls");
-		drawMenu(MenuStudent, 4, 50, 10, 2, &DrawStudentMenu);
-		option = Select(4, MenuStudent, 50, 10, 2);
+		drawMenu(MenuStudent, 3, 50, 10, 2, &DrawStudentMenu);
+		option = Select(3, MenuStudent, 50, 10, 2);
 		switch (option)
 		{
 		case 0: {
@@ -253,12 +241,10 @@ void StudentMenu(User& student)
 			switch (option1)
 			{
 			case 0: {
-				// lenh show thong tin 
 				Output_info(student);
 				break;
 			}
 			case 1: {
-				// lenh thay mat khau
 				Change_Password(student);
 				break;
 			}
@@ -340,12 +326,7 @@ void StudentMenu(User& student)
 			}
 			break;
 		}
-		//case 2: {
-		//	// lenh show bang diem
-		//	DisPlay_Mark_Of_Student(SchYr, student);
-		//	break;
-		//}
-		case 3: {
+		case 2: {
 			isExit = true;
 			break;
 		}

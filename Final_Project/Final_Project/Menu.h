@@ -12,6 +12,9 @@
 
 using namespace std;
 
+void StaffMenu(User& staff);
+void StudentMenu(User& student);
+
 void DrawSuccessfulEnrol();
 void DrawFailEnrol();
 void DrawEnrolCourse();
@@ -19,7 +22,5 @@ void DrawListCourse();
 void DrawEditScore();
 void DrawStaffMenu(); 
 void DrawStudentMenu();
-void StaffMenu(User& staff);
-void StudentMenu(User& student);
 
 void DrawBlank();
