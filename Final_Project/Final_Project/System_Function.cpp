@@ -81,54 +81,6 @@ int Select(int a, string A[], int _X, int _Y, int dis)
 	}
 }
 
-void get_1_score(MarkNode*& A, string ID, ifstream& f) {
-	string temp;
-	getline(f, temp);
-	while (!f.eof()) {
-		getline(f, temp, ',');// doc stt
-		getline(f, temp, ',');//doc mssv
-		if (_strcmpi(temp.c_str(), ID.c_str()) == 0) {
-			getline(f, temp, ',');//doc ten
-			getline(f, temp, ',');//doc lop
-			getline(f, temp, ',');
-			A->data.Midterm_Mark = atof(temp.c_str());
-			getline(f, temp, ',');
-			A->data.Final_Mark = atof(temp.c_str());
-			getline(f, temp, ',');
-			A->data.Other_Mark = atof(temp.c_str());
-			getline(f, temp);
-			A->data.Total_Mark = atof(temp.c_str());
-			return;
-		}
-		else {
-			getline(f, temp);
-		}
-	}
-}
-
-void get_score(User& A, SchoolYear s_y, int& i) {
-	ifstream f;
-	string semester_path = "_assets/SchoolYear/" + s_y.year + '/' + s_y.semester.Name + '/';
-	string course_path = semester_path + "Course/score/";
-	i = 0;
-	MarkNode* temp = A.info.phead;
-	while (temp != NULL) {
-		string fileName = course_path + temp->data.ID + csv_tail;
-		f.open(fileName, ios::in);
-		if (f.good()) {
-			get_1_score(temp, A.ID, f);
-		}
-		else {
-			temp->data.Final_Mark = 0;
-			temp->data.Midterm_Mark = 0;
-			temp->data.Other_Mark = 0;
-			temp->data.Total_Mark = 0;
-		}
-		f.close();
-		i++;
-		temp = temp->pNext;
-	}
-}
 
 void rewrite_course_of_student_file(User user, string fileName, string data, int command_flag) {
 	fstream file_prv, file_aft;
@@ -256,529 +208,126 @@ int getyearData(string* data1, int* data2, string filename) {
 	}
 	return i;
 }
-//void change_Year_Semester(SchoolYear& S) {
-//	string* year;
-//	int* semester;
-//	string filename = "_assets/year-semester.csv";
-//	int n = countLine(filename) - 1;
-//	year = new string[n];
-//	semester = new int[n];
-//	getyearData(year, semester, filename);
-//	system("cls");
-//
-//	drawMenu(year, n, 55, 15, 1, &drawASCIIchangeYear);
-//	int A = MoveAndChoose(n, year, 55, 15, 1);
-//	if (A == -1) {
-//		return;
-//	}
-//	string* semester_of_year = new string[semester[A]];
-//	for (int i = 0; i < semester[A]; i++) {
-//		semester_of_year[i] = "Semester" + to_string(i + 1);
-//	}
-//	system("cls");
-//
-//	drawMenu(semester_of_year, semester[A], 55, 15, 1, &drawASCIIchangeSemester);
-//	int i = MoveAndChoose(semester[A], semester_of_year, 55, 15, 1);
-//	if (i == -1) {
-//		return;
-//	}
-//	S.year = year[A];
-//	S.semester.Name = semester_of_year[i];
-//}
-//void DisPlay_Course_Of_Student(SchoolYear Y, User A) {
-//	char ch;
-//	hidePointer();
-//	get_course(A, Y);
-//	read_course(A, Y);
-//	do {
-//		drawRectangle(27, 29, 60, 1, 10);
-//		textColor(496);
-//		string text = Y.semester.Name + "; Year: " + Y.year + ".   Press[C] to change!";
-//		printtext(text, 32, 29);
-//		ch = getch();
-//		//[ESC]
-//		if (ch == 27) {
-//			return;
-//		}
-//		else {
-//			//Control Up down 
-//			if (ch == 'c' || ch == 'C') //up
-//			{
-//				change_Year_Semester(Y);
-//				int a = get_course(A, Y);
-//				if (a == -1) {
-//					drawRectangle(3, 14, 115, 3, 4);
-//					printtext("Invalid school year ", 50, 15);
-//					textBgColor(0, 15);
-//					Sleep(1800);
-//					determineYearSemesterNow(Y.year, Y.semester.Name);
-//				}
-//				read_course(A, Y);
-//			}
-//		}
-//	} while (true);
-//}
-void edit_score(User& A, SchoolYear SY, Mark* M) {
-	//char ch;
-	//int line_now = 1;
-	//int x = 15, y = 14;
-	//int line = 0;
-	//MarkNode* temp = A.info.phead;
-	//while (temp != NULL) {
-	//	line++;
-	//	temp = temp->pNext;
-	//}
-	//if (M == NULL) {
-	//	drawRectangle(0, 17, 120, 3, 6);
-	//	printtext("He/she has not registered for any courses this semester ", 30, 18);
-	//	Sleep(2700);
-	//	textBgColor(0, 15);
-	//	return;
-	//}
-	//drawRectangle(1, y + line_now, 115, 1, 14);
-	//textBgColor(0, 14);
-	//view_1_line(M[line_now - 1], x, y + line_now);
-	//do {
-	//	hidePointer();
-	//	ch = _getch();
-	//	//[ESC]
-	//	if (ch == 27) {
-	//		drawRectangle(1, y + line_now, 115, 1, 11);
-	//		textBgColor(0, 11);
-	//		view_1_line(M[line_now - 1], x, y + line_now);
-	//		break;
-	//	}
-	//	else {
-	//		//Control Up down 
-	//		if (ch == 72 && line_now > 1) //up
-	//		{
-	//			drawRectangle(1, y + line_now, 115, 1, 11);
-	//			textBgColor(0, 11);
-	//			view_1_line(M[line_now - 1], x, y + line_now);
+void change_Year_Semester(SchoolYear& S) {
+	string* year;
+	int* semester;
+	string filename = "_assets/year-semester.csv";
+	int n = countLine(filename) - 1;
+	year = new string[n];
+	semester = new int[n];
+	getyearData(year, semester, filename);
+	system("cls");
 
-	//			line_now--;
-	//			drawRectangle(1, y + line_now, 115, 1, 14);
-	//			textBgColor(0, 14);
-	//			view_1_line(M[line_now - 1], x, y + line_now);
-	//		}
-	//		if (ch == 80 && line_now < line) //down
-	//		{
-	//			drawRectangle(1, y + line_now, 115, 1, 11);
-	//			textBgColor(0, 11);
-	//			view_1_line(M[line_now - 1], x, y + line_now);
+	drawMenu(year, n, 55, 15, 1, &DrawBlank);
+	int A = Select(n, year, 55, 15, 1);
+	if (A == -1) {
+		return;
+	}
+	string* semester_of_year = new string[semester[A]];
+	for (int i = 0; i < semester[A]; i++) {
+		semester_of_year[i] = "Semester" + to_string(i + 1);
+	}
+	system("cls");
 
-	//			line_now++;
-	//			drawRectangle(1, y + line_now, 115, 1, 14);
-	//			textBgColor(0, 14);
-	//			view_1_line(M[line_now - 1], x, y + line_now);
-	//		}
-	//		if (ch == 13) {
-	//			string fCheck = "_assets/SchoolYear/" + SY.year + '/' + SY.semester.Name + "/Course/score/" + M[line_now - 1].ID + csv_tail;
-	//			fstream fcheck;
-	//			fcheck.open(fCheck, ios::in);
-	//			if (!fcheck.good())
-	//			{
-	//				gotoxy(x + 42, y + line_now);
-	//				cout << "Fail!! This subject has not been graded by the teacher yet.";
-	//				Sleep(900);
-	//				drawRectangle(1, y + line_now, 115, 1, 14);
-	//				textBgColor(0, 14);
-	//				view_1_line(M[line_now - 1], x, y + line_now);
-	//				fcheck.close();
-	//				continue;
-	//			}
-	//			else {
-	//				fcheck.close();
-	//				int y_now = y + line_now;
-	//				int x_now = x + 42, x_max = x + 70, x_min = x + 42;
-	//				string S[] = { to_string(M[line_now - 1].Midterm_Mark),to_string(M[line_now - 1].Final_Mark),to_string(M[line_now - 1].Other_Mark) };
-	//				drawRectangle(x + 42, y_now, 14, 1, 15);
-	//				textBgColor(0, 15);
-	//				printtext(to_string(M[line_now - 1].Midterm_Mark), x + 42, y_now);
-	//				char CH;
-	//				do
-	//				{
-	//					CH = _getch();
-	//					//ESC
-	//					if (CH == 27) {
-	//						drawRectangle(x_now, y_now, 14, 1, 14);
-	//						textBgColor(0, 14);
-	//						printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//						break;
-	//					}
-	//					else {
-	//						//Left 
-	//						if (CH == 75 && x_now > x_min) {
-	//							drawRectangle(x_now, y_now, 14, 1, 14);
-	//							textBgColor(0, 14);
-	//							printtext(S[(x_now - x_min) / 14], x_now, y_now);
-
-	//							x_now = x_now - 14;
-	//							drawRectangle(x_now, y_now, 14, 1, 15);
-	//							textBgColor(0, 15);
-	//							printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//						}
-	//						//Right
-	//						if (CH == 77 && x_now < x_max) {
-	//							drawRectangle(x_now, y_now, 14, 1, 14);
-	//							textBgColor(0, 14);
-	//							printtext(S[(x_now - x_min) / 14], x_now, y_now);
-
-	//							x_now = x_now + 14;
-	//							drawRectangle(x_now, y_now, 14, 1, 15);
-	//							textBgColor(0, 15);
-	//							printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//						}
-
-	//						//[ENTER]
-	//						if (CH == 13) {
-	//							drawRectangle(x_now, y_now, 14, 1, 15);
-	//							textBgColor(0, 15);
-	//							float i;
-	//							string mark;
-	//							int flag = 0;
-	//							do {
-	//								mark = "";
-	//								gotoxy(x_now, y_now);
-	//								insertMark(mark, 5, flag);
-	//								if (flag == -1) {
-	//									drawRectangle(x_now, y_now, 14, 1, 15);
-	//									textBgColor(0, 15);
-	//									printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//									break;
-	//								}
-	//								else {
-	//									i = atof(mark.c_str());
-	//									if (i > 10) {
-	//										gotoxy(x_now, y_now);
-	//										cout << "Erroll!!";
-	//										Sleep(900);
-	//										drawRectangle(x_now, y_now, 14, 1, 15);
-	//									}
-	//								}
-	//							} while (i > 10);
-	//							if (flag == 0) {
-	//								int a = (x_now - x_min) / 14;
-	//								switch (a)
-	//								{
-	//								case 0:
-	//									M[line_now - 1].Midterm_Mark = i;
-	//									S[(x_now - x_min) / 14] = to_string(M[line_now - 1].Midterm_Mark);
-	//									break;
-	//								case 1:
-	//									M[line_now - 1].Final_Mark = i;
-	//									S[(x_now - x_min) / 14] = to_string(M[line_now - 1].Final_Mark);
-	//									break;
-	//								case 2:
-	//									M[line_now - 1].Other_Mark = i;
-	//									S[(x_now - x_min) / 14] = to_string(M[line_now - 1].Other_Mark);
-	//									break;
-	//								default:
-	//									break;
-	//								}
-	//								M[line_now - 1].Total_Mark = 0.3 * M[line_now - 1].Midterm_Mark + 0.6 * M[line_now - 1].Final_Mark + 0.1 * M[line_now - 1].Other_Mark;
-	//								drawRectangle(1, y + line_now, 115, 1, 14);
-	//								textBgColor(0, 14);
-	//								view_1_line(M[line_now - 1], x, y + line_now);
-	//								drawRectangle(x_now, y_now, 14, 1, 15);
-	//								textBgColor(0, 15);
-	//								printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//								save_Mark(A, M, line_now - 1, SY);
-	//							}
-	//						}
-
-	//					}
-	//				} while (true);
-	//			}
-
-	//		}
-	//	}
-	//} while (true);
-	//textBgColor(0, 15);
+	drawMenu(semester_of_year, semester[A], 55, 15, 1, &DrawBlank);
+	int i = Select(semester[A], semester_of_year, 55, 15, 1);
+	if (i == -1) {
+		return;
+	}
+	S.year = year[A];
+	S.semester.Name = semester_of_year[i];
 }
-void DisPlay_Mark_Of_Student(SchoolYear Y, User A) {
-	//char ch;
-	//int a = get_course(A, Y);
-	//view_all_score_of_1_student(A, Y);
-	//do {
-	//	hidePointer();
-	//	drawRectangle(27, 29, 60, 1, 6);
-	//	textColor(499);
-	//	string text = Y.semester.Name + "; Year: " + Y.year + ".   Press[C] to change!";
-	//	printtext(text, 32, 29);
-	//	ch = getch();
-	//	//[ESC]
-	//	if (ch == 27) {
-	//		return;
-	//	}
-	//	else {
-	//		if (ch == 'c' || ch == 'C')
-	//		{
-	//			change_Year_Semester(Y);
-	//			int a = get_course(A, Y);
-	//			if (a == -1) {
-	//				drawRectangle(3, 14, 115, 3, 4);
-	//				printtext("Invalid school year ", 50, 15);
-	//				textBgColor(0, 15);
-	//				Sleep(1800);
-	//				determineYearSemesterNow(Y.year, Y.semester.Name);
-	//			}
-	//			view_all_score_of_1_student(A, Y);
-	//		}
-	//	}
-	//} while (true);
-	//textBgColor(0, 15);
+void DisPlay_Course_Of_Student(SchoolYear Y, User A) {
+	char ch;
+	hidePointer();
+	get_course(A, Y);
+	read_course(A, Y);
+	do {
+		drawRectangle(27, 29, 60, 1, 10);
+		textColor(496);
+		string text = Y.semester.Name + "; Year: " + Y.year + ".   Press[C] to change!";
+		printtext(text, 32, 29);
+		ch = _getch();
+		//[ESC]
+		if (ch == 27) {
+			return;
+		}
+		else {
+			//Control Up down 
+			if (ch == 'c' || ch == 'C') //up
+			{
+				change_Year_Semester(Y);
+				int a = get_course(A, Y);
+				if (a == -1) {
+					drawRectangle(3, 14, 115, 3, 4);
+					printtext("Invalid school year ", 50, 15);
+					textBgColor(0, 15);
+					Sleep(1800);
+					determineYearSemesterNow(Y.year, Y.semester.Name);
+				}
+				read_course(A, Y);
+			}
+		}
+	} while (true);
 }
 
-void edit_score_in_list_course(User& A, SchoolYear SY, string IDcourse) {
-	//int n = 0;
-	//Mark* M = read_file_score_of_course(SY, IDcourse, n);
-	//if (M == NULL) {
-	//	//thong báo mở file thất bại
-	//	textBgColor(0, 15);
-	//	system("cls");
-	//	drawRectangle(3, 14, 115, 3, 4);
-	//	printtext("Fail!! The teacher has not entered the score for this course!! ", 35, 15);
-	//	textBgColor(0, 15);
-	//	Sleep(1800);
-	//	return;
-	//}
-	//char ch;
-	//int line_now = 0;
-	//int x = 10, y = 14;
-	//int tab_now = view_score_of_course_in_year(M, n);
-	//if (tab_now == -1) {
-	//	textBgColor(0, 15);
-	//	return;
-	//}
-	//drawRectangle(1, y + line_now, 115, 1, 14);
-	//textBgColor(0, 14);
-	//view_1_score_of_course(M[tab_now * 10], x, y);
-	//int count = tab_now * 10;
-	//do {
-	//	if (tab_now == -1) {
-	//		textBgColor(0, 15);
-	//		return;
-	//	}
-	//	hidePointer();
-	//	ch = _getch();
-	//	//[ESC]
-	//	if (ch == 27) {
-	//		tab_now = view_score_of_course_in_year(M, n);
-	//		if (tab_now == -1) {
-	//			textBgColor(0, 15);
-	//			return;
-	//		}
-	//		line_now = 0;
-	//		count = tab_now * 10;
-	//		drawRectangle(1, y + line_now, 115, 1, 14);
-	//		textBgColor(0, 14);
-	//		view_1_score_of_course(M[tab_now * 10], x, y);
-	//	}
-	//	else {
-	//		//Control Up down 
-	//		if (ch == 72 && line_now > 0) //up
-	//		{
-	//			drawRectangle(1, y + line_now, 115, 1, 11);
-	//			textBgColor(0, 11);
-	//			view_1_score_of_course(M[count], x, y + line_now);
-
-	//			line_now--;
-	//			count--;
-	//			drawRectangle(1, y + line_now, 115, 1, 14);
-	//			textBgColor(0, 14);
-	//			view_1_score_of_course(M[count], x, y + line_now);
-	//		}
-	//		else if (ch == 72 && line_now == 0 && count > 0) {
-	//			count--;
-	//			drawRectangle(0, y, 120, 11, 11);
-	//			view_10_score_of_course(M, count, n, x, y);
-	//			drawRectangle(1, y + line_now, 115, 1, 14);
-	//			textBgColor(0, 14);
-	//			view_1_score_of_course(M[count], x, y + line_now);
-	//		}
-	//		else if (ch == 80 && line_now < 9 && count < n - 1) //down
-	//		{
-	//			drawRectangle(1, y + line_now, 115, 1, 11);
-	//			textBgColor(0, 11);
-	//			view_1_score_of_course(M[count], x, y + line_now);
-
-	//			line_now++;
-	//			count++;
-	//			drawRectangle(1, y + line_now, 115, 1, 14);
-	//			textBgColor(0, 14);
-	//			view_1_score_of_course(M[count], x, y + line_now);
-	//		}
-	//		else if (ch == 80 && line_now == 9 && count < n - 1) {
-	//			count++;
-	//			drawRectangle(0, y, 120, 11, 11);
-	//			view_10_score_of_course(M, count - 9, n, x, y);
-	//			drawRectangle(1, y + line_now, 115, 1, 14);
-	//			textBgColor(0, 14);
-	//			view_1_score_of_course(M[count], x, y + line_now);
-	//		}
-	//		if (ch == 13) {
-	//			int y_now = y + line_now;
-	//			int x_now = x + 52, x_max = x + 80, x_min = x + 52;
-	//			string S[] = { to_string(M[count].Midterm_Mark),to_string(M[count].Final_Mark),to_string(M[count].Other_Mark) };
-	//			drawRectangle(x_now, y_now, 14, 1, 15);
-	//			textBgColor(0, 15);
-	//			printtext(to_string(M[count].Midterm_Mark), x_now, y_now);
-	//			char CH;
-	//			do
-	//			{
-	//				CH = _getch();
-	//				//ESC
-	//				if (CH == 27) {
-	//					drawRectangle(x_now, y_now, 14, 1, 14);
-	//					textBgColor(0, 14);
-	//					printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//					break;
-	//				}
-	//				else {
-	//					//Left 
-	//					if (CH == 75 && x_now > x_min) {
-	//						drawRectangle(x_now, y_now, 14, 1, 14);
-	//						textBgColor(0, 14);
-	//						printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//						x_now = x_now - 14;
-	//						drawRectangle(x_now, y_now, 14, 1, 15);
-	//						textBgColor(0, 15);
-	//						printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//					}
-	//					//Right
-	//					if (CH == 77 && x_now < x_max) {
-	//						drawRectangle(x_now, y_now, 14, 1, 14);
-	//						textBgColor(0, 14);
-	//						printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//						x_now = x_now + 14;
-	//						drawRectangle(x_now, y_now, 14, 1, 15);
-	//						textBgColor(0, 15);
-	//						printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//					}
-	//					//[ENTER]
-	//					if (CH == 13) {
-	//						drawRectangle(x_now, y_now, 14, 1, 15);
-	//						textBgColor(0, 15);
-	//						float i;
-	//						string mark;
-	//						int flag = 0;
-	//						do {
-	//							mark = "";
-	//							gotoxy(x_now, y_now);
-	//							insertMark(mark, 5, flag);
-	//							if (flag == -1) {
-	//								drawRectangle(x_now, y_now, 14, 1, 15);
-	//								textBgColor(0, 15);
-	//								printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//								break;
-	//							}
-	//							else {
-	//								i = atof(mark.c_str());
-	//								if (i > 10) {
-	//									gotoxy(x_now, y_now);
-	//									cout << "Erroll!!";
-	//									Sleep(900);
-	//									drawRectangle(x_now, y_now, 14, 1, 15);
-	//								}
-	//							}
-	//						} while (i > 10);
-	//						if (flag == 0) {
-	//							int a = (x_now - x_min) / 14;
-	//							switch (a)
-	//							{
-	//							case 0:
-	//								M[count].Midterm_Mark = i;
-	//								S[(x_now - x_min) / 14] = to_string(M[count].Midterm_Mark);
-	//								break;
-	//							case 1:
-	//								M[count].Final_Mark = i;
-	//								S[(x_now - x_min) / 14] = to_string(M[count].Final_Mark);
-	//								break;
-	//							case 2:
-	//								M[count].Other_Mark = i;
-	//								S[(x_now - x_min) / 14] = to_string(M[count].Other_Mark);
-	//								break;
-	//							default:
-	//								break;
-	//							}
-	//							M[count].Total_Mark = 0.3 * M[count].Midterm_Mark + 0.6 * M[count].Final_Mark + 0.1 * M[count].Other_Mark;
-	//							drawRectangle(1, y + line_now, 115, 1, 14);
-	//							textBgColor(0, 14);
-	//							view_1_score_of_course(M[count], x, y + line_now);
-	//							drawRectangle(x_now, y_now, 14, 1, 15);
-	//							textBgColor(0, 15);
-	//							printtext(S[(x_now - x_min) / 14], x_now, y_now);
-	//							save_Mark_With_List_Cousre(IDcourse, M[count], SY);
-	//						}
-	//					}
-	//				}
-
-	//			} while (true);
-
-
-	//		}
-	//	}
-	//} while (true);
-	//textBgColor(0, 15);
-}
 void enroll_course(User& A, SchoolYear s_y) {
-	//string semester_path = "_assets/SchoolYear/" + s_y.year + '/' + s_y.semester.Name + '/';
-	//string class_path = semester_path + "Class/";
-	//string course_path = semester_path + "Course/";
-	////hàm trang trí
-	////hàm hiện danh sách các môn học.
+	string semester_path = "file_save/SchoolYear/" + s_y.year + '/' + s_y.semester.Name + '/';
+	string class_path = semester_path + "Class/";
+	string course_path = semester_path + "Course/";
+	//hàm trang trí
+	//hàm hiện danh sách các môn học.
 
-	//Course* course_input = select_course(A, s_y, &read_file_List_course, &drawASCIIenrolCourse);
-	//if (course_input == NULL) {
-	//	return;
-	//}
-	////kiểm tra xem trong danh sách môn học của sinh viên đã có môn này hay chưa
-	//get_all_course(A, s_y);
-	//MarkNode* Mtemp = A.info.phead;
-	//while (Mtemp != NULL) {
-	//	if (_strcmpi(course_input->ID_course.c_str(), Mtemp->data.ID.c_str()) == 0) {
-	//		//nếu có thì return.
-	//		drawASCIIfailEnrol();
-	//		Sleep(1800);
-	//		return;
-	//	}
-	//	Mtemp = Mtemp->pNext;
-	//}
-	////chưa có thì thêm vào danh sách.
-	//add_Tail_List_Mark(A.info.phead, course_input->ID_course, course_input->name, to_string(course_input->Num_of_creadit));
-	////ghi them vao file;
-	//string file_cousre_of_class = class_path + A.info.Class;
-	//rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, 1);
-	//string file_cousre = course_path + course_input->ID_course;
-	//rewrite_course_file(A, file_cousre, 1);
+	Course* course_input = select_course(A, s_y, &Read_File_List_Course, &DrawBlank);
+	if (course_input == NULL) {
+		return;
+	}
+	//kiểm tra xem trong danh sách môn học của sinh viên đã có môn này hay chưa
+	get_all_course(A, s_y);
+	MarkNode* Mtemp = A.info.phead;
+	while (Mtemp != NULL) {
+		if (_strcmpi(course_input->ID_course.c_str(), Mtemp->data.ID.c_str()) == 0) {
+			//nếu có thì return.
+			//drawASCIIfailEnrol();
+			Sleep(1800);
+			return;
+		}
+		Mtemp = Mtemp->pNext;
+	}
+	//chưa có thì thêm vào danh sách.
+	add_Tail_List_Mark(A.info.phead, course_input->ID_course, course_input->name, to_string(course_input->Num_of_creadit));
+	//ghi them vao file;
+	string file_cousre_of_class = class_path + A.info.Class;
+	rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, 1);
+	string file_cousre = course_path + course_input->ID_course;
+	rewrite_course_file(A, file_cousre, 1);
 	//drawASCIIsuccessful();
-	//Sleep(3000);
+	Sleep(3000);
 }
 void delete_course(User& A, SchoolYear s_y) {
-	//string semester_path = "_assets/SchoolYear/" + s_y.year + '/' + s_y.semester.Name + '/';
-	//string class_path = semester_path + "Class/";
-	//string course_path = semester_path + "Course/";
-	////hàm trang trí
-	////hàm hiện danh sách các môn học.
-	//Course* course_input = select_course(A, s_y, &get_course_of_student, &drawASCIIdeleteCourse);
-	//if (course_input == NULL) {
-	//	return;
-	//}
-	//delete_Mark_node(A.info.phead, course_input->ID_course);
-	//string file_cousre_of_class = class_path + A.info.Class;
-	//rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, -1);
-	//string file_cousre = course_path + course_input->ID_course;
-	//rewrite_course_file(A, file_cousre, -1);
-	//drawASCIIsuccessful();
-	//Sleep(3000);
-	//return;
+	string semester_path = "_assets/SchoolYear/" + s_y.year + '/' + s_y.semester.Name + '/';
+	string class_path = semester_path + "Class/";
+	string course_path = semester_path + "Course/";
+	//hàm trang trí
+	//hàm hiện danh sách các môn học.
+	Course* course_input = select_course(A, s_y, &get_course_of_student, &DrawBlank);
+	if (course_input == NULL) {
+		return;
+	}
+	delete_Mark_node(A.info.phead, course_input->ID_course);
+	string file_cousre_of_class = class_path + A.info.Class;
+	rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, -1);
+	string file_cousre = course_path + course_input->ID_course;
+	rewrite_course_file(A, file_cousre, -1);
+	//drawASCIIsuccessful()
+	Sleep(3000);
+	return;
 }
 void viewStudentInCourse(User user, SchoolYear SY) {
-	/*try {
+	try {
 		while (true) {
 			User A;
-			Course* SLC = select_course(A, SY, &read_file_List_course, &drawASCIIlistCourse);
+			Course* SLC = select_course(A, SY, &Read_File_List_Course, &DrawBlank);
 			if (SLC == NULL) {
 				return;
 			}
@@ -792,7 +341,7 @@ void viewStudentInCourse(User user, SchoolYear SY) {
 		printtext(err, 50, 15);
 		textBgColor(0, 15);
 		Sleep(1800);
-	}*/
+	}
 }
 void Output_info(User A) {
 	system("cls");
@@ -1039,36 +588,3 @@ void view_student_info_of_course(Data* M, int n) {
 	} while (true);
 }
 
-//void enroll_course(User& user, SchoolYear SchYr) {
-//	string semester_path = "database/SchoolYear/" + SchYr.year + '/' + SchYr.semester.Name + '/';
-//	string class_path = semester_path + "Class/";
-//	string course_path = semester_path + "Course/";
-//	//hàm trang trí
-//	//hàm hiện danh sách các môn học.
-//
-//	Course* course_input = select_course(user, SchYr, &Read_File_List_Course, &DrawEnrolCourse);
-//	if (course_input == NULL) {
-//		return;
-//	}
-//	//kiểm tra xem trong danh sách môn học của sinh viên đã có môn này hay chưa
-//	get_all_course(user, SchYr);
-//	MarkNode* Mtemp = user.info.phead;
-//	while (Mtemp != NULL) {
-//		if (_strcmpi(course_input->ID_course.c_str(), Mtemp->data.ID.c_str()) == 0) {
-//			//nếu có thì return.
-//			DrawFailEnrol();
-//			Sleep(1800);
-//			return;
-//		}
-//		Mtemp = Mtemp->pNext;
-//	}
-//	//chưa có thì thêm vào danh sách.
-//	add_Tail_List_Mark(A.info.phead, course_input->ID_course, course_input->name, to_string(course_input->Num_of_creadit));
-//	//ghi them vao file;
-//	string file_cousre_of_class = class_path + A.info.Class;
-//	rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, 1);
-//	string file_cousre = course_path + course_input->ID_course;
-//	rewrite_course_file(A, file_cousre, 1);
-//	DrawSuccessfulEnrol();
-//	Sleep(3000);
-//}

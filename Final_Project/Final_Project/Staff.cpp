@@ -4,7 +4,7 @@
 void updateFileCourse(int currentColumn, int currentLine, string column[], string year, string semester) {
     fstream file_be, file_af;
     string newdata, line;
-    string filename = "_assets//SchoolYear//" + year + "//" + semester + "//course_info.csv";
+    string filename = "database//HCMUS//" + year + "//" + semester + "//course_info.csv";
     for (int i = 0; i < 8; i++) {
         if (i != 7) {
             newdata = newdata + column[i] + ",";
@@ -12,7 +12,7 @@ void updateFileCourse(int currentColumn, int currentLine, string column[], strin
         else newdata = newdata + column[i];
     }
     file_be.open(filename, ios::in);
-    file_af.open("_assets//SchoolYear//" + year + "//" + semester + "//course_info_new.csv", ios::app);
+    file_af.open("database//HCMUS//" + year + "//" + semester + "//course_info_new.csv", ios::app);
     getline(file_be, line);
     file_af << line;
     int i = 2;
@@ -30,7 +30,7 @@ void updateFileCourse(int currentColumn, int currentLine, string column[], strin
     char* a = new char[filename.size() + 1];
     strcpy(a, filename.c_str());
     a[filename.size()] = '\0';
-    string filename_new = "_assets/SchoolYear/" + year + "/" + semester + "/course_info_new.csv";
+    string filename_new = "database/HCMUS/" + year + "/" + semester + "/course_info_new.csv";
     char* b = new char[filename_new.size() + 1];
     strcpy(b, filename_new.c_str());
     b[filename_new.size()] = '\0';
@@ -215,7 +215,7 @@ int getyearData(string* data1, int* data2, string filename) {
 void change_Year_Semester(SchoolYear& S) {
     string* year;
     int* semester;
-    string filename = "_assets/year-semester.csv";
+    string filename = "database/year-semester.csv";
     int n = countLine(filename) - 1;
     year = new string[n];
     semester = new int[n];
@@ -293,7 +293,7 @@ void deleteCourse(string filename, string courseName, int currentLine, string ye
     fstream file_be, file_af;
     string newdata, line;
     file_be.open(filename, ios::in);
-    file_af.open("_assets//SchoolYear//" + year + "//" + semester + "//course_info_new.csv", ios::app);
+    file_af.open("database//HCMUS//" + year + "//" + semester + "//course_info_new.csv", ios::app);
     getline(file_be, line);
     file_af << line;
     int i = 2;
@@ -311,7 +311,7 @@ void deleteCourse(string filename, string courseName, int currentLine, string ye
     char* a = new char[filename.size() + 1];
     strcpy(a, filename.c_str());
     a[filename.size()] = '\0';
-    string filename_new = "_assets/SchoolYear/" + year + "/" + semester + "/course_info_new.csv";
+    string filename_new = "database/HCMUS/" + year + "/" + semester + "/course_info_new.csv";
     char* b = new char[filename_new.size() + 1];
     strcpy(b, filename_new.c_str());
     b[filename_new.size()] = '\0';
@@ -321,14 +321,14 @@ void deleteCourse(string filename, string courseName, int currentLine, string ye
     rename(b, a);
 
     //xoa trong folder course
-    deleteFile("_assets/SchoolYear/" + year + "/" + semester + "/Course/" + courseName + ".csv");
+    deleteFile("database/HCMUS/" + year + "/" + semester + "/Course/" + courseName + ".csv");
 
     //xoa trong folder score
-    deleteFile("_assets/SchoolYear/" + year + "/" + semester + "/Course/score/" + courseName + ".csv");
+    deleteFile("database/HCMUS/" + year + "/" + semester + "/Course/score/" + courseName + ".csv");
 
     //Xoa trong folder class
     fstream file;
-    file.open("_assets/SchoolYear/" + year + "/class_info.csv", ios::in);
+    file.open("database/HCMUS/" + year + "/class_info.csv", ios::in);
     if (!file.is_open()) {
         return;
     }
@@ -338,8 +338,8 @@ void deleteCourse(string filename, string courseName, int currentLine, string ye
         getline(file, info);
         info = info.substr(info.find(",") + 1, info.find(",", info.find(",") + 1) - info.find(",") - 1);
         fstream fileClass, file_new;
-        fileClass.open("_assets/SchoolYear/" + year + "/" + semester + "/Class/" + info + ".csv", ios::in);
-        file_new.open("_assets/SchoolYear/" + year + "/" + semester + "/Class/" + info + "_new.csv", ios::out);
+        fileClass.open("database/HCMUS/" + year + "/" + semester + "/Class/" + info + ".csv", ios::in);
+        file_new.open("database/HCMUS/" + year + "/" + semester + "/Class/" + info + "_new.csv", ios::out);
         if (!fileClass.is_open() || !file_new.is_open()) continue;
         string line;
         int i = 1;
@@ -356,8 +356,8 @@ void deleteCourse(string filename, string courseName, int currentLine, string ye
         }
         fileClass.close();
         file_new.close();
-        deleteFile("_assets/SchoolYear/" + year + "/" + semester + "/Class/" + info + ".csv");
-        renameFile("_assets/SchoolYear/" + year + "/" + semester + "/Class/" + info + "_new.csv", "_assets/SchoolYear/" + year + "/" + semester + "/Class/" + info + ".csv");
+        deleteFile("database/HCMUS/" + year + "/" + semester + "/Class/" + info + ".csv");
+        renameFile("database/HCMUS/" + year + "/" + semester + "/Class/" + info + "_new.csv", "database/HCMUS/" + year + "/" + semester + "/Class/" + info + ".csv");
     }
     file.close();
 }
@@ -368,14 +368,14 @@ int editCourse(User A, string& year, string& semester) {
     int checkOut = -1;
     do {
         char ch;
-        int line = countLine("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv");
+        int line = countLine("database/HCMUS/" + year + "/" + semester + "/course_info.csv");
         int currentLine = 2;
         int y = 11;
         string column[8];
         int lineInConsole = 1;
         int a[8] = { 2,13,32,55,76,91,98,108 };
         int b[8] = { 1,9,32,63,79,91,101,111 };
-        getLineInfoForStudent("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
+        getLineInfoForStudent("database/HCMUS/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
         drawRectangle(1, y + lineInConsole, 110, 1, 14);
         textBgColor(0, 14);
         for (int i = 0; i < 8; i++)
@@ -398,8 +398,8 @@ int editCourse(User A, string& year, string& semester) {
                         lineInConsole = 12;
                         drawRectangle(0, 10, 120, 15, 15);
                         drawRectangle(0, 10, 120, 15, 11);
-                        drawList(8, "_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", y, a, b, line, currentLine - 11);
-                        getLineInfoForStudent("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
+                        drawList(8, "database/HCMUS/" + year + "/" + semester + "/course_info.csv", y, a, b, line, currentLine - 11);
+                        getLineInfoForStudent("database/HCMUS/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
                         drawRectangle(1, y + lineInConsole, 110, 1, 14);
                         textBgColor(0, 14);
                         for (int i = 0; i < 8; i++) {
@@ -407,7 +407,7 @@ int editCourse(User A, string& year, string& semester) {
                         }
                     }
                     else
-                        moveUp("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, 8, b, y, column, lineInConsole, 110, 1);
+                        moveUp("database/HCMUS/" + year + "/" + semester + "/course_info.csv", currentLine, 8, b, y, column, lineInConsole, 110, 1);
 
                 }
                 if (ch == 80 && currentLine < line) //down
@@ -418,8 +418,8 @@ int editCourse(User A, string& year, string& semester) {
                         lineInConsole = 1;
                         drawRectangle(0, 10, 120, 15, 15);
                         drawRectangle(0, 10, 120, 15, 11);
-                        drawList(8, "_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", y, a, b, line, currentLine);
-                        getLineInfoForStudent("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
+                        drawList(8, "database/HCMUS/" + year + "/" + semester + "/course_info.csv", y, a, b, line, currentLine);
+                        getLineInfoForStudent("database/HCMUS/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
                         drawRectangle(1, y + lineInConsole, 110, 1, 14);
                         textBgColor(0, 14);
                         for (int i = 0; i < 8; i++) {
@@ -427,7 +427,7 @@ int editCourse(User A, string& year, string& semester) {
                         }
                     }
                     else
-                        moveDown("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", currentLine, 8, b, y, column, lineInConsole, 110, 1);
+                        moveDown("database/HCMUS/" + year + "/" + semester + "/course_info.csv", currentLine, 8, b, y, column, lineInConsole, 110, 1);
                 }
                 if (ch == 13) {
                     //printtext();
@@ -449,8 +449,8 @@ int editCourse(User A, string& year, string& semester) {
                 }
 
                 if (ch == 'x') {
-                    deleteCourse("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", column[0], currentLine, year, semester);
-                    string filename = "_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv";
+                    deleteCourse("database/HCMUS/" + year + "/" + semester + "/course_info.csv", column[0], currentLine, year, semester);
+                    string filename = "database/HCMUS/" + year + "/" + semester + "/course_info.csv";
                     //drawList(8, filename , y, a, b, line,currentLine-lineInConsole+1);
                     if (currentLine == line) {
                         currentLine = line - 1;
@@ -641,9 +641,9 @@ int insertDate(string& Date) {
 void UpDatefileCSV(Semester semester) {
     fstream file_old1, file_old2, file_new;
     string data1, data2;
-    file_old1.open("_assets//year-semester.csv", ios::in);
-    file_old2.open("_assets//year-semester.csv", ios::in);
-    file_new.open("_assets//year_semester_new.csv", ios::app);
+    file_old1.open("database//year-semester.csv", ios::in);
+    file_old2.open("database//year-semester.csv", ios::in);
+    file_new.open("database//year_semester_new.csv", ios::app);
     file_new << "Năm,số kì đã học ";
     getline(file_old2, data2);
     getline(file_old1, data1);
@@ -667,13 +667,13 @@ void UpDatefileCSV(Semester semester) {
     file_old1.close();
     file_old2.close();
     file_new.close();
-    remove("_assets//year-semester.csv");
-    rename("_assets//year_semester_new.csv", "_assets//year-semester.csv");
+    remove("database//year-semester.csv");
+    rename("database//year_semester_new.csv", "database//year-semester.csv");
 }
 
 void UpDatefileInfo(Semester semester) {
     fstream file;
-    file.open("_assets//SchoolYear//" + semester.schoolyear + "//Semester" + semester.Name + "//SemesterInfo.txt", ios::app);
+    file.open("database//HCMUS//" + semester.schoolyear + "//Semester" + semester.Name + "//SemesterInfo.txt", ios::app);
     file << "Semester: " << semester.Name;
     file << endl << "Start Date: " << semester.date_star;
     file << endl << "End Date: " << semester.date_end;
@@ -728,7 +728,7 @@ void DisplayYearSemester(string& Year, string& Semester)
 
 string CheckSem() {
 	fstream classx;
-	classx.open("_assets//year-semester.csv");
+	classx.open("database//year-semester.csv");
 	string YearTem, SemTem;
 	string CheckSem;
 	while (!classx.eof())
@@ -744,7 +744,7 @@ string CheckSem() {
 void determineYearSemesterNow(string& Year, string& semester) {
     fstream file1;
     string data1;
-    file1.open("_assets/year-semester.csv", ios::in);
+    file1.open("database/year-semester.csv", ios::in);
     getline(file1, data1);
     while (!file1.eof()) {
         getline(file1, data1);
@@ -818,8 +818,8 @@ void addSchoolYear(SchoolYear& Y) {
 
         fstream file1, file2;
         bool check = true;
-        file1.open("_assets//year-semester.csv", ios::in);
-        file2.open("_assets//year-semester.csv", ios::in);
+        file1.open("database//year-semester.csv", ios::in);
+        file2.open("database//year-semester.csv", ios::in);
 
         string row, column;
         getline(file1, row);
@@ -843,27 +843,27 @@ void addSchoolYear(SchoolYear& Y) {
         if (check == true) break;
     }
 
-    string nameFolder = "_assets//SchoolYear//" + schoolyear.year;
+    string nameFolder = "database//HCMUS//" + schoolyear.year;
     createFolder(nameFolder);
 
     fstream file;
     string data;
-    file.open("_assets//year-semester.csv", ios::app);
+    file.open("database//year-semester.csv", ios::app);
     file << endl << schoolyear.year << ",0";
     file.close();
 
 
-    file.open("_assets/SchoolYear/" + Y.year + "/class_info.csv", ios::in);
+    file.open("database/HCMUS/" + Y.year + "/class_info.csv", ios::in);
     getline(file, data);
     while (!file.eof()) {
         getline(file, data, ',');
         getline(file, data, ',');
-        string source = "_assets/SchoolYear/" + Y.year + "/" + data + ".csv", destination = "_assets/SchoolYear/" + schoolyear.year + "/" + data + ".csv";
+        string source = "database/HCMUS/" + Y.year + "/" + data + ".csv", destination = "database/HCMUS/" + schoolyear.year + "/" + data + ".csv";
         CopyContentFileToFile(source, destination);
         getline(file, data);
     }
-    CopyContentFileToFile("_assets/SchoolYear/" + Y.year + "/staff.csv", "_assets/SchoolYear/" + schoolyear.year + "/staff.csv");
-    CopyContentFileToFile("_assets/SchoolYear/" + Y.year + "/class_info.csv", "_assets/SchoolYear/" + schoolyear.year + "/class_info.csv");
+    CopyContentFileToFile("database/HCMUS/" + Y.year + "/staff.csv", "database/HCMUS/" + schoolyear.year + "/staff.csv");
+    CopyContentFileToFile("database/HCMUS/" + Y.year + "/class_info.csv", "database/HCMUS/" + schoolyear.year + "/class_info.csv");
     Y.year = schoolyear.year;
     Y.semester.Name = "Semester0";
     hidePointer();
@@ -962,25 +962,25 @@ void addSemester(string& yearNow, string& semesterNow) {
     } while (true);
 
     semesterNow = semester.Name;
-    createFolder("_assets//SchoolYear//" + semester.schoolyear + "//Semester" + semester.Name);
-    createFolder("_assets//SchoolYear//" + semester.schoolyear + "//Semester" + semester.Name + "//Class");
-    createFolder("_assets//SchoolYear//" + semester.schoolyear + "//Semester" + semester.Name + "//Course");
-    createFolder("_assets//SchoolYear//" + semester.schoolyear + "//Semester" + semester.Name + "//Course//score");
+    createFolder("database//HCMUS//" + semester.schoolyear + "//Semester" + semester.Name);
+    createFolder("database//HCMUS//" + semester.schoolyear + "//Semester" + semester.Name + "//Class");
+    createFolder("database//HCMUS//" + semester.schoolyear + "//Semester" + semester.Name + "//Course");
+    createFolder("database//HCMUS//" + semester.schoolyear + "//Semester" + semester.Name + "//Course//score");
     UpDatefileCSV(semester);
     UpDatefileInfo(semester);
 
     fstream file;
-    file.open("_assets//SchoolYear//" + semester.schoolyear + "//Semester" + semester.Name + "//course_info.csv", ios::out);
+    file.open("database//HCMUS//" + semester.schoolyear + "//Semester" + semester.Name + "//course_info.csv", ios::out);
     file << "ID,COURSE NAME,TEACHER NAME,NUMBER OF CREDITS,MAX STUDENT,DAY,SESSION1,SESSION2";
     file.close();
 
     fstream fileCourse;
-    fileCourse.open("_assets//SchoolYear//" + semester.schoolyear + "//Semester" + semester.Name + "//RegistrationCourseSession.txt", ios::out);
+    fileCourse.open("database//HCMUS//" + semester.schoolyear + "//Semester" + semester.Name + "//RegistrationCourseSession.txt", ios::out);
     fileCourse << 0;
     fileCourse.close();
 
     fstream class_info;
-    class_info.open("_assets//SchoolYear//" + semester.schoolyear + "/class_info.csv", ios::in);
+    class_info.open("database//HCMUS//" + semester.schoolyear + "/class_info.csv", ios::in);
     if (!class_info.is_open()) return;
     string line;
     getline(class_info, line);
@@ -988,8 +988,8 @@ void addSemester(string& yearNow, string& semesterNow) {
         getline(class_info, line);
         string className = line.substr(line.find(",") + 1, line.find(",", line.find(",") + 1) - line.find(",") - 1);
         fstream fileClass, fileStudent;
-        fileClass.open("_assets/SchoolYear/" + semester.schoolyear + "/Semester" + semester.Name + "/Class/" + className + ".csv", ios::out);
-        fileStudent.open("_assets/SchoolYear/" + semester.schoolyear + "/" + className + ".csv", ios::in);
+        fileClass.open("database/HCMUS/" + semester.schoolyear + "/Semester" + semester.Name + "/Class/" + className + ".csv", ios::out);
+        fileStudent.open("database/HCMUS/" + semester.schoolyear + "/" + className + ".csv", ios::in);
         string studentID;
         getline(fileStudent, studentID);
         int t = 1;
@@ -1018,11 +1018,11 @@ int checkSchoolYear(Semester semester) {
         return 0;
 
     //Không tồn tại School Year
-    if (IsPathExist("_assets//SchoolYear//" + semester.schoolyear) == false) return -1;
+    if (IsPathExist("database//HCMUS//" + semester.schoolyear) == false) return -1;
 
     //Kiểm tra thử trong School Year đã nhập đã có tồn tại semester vừa nhập chưa
     fstream file2;
-    file2.open("_assets//year-semester.csv", ios::in);
+    file2.open("database//year-semester.csv", ios::in);
     int check = 1;
     string column;
     getline(file2, column);
@@ -1060,7 +1060,7 @@ void createRegistrationCourse() {
         drawRectangle(35, 22, 40, 1, 15);
         drawRectangle(35, 25, 40, 1, 15);
 
-        string filename = "_assets//SchoolYear//" + year + "//" + semester + "//RegistrationCourseSession.txt";
+        string filename = "database//HCMUS//" + year + "//" + semester + "//RegistrationCourseSession.txt";
         do {
             gotoxy(35, 22);
             if (insertDate(DateStart) == 0) return;
@@ -1150,10 +1150,10 @@ void addCourse() {
         {
             gotoxy(30, 11);
             if (insertString(course.ID_course, 15) == 0) return;
-            if (countLine("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv") == 1) break;
+            if (countLine("database/HCMUS/" + year + "/" + semester + "/course_info.csv") == 1) break;
             fstream file;
             string line;
-            file.open("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", ios::in);
+            file.open("database/HCMUS/" + year + "/" + semester + "/course_info.csv", ios::in);
             getline(file, line);
             bool check = false;
             while (!file.eof()) {
@@ -1262,11 +1262,11 @@ void addCourse() {
             }
         } while (true);
         fstream file;
-        file.open("_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv", ios::app);
+        file.open("database/HCMUS/" + year + "/" + semester + "/course_info.csv", ios::app);
         file << endl << course.ID_course << "," << course.name << "," << course.teacher << "," << course.Num_of_creadit << "," << course.Max_student << "," << course.DayOfWeek << "," << course.session[0] << "," << course.session[1];
         file.close();
 
-        file.open("_assets/SchoolYear/" + year + "/" + semester + "/Course/" + course.ID_course + ".csv", ios::out);
+        file.open("database/HCMUS/" + year + "/" + semester + "/Course/" + course.ID_course + ".csv", ios::out);
         file << "ID STUDENT,NAME,BIRTHDAY,SEX,ID SOCIAL";
         file.close();
         printtext("CREATE COURSE SUCCESSFUL !!!, PRESS ENTER TO BACK TO MENU.", 25, 27);
@@ -1338,7 +1338,7 @@ void listCourse(User A, string year, string semester) {
         printtext("KEY TO MOVE IN EDIT STATUS", 0, 3.5);
         printtext("-[c]: CHANGE TIME", 0, 4.5);
 
-        string filename = "_assets/SchoolYear/" + year + "/" + semester + "/course_info.csv";
+        string filename = "database/HCMUS/" + year + "/" + semester + "/course_info.csv";
         int lineNum = countLine(filename);
         if (lineNum == 1) {
             textBgColor(4, 15);
@@ -1401,7 +1401,7 @@ int checkCourseSession()
     }
     else {
         fstream file;
-        file.open("file_save/SchoolYear/" + year + "/" + semester + "/RegistrationCourseSession.txt", ios::in);
+        file.open("file_save/HCMUS/" + year + "/" + semester + "/RegistrationCourseSession.txt", ios::in);
         string data;
         getline(file, data);
         if (stoi(data, 0, 10) == 0) return 0;//not open session yet
@@ -1506,7 +1506,7 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
         printtext("-[ESC]: BACK TO MENU", 97, 3);
         printtext("-[ENTER]: CHOSE", 97, 5);
 
-        string filename = "_assets/SchoolYear/" + year + "/class_info.csv";
+        string filename = "database/HCMUS/" + year + "/class_info.csv";
         int lineNum = countLine(filename);
         int y = 11;
         drawRectangle(8, 10, 95, 15, 11);
@@ -1601,7 +1601,7 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
         printtext("-[ESC]: BACK TO MENU", 97, 3);
         //printtext("-[ENTER]: CHOSE", 97, 5);
 
-        string filename = "_assets/SchoolYear/" + year + "/" + classname + ".csv";
+        string filename = "database/HCMUS/" + year + "/" + classname + ".csv";
         int lineNum = countLine(filename);
         int y = 11;
         drawRectangle(8, 10, 100, 15, 11);

@@ -266,7 +266,7 @@ void CreateAutoClassAndImportRandomInfo()
 	textBgColor(0, 11);
 	drawRectangle(35, 12, 60, 12, 11);
 	fstream fs;
-	fs.open("_assets//year-semester.csv", ios::in);
+	fs.open("database//year-semester.csv", ios::in);
 	string tempYear;
 	string tempSemester;
 	while (!fs.eof())
@@ -288,7 +288,7 @@ void CreateAutoClassAndImportRandomInfo()
 		{
 			fstream file1;
 			bool check = true;
-			file1.open("_assets//SchoolYear//" + Year + "//class_info.csv", ios::in);
+			file1.open("database//SchoolYear//" + Year + "//class_info.csv", ios::in);
 			string stt, NameClass, major, number, year;
 			while (!file1.eof())
 			{
@@ -338,19 +338,19 @@ void CreateAutoClassAndImportRandomInfo()
 						string YearStudent = { Year[0],Year[1],Year[2],Year[3] };
 
 						fstream file;
-						string filename = "_assets//SchoolYear//" + Year + "//class_info.csv";
+						string filename = "database//SchoolYear//" + Year + "//class_info.csv";
 						string CheckYear = { Year[2], Year[3] };
 						for (int i = 1; i <= NumberOfClass; i++)
 						{
 							string s = to_string(i);
 							string NameClasses = CheckYear + name + s;
-							string FileName = "_assets//SchoolYear//" + Year + "//" + NameClasses + ".csv";
+							string FileName = "database//SchoolYear//" + Year + "//" + NameClasses + ".csv";
 							fstream f1;
 							f1.open(FileName, ios::out);
 							f1 << "No" << "," << "ID" << "," << "Name" << "," << "Birth" << "," << "Sex" << "," << "IDSocial";;
 							f1.close();
 							int count = CheckRowInFile(filename);
-							file.open("_assets//SchoolYear//" + Year + "//class_info.csv", ios::app);
+							file.open("database//SchoolYear//" + Year + "//class_info.csv", ios::app);
 							file << endl << count << "," << CheckYear << name << i << "," << NameMajor << "," << numberStudent << "," << YearStudent;
 							file.close();
 							ImportRandom(Year, NameClasses);
@@ -394,7 +394,7 @@ void CreateNewClass() {
 	drawMenuView();
 	textBgColor(0, 11);
 	drawRectangle(34, 12, 60, 12, 11);
-	f.open("_assets//year-semester.csv");
+	f.open("database//year-semester.csv");
 	while (!f.eof()) {
 		getline(f, tYear, ',');
 		getline(f, tSemester);
@@ -413,7 +413,7 @@ void CreateNewClass() {
 			fstream f1;
 			string stt, NameClass, major, number, year;
 			bool check = true;
-			f1.open("_assets//SchoolYear//" + year + "//class_info.csv");
+			f1.open("database//SchoolYear//" + year + "//class_info.csv");
 			while (f1.eof()) {
 				getline(f1, stt, ',');
 				getline(f1, NameClass, ',');
@@ -447,10 +447,10 @@ void CreateNewClass() {
 						string str = { year };
 						string yearStudent = { year[0],year[1],year[2],year[3] };
 						ofstream fA, fB;
-						int count = CheckRowInFile("_assets//SchoolYear//" + year + "//class_info.csv");
-						fA.open("_assets//SchoolYear//" + year + "//class_info.csv", ios::app);
+						int count = CheckRowInFile("database//SchoolYear//" + year + "//class_info.csv");
+						fA.open("database//SchoolYear//" + year + "//class_info.csv", ios::app);
 						fA << endl << count + 1 << "," << name << "," << nameMajor << "," << nStu << "," << yearStudent;
-						fB.open("_assets//SchoolYear//" + year + "//" + name + ".csv");
+						fB.open("database//SchoolYear//" + year + "//" + name + ".csv");
 						fB << "No" << "," << "ID" << "," << "Name" << "," << "Birth" << "," << "Sex" << "," << "IDSocial";
 						printtext("SUCESS!!", 43, 23);
 						while (1)
@@ -459,7 +459,7 @@ void CreateNewClass() {
 							if (CheckSe == "0") break;
 							else
 							{
-								string CreateClass = "_assets//SchoolYear//" + year + "//Semester" + CheckSe + "//Class//" + name + ".csv";
+								string CreateClass = "database//SchoolYear//" + year + "//Semester" + CheckSe + "//Class//" + name + ".csv";
 								fstream fCreate;
 								fCreate.open(CreateClass, ios::out);
 								fCreate.close();

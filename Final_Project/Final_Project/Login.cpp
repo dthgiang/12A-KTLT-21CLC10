@@ -89,7 +89,7 @@ void InsertPassword(string& Password)
     }
 }
 
-int CheckStatusLogin(User& User) {
+int CheckStatusLogin(User& user) {
     fstream filename1, filename2;
     filename1.open("database/login.csv", ios::in);
     filename2.open("database/login.csv", ios::in);
@@ -105,12 +105,12 @@ int CheckStatusLogin(User& User) {
         getline(filename1, nRow);
         while (!filename2.eof())
         {
-            getline(filename2, nCol, '-');
-            if (nCol.compare(User.ID) == 0) {
+            getline(filename2, nCol, ',');
+            if (nCol.compare(user.ID) == 0) {
                 getline(filename2, nCol, '-');
-                if (nCol.compare(User.Password) == 0) {
+                if (nCol.compare(user.Password) == 0) {
                     isCheck = 1;
-                    getline(filename2, nCol, '-');
+                    getline(filename2, nCol, ',');
                     Users = stoi(nCol, 0, 10);
                     break;
                 }
@@ -123,10 +123,10 @@ int CheckStatusLogin(User& User) {
 
     if (isCheck == 0) return -1;
 
-    User.role = Users;
+    user.role = Users;
     if (Users == 1) {
         getline(filename2, nCol, '\n');
-        User.info.Class = nCol;
+        user.info.Class = nCol;
     }
 
     filename1.close();

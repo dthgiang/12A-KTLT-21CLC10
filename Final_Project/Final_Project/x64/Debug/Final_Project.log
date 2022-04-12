@@ -1,4 +1,7 @@
-﻿  Staff.cpp
+﻿  Read_Data.cpp
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Read_Data.cpp(170,14): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Read_Data.cpp(175,10): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+  Staff.cpp
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(167,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(171,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(175,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
@@ -12,9 +15,11 @@ C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(151
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1514,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1514,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1514,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  System_Function.cpp
   Generating Code...
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1422): warning C4715: 'checkCourseSession': not all control paths return a value
+C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Read_Data.cpp(226): warning C4715: 'get_course': not all control paths return a value
 Staff.obj : error LNK2005: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl CheckSem(void)" (?CheckSem@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in List_Class.obj
+System_Function.obj : error LNK2005: "void __cdecl DisPlay_Course_Of_Student(struct SchoolYear,struct User)" (?DisPlay_Course_Of_Student@@YAXUSchoolYear@@UUser@@@Z) already defined in Staff.obj
+System_Function.obj : error LNK2005: "void __cdecl change_Year_Semester(struct SchoolYear &)" (?change_Year_Semester@@YAXAEAUSchoolYear@@@Z) already defined in Staff.obj
 System_Function.obj : error LNK2005: "int __cdecl getyearData(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,int *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?getyearData@@YAHPEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEAHV12@@Z) already defined in Staff.obj
 C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\x64\Debug\Final_Project.exe : fatal error LNK1169: one or more multiply defined symbols found

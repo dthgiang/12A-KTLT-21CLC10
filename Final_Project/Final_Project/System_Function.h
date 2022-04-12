@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include "Graphics.h"
 #include "Menu.h"
@@ -40,3 +40,7 @@ void view_1_student_info_of_course(Data M, int x, int y);
 void view_10_student_info_of_course(Data* M, int i, int n, int x, int y);
 
 void view_student_info_of_course(Data* M, int n);
+
+void rewrite_course_of_student_file(User user, string fileName, string data, int command_flag);
+//hàm ghi danh vào file khóa học tổng của staff, user là học sinh.
+void rewrite_course_file(User user, string fileName, int command_flag);

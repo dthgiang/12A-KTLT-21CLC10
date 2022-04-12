@@ -17,6 +17,6 @@ void InsertUserName(string& Username);
 
 void InsertPassword(string& Password);
 
-int CheckStatusLogin(User& User);
+int CheckStatusLogin(User& user);
 
 void LoginLoop(User& User);

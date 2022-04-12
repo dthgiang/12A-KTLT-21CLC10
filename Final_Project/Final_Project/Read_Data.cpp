@@ -1,7 +1,7 @@
 ﻿#include "Read_Data.h"
 
 Course* Read_File_List_Course(User A, SchoolYear SchYr, int& n) {
-	string file = "file_save/SchoolYear/" + SchYr.year + '/' + SchYr.semester.Name + "/course_info" + csv_tail;
+	string file = "database/HCMUS/" + SchYr.year + '/' + SchYr.semester.Name + "/course_info" + csv_tail;
 	ifstream fi;
 	fi.open(file, ios::in);
 	if (!fi.good()) {
@@ -47,7 +47,7 @@ void read_1_info(User& A, ifstream& f) {
 }
 
 void read_info(User& A, SchoolYear SY) {
-	string year_path = "file_save/SchoolYear/" + SY.year + '/';
+	string year_path = "database/HCMUS/" + SY.year + '/';
 	string fileName;
 	if (A.role == 1) {
 		fileName = year_path + A.info.Class + csv_tail;
@@ -142,7 +142,7 @@ void read1CourseInfor(Course& A, ifstream& f)
 int get_course(User& A, SchoolYear s_y, int flag)
 {
 	ifstream f;
-	string semester_path = "file_save/SchoolYear/" + s_y.year + '/' + s_y.semester.Name + '/';
+	string semester_path = "database/HCMUS/" + s_y.year + '/' + s_y.semester.Name + '/';
 	string class_path = semester_path + "Class/";
 	string course_path = semester_path + "Course/";
 	string fileName = class_path + A.info.Class + csv_tail;
@@ -194,7 +194,7 @@ int get_course(User& A, SchoolYear s_y, int flag)
 						IDtemp += temp1[i];
 					}
 					ifstream fi;
-					string fileName = "file_save/SchoolYear/" + s_y.year + "/" + s_y.semester.Name + "/course_info.csv";
+					string fileName = "database/HCMUS/" + s_y.year + "/" + s_y.semester.Name + "/course_info.csv";
 					fi.open(fileName, ios::in);
 					string temp;
 					string num_of_creadit;
@@ -299,7 +299,7 @@ void add_Tail_List_Mark(MarkNode*& head, string ID, string name, string num_of_c
 }
 
 Course* get_course_of_student(User A, SchoolYear SY, int& n) {
-	string fileName = "database/SchoolYear/" + SY.year + '/' + SY.semester.Name + "/course_info" + csv_tail;
+	string fileName = "database/HCMUS/" + SY.year + '/' + SY.semester.Name + "/course_info" + csv_tail;
 	ifstream f;
 	f.open(fileName, ios::in);
 	if (!f.good()) {
@@ -343,7 +343,7 @@ Course* get_course_of_student(User A, SchoolYear SY, int& n) {
 	return M;
 }
 Data* read_file_student_info_of_course(SchoolYear SY, string IDcourse, int& n) {
-	string fileName = "database/SchoolYear/" + SY.year + '/' + SY.semester.Name + "/Course/" + IDcourse + csv_tail;
+	string fileName = "database/HCMUS/" + SY.year + '/' + SY.semester.Name + "/Course/" + IDcourse + csv_tail;
 	ifstream f;
 	f.open(fileName, ios::in);
 	if (!f.good()) {
