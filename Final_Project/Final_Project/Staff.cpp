@@ -742,10 +742,12 @@ void addSchoolYear(SchoolYear& Y) {
     textBgColor(13, 15);
 
     while (true) {
+        DrawTextFile("_assets/menu_schoolyear.txt", 35, 2);
         textBgColor(0, 11);
-        drawRectangle(35, 8, 70, 7, 11);
+        DrawTextFile("_assets/menu_schoolyear.txt", 35, 2);
+        drawRectangle(35, 8, 76, 7, 11);
         schoolyear.year = "";
-        printtext("Enter school year (Ex:2020-2021,..) : ", 40, 10);
+        printtext("Enter school year (Ex:2020-2021,..) : ", 35, 10);
         drawRectangle(40, 11, 50, 1, 15);
 
         while (true) {
@@ -761,8 +763,8 @@ void addSchoolYear(SchoolYear& Y) {
                 break;
             else {
                 textBgColor(4, 11);
-                printtext("Error: Format YYYY-YYYY", 40, 13);
-                printtext("ENTER to try again", 40, 14);
+                printtext("Error: Format YYYY-YYYY", 33, 13);
+                printtext("ENTER to try again", 35, 14);
                 hidePointer();
                 ch = _getch();
                 drawRectangle(40, 11, 50, 1, 15);
@@ -784,7 +786,7 @@ void addSchoolYear(SchoolYear& Y) {
             getline(file2, column, ',');
             if (column.compare(schoolyear.year) == 0) {
                 textBgColor(4, 11);
-                printtext("SCHOOL YEAR EXIST ! PRESS ENTER TO TRY AGAIN", 40, 14);
+                printtext("SCHOOL YEAR EXIST ! PRESS ENTER TO TRY AGAIN", 35, 14);
                 hidePointer();
                 ch = _getch();
                 drawRectangle(40, 11, 50, 1, 15);

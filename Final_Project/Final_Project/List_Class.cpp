@@ -5,23 +5,24 @@ using namespace std;
 void drawASCIIMenuView();
 Database Input()
 {
+	drawBoder(50, 16, 30, 7, 1);
 	Database data;
-	gotoxy(53, 17);
-	cout << "IMPUT INFORMATION STUDENT" << endl;
+	gotoxy(55, 17);
+	cout << "INPUT INFORMATION STUDENT" << endl;
+	gotoxy(55, 18);
+	cout << "Student id:";
 	cin.ignore();
-	gotoxy(58, 18);
-	cout << "Mssv:";
 	getline(cin, data.ID);
-	gotoxy(58, 19);
+	gotoxy(55, 19);
 	cout << "Name:";
 	getline(cin, data.name);
-	gotoxy(58, 20);
+	gotoxy(55, 20);
 	cout << "Birth:";
 	getline(cin, data.Birth);
-	gotoxy(58, 21);
+	gotoxy(55, 21);
 	cout << "Sex:";
 	getline(cin, data.sex);
-	gotoxy(58, 22);
+	gotoxy(55, 22);
 	cout << "IDsocial:";
 	getline(cin, data.IDsocial);
 	return data;
@@ -207,13 +208,9 @@ void CreateNewClass()
 
 void drawASCIIMenuView()
 {
-	textBgColor(0, 6);
-	printtext("   ______    __       ____         _____   _____ ", 40, 4);
-	printtext("  / ____/   / /      / /\\ \\      / ____/  / ___/ ", 40, 5);
-	printtext(" / /       / /      / /__\\ \\     \\ \\      \\ \\    ", 40, 6);
-	printtext("/ /___    / /____  / /____\\ \\   __\\ \\    __\\ \\   ", 40, 7);
-	printtext("\\____/   /______/ /_/      \\_\\ /____/   /____/   ", 40, 8);
-	printtext("                                                 ", 40, 9);
+	textBgColor(0, 3);
+	DrawTextFile("_assets/class.txt", 38, 4);
+	
 }
 
 void ImportRandom(string& YearCourse, string& Class)

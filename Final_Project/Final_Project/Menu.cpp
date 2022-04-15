@@ -98,8 +98,7 @@ void StaffMenu(User& staff)
 	};
 	string MenuStaff4[] = {
 	"1. View List Course And List Student in Course",
-	"2. Delete or Edit Course info","3.Back to Menu" };
-	string MenuStaff5[] = { "1. View and edit student's marks", "2. Export student list mark", "3. Import student list mark", "4. Back to Menu" };
+	"2. Delete or Edit Course info","3. Back to Menu" };
 	do
 	{
 		showPointer();
@@ -159,8 +158,6 @@ void StaffMenu(User& staff)
 			}
 			case 5:
 			{
-
-				system("cls");
 				RunMenuAddInfoStudentToClass();
 				break;
 			}
