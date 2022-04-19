@@ -742,18 +742,19 @@ void addSchoolYear(SchoolYear& Y) {
     textBgColor(13, 15);
 
     while (true) {
-        DrawTextFile("_assets/menu_schoolyear.txt", 35, 2);
+        //DrawTextFile("_assets/menu_schoolyear.txt", 20, 2);
         textBgColor(0, 11);
-        DrawTextFile("_assets/menu_schoolyear.txt", 35, 2);
-        drawRectangle(35, 8, 76, 7, 11);
+        DrawTextFile("_assets/menu_schoolyear.txt", 20, 2);
+ 
+        drawRectangle(20, 8, 76, 7, 11);
         schoolyear.year = "";
         printtext("Enter school year (Ex:2020-2021,..) : ", 35, 10);
-        drawRectangle(40, 11, 50, 1, 15);
+        drawRectangle(35, 11, 50, 1, 15);
 
         while (true) {
             showPointer();
             textBgColor(0, 15);
-            gotoxy(40, 11);
+            gotoxy(35, 11);
             schoolyear.year = "";
             if (insertSchoolYear(schoolyear.year) == 0) return;
             string a, b;
