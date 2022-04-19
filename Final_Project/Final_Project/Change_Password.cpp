@@ -32,39 +32,46 @@ void Rewrite_Info(User user) {
 };
 
 void Change_Password(User& user) {
-    system("cls");
-    DrawTextFile("change_password.txt", 10, 4);
-    drawRectangle(47, 15, 27, 12, 11);
-    printtext("YOUR PASSWORD :", 48, 16);
-    printtext("ENTER NEW PASSWORD :", 48, 19);
-    printtext("ENTER NEW PASSWORD AGAIN :", 48, 22);
 
-    drawRectangle(48, 17, 25, 1, 15);
-    drawRectangle(48, 20, 25, 1, 15);
-    drawRectangle(48, 23, 25, 1, 15);
-    gotoxy(48, 17);
+    system("cls");
+
+    drawRectangle(3, 3, 115, 8, 19);
+    textBgColor(15, 19);
+   
+    DrawTextFile("_assets\\change_password.txt", 8, 4);
+    drawRectangle(45, 15, 27, 12, 19);
+    printtext("YOUR PASSWORD :", 46, 16);
+    printtext("ENTER NEW PASSWORD :", 46, 19);
+    printtext("ENTER NEW PASSWORD AGAIN :", 46, 22);
+
+    drawRectangle(46, 17, 25, 1, 15);
+    drawRectangle(46, 20, 25, 1, 15);
+    drawRectangle(46, 23, 25, 1, 15);
+    gotoxy(46, 17);
     string temp;
     InsertPassword(temp);
+
     if (temp.compare(user.Password) == 0) {
-        gotoxy(48, 20);
+        gotoxy(46, 20);
         string temp1;
         InsertPassword(temp);
-        gotoxy(48, 23);
+        gotoxy(46, 23);
         InsertPassword(temp1);
         if (temp.compare(temp1) == 0) {
             user.Password = temp;
             gotoxy(46, 25);
-            cout << "Change password successfully \n";
+            cout << "Successfully! \n";
             Rewrite_Info(user);
         }
         else {
-            gotoxy(48, 25);
+            gotoxy(46, 25);
             cout << "Password does not match.\n";
         }
     }
     else {
-        gotoxy(48, 18);
+        gotoxy(46, 18);
         cout << "Incorrect password. \n";
     }
     system("pause");
+    
 }
