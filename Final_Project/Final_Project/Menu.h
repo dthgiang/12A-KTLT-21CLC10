@@ -15,12 +15,14 @@ using namespace std;
 void StaffMenu(User& staff);
 void StudentMenu(User& student);
 
-void DrawSuccessfulEnrol();
-void DrawFailEnrol();
-void DrawEnrolCourse();
-void DrawListCourse();
-void DrawEditScore();
-void DrawStaffMenu(); 
-void DrawStudentMenu();
+void DrawSuccessfulEnrol();//
+void DrawFailEnrol();//
+void DrawEnrolCourse();//
+void DrawListCourse();//
+void DrawStaffMenu(); //
+void DrawStudentMenu();//
+void DrawDeleteCourse();
+void DrawChangeYear();
+void DrawChangeSemester();
 
 void DrawBlank();

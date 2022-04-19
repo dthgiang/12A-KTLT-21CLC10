@@ -23,8 +23,8 @@ void DrawStaffMenu() {
     DrawTextFile("_assets\\menu_staff.txt", 20, 1);
     DrawTextFile("_assets\\login_bg2.txt", 9, 23);
 
-    printtext("     " + SchYr.semester.Name + " - " + SchYr.year + "     ", 43, 22);
-    textBgColor(0, 2);
+    printtext("     " + SchYr.semester.Name + " - " + SchYr.year + "     ", 44, 8);
+    textBgColor(0, 11);
 }
 
 void DrawStudentMenu()
@@ -43,16 +43,31 @@ void DrawStudentMenu()
 	DrawTextFile("_assets\\menu_student.txt", 10, 1);
 	DrawTextFile("_assets\\login_bg2.txt", 9, 23);
 
-	printtext("     " + SchYr.semester.Name + " - " + SchYr.year + "     ", 43, 22);
+	printtext("     " + SchYr.semester.Name + " - " + SchYr.year + "     ", 44, 8);
 	textBgColor(0, 2);
 }
 
-void DrawEditScore()
+void DrawDeleteCourse()
 {
-	textBgColor(19, 0);
-	DrawTextFile("_assets\\menu_edit_score.txt", 20, 4);
-	textBgColor(0, 15);
+	textBgColor(4, 6);
+	DrawTextFile("_assets\\menu_delete_course.txt", 20, 5);
+	printtext("Choose the course you want to delete. Enter to choose.", 35, 28);
 }
+
+void DrawChangeYear()
+{
+	textColor(46);
+	DrawTextFile("_assets\\menu_change_year.txt", 15, 4);
+	textColor(496);
+}
+
+void DrawChangeSemester()
+{
+	textColor(46);
+	DrawTextFile("_assets\\menu_change_semester.txt", 35, 5);
+	textColor(496);
+}
+
 
 void DrawSuccessfulEnrol()
 {
@@ -104,14 +119,14 @@ void StaffMenu(User& staff)
 		showPointer();
 		system("cls");
 		gotoxy(0, 7);
-		drawMenu(MenuStaff, 5, 50, 10, 1, &DrawStaffMenu);
-		option = Select(5, MenuStaff, 50, 10, 1);
+		drawMenu(MenuStaff, 5, 50, 12, 1, &DrawStaffMenu);
+		option = Select(5, MenuStaff, 50, 12, 1);
 		switch (option)
 		{
 		case 0: {
 			system("cls");
-			drawMenu(MenuStaff1, 3, 50, 11, 2, &DrawStaffMenu);
-			int option1 = Select(3, MenuStaff1, 50, 11, 2);
+			drawMenu(MenuStaff1, 3, 50, 13, 2, &DrawStaffMenu);
+			int option1 = Select(3, MenuStaff1, 50, 13, 2);
 			switch (option1)
 			{
 			case 0: {
@@ -132,8 +147,8 @@ void StaffMenu(User& staff)
 		case 1: {
 			system("cls");
 
-			drawMenu(MenuStaff2, 7, 40, 9, 1, &DrawStaffMenu);
-			int option1 = Select(7, MenuStaff2, 40, 9, 1);
+			drawMenu(MenuStaff2, 7, 44, 9, 1, &DrawStaffMenu);
+			int option1 = Select(7, MenuStaff2, 44, 9, 1);
 			switch (option1)
 			{
 			case 0: {
@@ -227,8 +242,8 @@ void StudentMenu(User& student)
 	do
 	{
 		system("cls");
-		drawMenu(MenuStudent, 3, 50, 10, 2, &DrawStudentMenu);
-		option = Select(3, MenuStudent, 50, 10, 2);
+		drawMenu(MenuStudent, 3, 50, 12, 2, &DrawStudentMenu);
+		option = Select(3, MenuStudent, 50, 12, 2);
 		switch (option)
 		{
 		case 0: {
