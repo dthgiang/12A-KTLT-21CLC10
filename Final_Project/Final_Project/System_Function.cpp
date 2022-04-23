@@ -340,6 +340,10 @@ void Output_info(User A) {
 	system("cls");
 	int a = 0;
 	if (A.role == 1) {
+		drawRectangle(3, 3, 115, 8, 11); //mau khung
+		//textBgColor(15, 11);
+		textBgColor(2, 11);
+		DrawTextFile("_assets\\student_info.txt", 13, 2);
 		drawRectangle(30, 12, 50, 16, 11);
 		printtext("Student ID: " + A.info.IDstd, 35, 15);
 		printtext("Class: " + A.info.Class, 35, 17);
@@ -347,7 +351,10 @@ void Output_info(User A) {
 		printtext("Role: Hoc sinh", 35, 21 + a);
 	}
 	else {
-		drawRectangle(30, 12, 50, 13, 11);
+		drawRectangle(3, 3, 115, 8, 19); //xanh duong
+		textBgColor(15, 19);
+		DrawTextFile("_assets\\staff_info.txt", 20, 3);
+		drawRectangle(30, 12, 50, 13, 19);
 		printtext("Email : " + A.info.IDstd + "@hcmus.edu.vn", 35, 15);
 		printtext("Chuc vu: Admin", 35, 21 + a);
 	}
