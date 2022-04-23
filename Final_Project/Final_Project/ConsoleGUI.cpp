@@ -97,7 +97,6 @@ void FixConsoleWindow() {
 void DrawTextFile(const char* filename, int x, int y)
 {
 	fstream file(filename);
-	//file.open("character\\test.txt", ios::in);
 	if (file.is_open())
 	{
 		string str;

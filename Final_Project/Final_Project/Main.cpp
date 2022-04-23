@@ -4,7 +4,7 @@
 int main()
 {
 	FixConsoleWindow();
-	User dthgiang;
-	LoginLoop(dthgiang);
+	User user;
+	LoginLoop(user);
 	return 0;
 }

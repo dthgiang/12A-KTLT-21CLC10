@@ -289,7 +289,6 @@ void enroll_course(User& A, SchoolYear s_y) {
 		}
 		Mtemp = Mtemp->pNext;
 	}
-	add_Tail_List_Mark(A.info.phead, course_input->ID_course, course_input->name, to_string(course_input->Num_of_creadit));
 	string file_cousre_of_class = class_path + A.info.Class;
 	rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, 1);
 	string file_cousre = course_path + course_input->ID_course;
@@ -307,7 +306,6 @@ void delete_course(User& A, SchoolYear s_y) {
 	if (course_input == NULL) {
 		return;
 	}
-	delete_Mark_node(A.info.phead, course_input->ID_course);
 	string file_cousre_of_class = class_path + A.info.Class;
 	rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, -1);
 	string file_cousre = course_path + course_input->ID_course;

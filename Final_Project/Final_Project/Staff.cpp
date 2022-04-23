@@ -1,29 +1,29 @@
 ﻿#include "Staff.h"
 #include "System_Function.h"
 
-void updateFileCourse(int currentColumn, int currentLine, string column[], string year, string semester) {
-    fstream file_be, file_af;
-    string newdata, line;
+void updateCourseFile(int currentColumn, int currentLine, string column[], string year, string semester) {
+    fstream be, af;
     string filename = "database//HCMUS//" + year + "//" + semester + "//course_info.csv";
+    string newdata, line;
     for (int i = 0; i < 8; i++) {
         if (i != 7) {
             newdata = newdata + column[i] + ",";
         }
         else newdata = newdata + column[i];
     }
-    file_be.open(filename, ios::in);
-    file_af.open("database//HCMUS//" + year + "//" + semester + "//course_info_new.csv", ios::app);
-    getline(file_be, line);
-    file_af << line;
+    af.open("database//HCMUS//" + year + "//" + semester + "//course_info_new.csv", ios::app);
+    be.open(filename, ios::in);
+    getline(be, line);
+    af << line;
     int i = 2;
-    while (!file_be.eof()) {
+    while (!be.eof()) {
         if (i == currentLine) {
-            file_af << endl << newdata;
-            getline(file_be, line);
+            af << endl << newdata;
+            getline(be, line);
         }
         else {
-            getline(file_be, line);
-            file_af << endl << line;
+            getline(be, line);
+            af << endl << line;
         }
         i++;
     }
@@ -34,11 +34,9 @@ void updateFileCourse(int currentColumn, int currentLine, string column[], strin
     char* b = new char[filename_new.size() + 1];
     strcpy(b, filename_new.c_str());
     b[filename_new.size()] = '\0';
-    file_be.close();
-    file_af.close();
-    remove(a);
-    rename(b, a);
-
+    remove(a);rename(b, a);
+    be.close();
+    af.close();
 }
 
 int insertNum2(string& data, int limit) {
@@ -184,7 +182,7 @@ void editInforCourse(int y, int currentLine, string column[], string year, strin
                 insertSession(column[currentColumn], limit[currentColumn]);
             }
             hidePointer();
-            updateFileCourse(currentColumn, currentLine, column, year, semester);
+            updateCourseFile(currentColumn, currentLine, column, year, semester);
         }
     } while (true);
 }
@@ -260,20 +258,20 @@ void renameFile(string oldName, string newName) {
 }
 
 void deleteCourse(string filename, string courseName, int currentLine, string year, string semester) {
-    fstream file_be, file_af;
+    fstream be, af;
     string newdata, line;
-    file_be.open(filename, ios::in);
-    file_af.open("database//HCMUS//" + year + "//" + semester + "//course_info_new.csv", ios::app);
-    getline(file_be, line);
-    file_af << line;
+    be.open(filename, ios::in);
+    af.open("database//HCMUS//" + year + "//" + semester + "//course_info_new.csv", ios::app);
+    getline(be, line);
+    af << line;
     int i = 2;
-    while (!file_be.eof()) {
+    while (!be.eof()) {
         if (i == currentLine) {
-            getline(file_be, line);
+            getline(be, line);
         }
         else {
-            getline(file_be, line);
-            file_af << endl << line;
+            getline(be, line);
+            af << endl << line;
         }
         i++;
     }
@@ -285,8 +283,8 @@ void deleteCourse(string filename, string courseName, int currentLine, string ye
     char* b = new char[filename_new.size() + 1];
     strcpy(b, filename_new.c_str());
     b[filename_new.size()] = '\0';
-    file_be.close();
-    file_af.close();
+    be.close();
+    af.close();
     remove(a);
     rename(b, a);
 
@@ -307,10 +305,10 @@ void deleteCourse(string filename, string courseName, int currentLine, string ye
     while (!file.eof()) {
         getline(file, info);
         info = info.substr(info.find(",") + 1, info.find(",", info.find(",") + 1) - info.find(",") - 1);
-        fstream fileClass, file_new;
+        fstream fileClass, fnew;
         fileClass.open("database/HCMUS/" + year + "/" + semester + "/Class/" + info + ".csv", ios::in);
-        file_new.open("database/HCMUS/" + year + "/" + semester + "/Class/" + info + "_new.csv", ios::out);
-        if (!fileClass.is_open() || !file_new.is_open()) continue;
+        fnew.open("database/HCMUS/" + year + "/" + semester + "/Class/" + info + "_new.csv", ios::out);
+        if (!fileClass.is_open() || !fnew.is_open()) continue;
         string line;
         int i = 1;
         while (!fileClass.eof()) {
@@ -319,13 +317,13 @@ void deleteCourse(string filename, string courseName, int currentLine, string ye
                 line.erase(line.find("," + courseName), courseName.size() + 1);
             }
             if (i == 1) {
-                file_new << line;
+                fnew << line;
                 i++;
             }
-            else file_new << endl << line;
+            else fnew << endl << line;
         }
         fileClass.close();
-        file_new.close();
+        fnew.close();
         deleteFile("database/HCMUS/" + year + "/" + semester + "/Class/" + info + ".csv");
         renameFile("database/HCMUS/" + year + "/" + semester + "/Class/" + info + "_new.csv", "database/HCMUS/" + year + "/" + semester + "/Class/" + info + ".csv");
     }
@@ -609,34 +607,34 @@ int insertDate(string& Date) {
 }
 
 void UpDatefileCSV(Semester semester) {
-    fstream file_old1, file_old2, file_new;
+    fstream old1, old2, fnew;
     string data1, data2;
-    file_old1.open("database//year-semester.csv", ios::in);
-    file_old2.open("database//year-semester.csv", ios::in);
-    file_new.open("database//year_semester_new.csv", ios::app);
-    file_new << "Năm,số kì đã học ";
-    getline(file_old2, data2);
-    getline(file_old1, data1);
+    old1.open("database//year-semester.csv", ios::in);
+    old2.open("database//year-semester.csv", ios::in);
+    fnew.open("database//year_semester_new.csv", ios::app);
+    fnew << "Năm,số kì đã học ";
+    getline(old2, data2);
+    getline(old1, data1);
     data1 = data2 = "";
-    while (!file_old2.eof()) {
-        getline(file_old2, data2);
-        while (!file_old1.eof()) {
-            getline(file_old1, data1, ',');
+    while (!old2.eof()) {
+        getline(old2, data2);
+        while (!old1.eof()) {
+            getline(old1, data1, ',');
             if (data1.compare(semester.schoolyear) == 0) {
-                file_new << endl << data1;
-                getline(file_old1, data1);
+                fnew << endl << data1;
+                getline(old1, data1);
                 int a = stoi(data1, 0, 10);
                 a++;
-                file_new << "," << to_string(a);
+                fnew << "," << to_string(a);
             }
-            else file_new << endl << data2;
-            getline(file_old1, data1);
+            else fnew << endl << data2;
+            getline(old1, data1);
             break;
         }
     }
-    file_old1.close();
-    file_old2.close();
-    file_new.close();
+    old1.close();
+    old2.close();
+    fnew.close();
     remove("database//year-semester.csv");
     rename("database//year_semester_new.csv", "database//year-semester.csv");
 }
@@ -1461,6 +1459,7 @@ bool checkTimeStart(string date, string month, string year)
 
 
 void listClass(User A, SchoolYear Y, fun_show_class Fun) {
+
     bool checkOut = false;
     do {
         string year = Y.year, semester = Y.semester.Name;

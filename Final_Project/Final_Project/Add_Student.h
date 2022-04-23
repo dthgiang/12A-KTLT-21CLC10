@@ -3,7 +3,6 @@
 #include "Graphics.h"
 #include "System_Function.h"
 #include "List_Class.h"
-
 #include <iostream>
 #include <iomanip>
 #include <cmath>

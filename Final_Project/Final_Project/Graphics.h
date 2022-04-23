@@ -17,10 +17,6 @@ struct Mark {
 	string ID;
 	string Name;
 	string C;
-	double Total_Mark;
-	double Final_Mark;
-	double Midterm_Mark;
-	double Other_Mark;
 };
 struct MarkNode {
 	Mark data;

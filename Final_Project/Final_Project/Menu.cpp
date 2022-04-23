@@ -232,7 +232,6 @@ void StudentMenu(User& student)
 		return;
 	}
 	read_info(student, SchYr);
-	init_List_Mark(student.info.phead);
 	bool isExit = false;
 	int option;
 	string MenuStudent[] = { "YOUR INFO", "COURSE" ,"LOG OUT" };

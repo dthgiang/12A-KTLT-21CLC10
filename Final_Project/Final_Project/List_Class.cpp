@@ -543,9 +543,9 @@ int RunMenuCreateClass()
 
 	while (true)
 	{
+		
 		showPointer();
 		system("cls");
-
 		gotoxy(40, 12);
 		string MenuView[] = { "1. Create 1 Class",
 			"2. Create Auto Classes And Import Info",
