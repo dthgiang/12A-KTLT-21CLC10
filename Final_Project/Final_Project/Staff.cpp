@@ -1015,26 +1015,29 @@ void createRegistrationCourse() {
         ch = _getch();
     }
     else {
-        drawRectangle(30, 20, 50, 7, 11);
-        textBgColor(0, 11);
-        printtext("START DATE (DD/MM/YYYY):", 35, 21);
-        printtext("END DATE (DD/MM/YYYY):", 35, 24);
-        drawRectangle(35, 22, 40, 1, 15);
-        drawRectangle(35, 25, 40, 1, 15);
+        textBgColor(19, 15);
+
+        DrawTextFile("_assets\\create_registration_course.txt", 15, 3);
+        drawRectangle(33, 20, 50, 7, 19);
+        textBgColor(0, 19);
+        printtext("START DATE (DD/MM/YYYY):", 38, 21);
+        printtext("END DATE (DD/MM/YYYY):", 38, 24);
+        drawRectangle(38, 22, 40, 1, 15);
+        drawRectangle(38, 25, 40, 1, 15);
 
         string filename = "database//HCMUS//" + year + "//" + semester + "//RegistrationCourseSession.txt";
         do {
-            gotoxy(35, 22);
+            gotoxy(38, 22);
             if (insertDate(DateStart) == 0) return;
             int check = checkDate(DateStart);
             if (check == 0) {
                 textBgColor(4, 15);
-                gotoxy(20, 28);
+                gotoxy(23, 28);
                 hidePointer();
                 cout << "ERROR: DATE MUST HAVE FORMAT LIKE DD/MM/YYYY (01/02/2020,..), PRESS ENTER TO TRY AGAIN";
                 ch = _getch();
-                drawRectangle(20, 28, 90, 1, 15);
-                drawRectangle(35, 22, 40, 1, 15);
+                drawRectangle(23, 28, 90, 1, 15);
+                drawRectangle(38, 22, 40, 1, 15);
                 textBgColor(0, 15);
                 DateStart.clear();
                 showPointer();
@@ -1043,17 +1046,17 @@ void createRegistrationCourse() {
         } while (true);
 
         do {
-            gotoxy(35, 25);
+            gotoxy(38, 25);
             if (insertDate(DateEnd) == 0) return;
             int check = checkDate(DateEnd);
             if (check == 0) {
                 textBgColor(4, 15);
-                gotoxy(20, 28);
+                gotoxy(23, 28);
                 hidePointer();
                 cout << "ERROR: DATE MUST HAVE FORMAT LIKE DD/MM/YYYY (01/02/2020,..), PRESS ENTER TO TRY AGAIN";
                 ch = _getch();
-                drawRectangle(20, 28, 90, 1, 15);
-                drawRectangle(35, 25, 40, 1, 15);
+                drawRectangle(23, 28, 90, 1, 15);
+                drawRectangle(38, 25, 40, 1, 15);
                 textBgColor(0, 15);
                 DateEnd.clear();
                 showPointer();
