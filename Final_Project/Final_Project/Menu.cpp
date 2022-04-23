@@ -4,8 +4,7 @@
 #include "System_Function.h"
 #include "List_Class.h"
 
-
-void DrawBlank(){}// không draw gì cả
+void DrawBlank() {}
 
 void DrawStaffMenu() {
     SchoolYear SchYr;
@@ -43,7 +42,7 @@ void DrawStudentMenu()
 	DrawTextFile("_assets\\menu_student.txt", 10, 1);
 	DrawTextFile("_assets\\login_bg2.txt", 9, 23);
 
-	printtext("     " + SchYr.semester.Name + " - " + SchYr.year + "     ", 44, 8);
+	printtext(SchYr.semester.Name + " - " + SchYr.year + "     ", 50, 8);
 	textBgColor(0, 2);
 }
 
@@ -100,11 +99,11 @@ void DrawListCourse()
 void StaffMenu(User& staff)
 {
 	showPointer();
-	bool isExit = false;
 	SchoolYear SY;
+	bool isExit = false;
 	determineYearSemesterNow(SY.year, SY.semester.Name);
 	read_info(staff, SY);
-	int option;
+	int choice;
 	string MenuStaff[] = { "YOUR INFO","CREATE NEW ONE","CLASS","COURSE","LOG OUT" };
 	string MenuStaff1[] = { "1. Profile", "2. Change password","3. Back" };
 	string MenuStaff2[] = {"1. Create school year","2. Create semester ", 
@@ -120,8 +119,8 @@ void StaffMenu(User& staff)
 		system("cls");
 		gotoxy(0, 7);
 		drawMenu(MenuStaff, 5, 50, 12, 1, &DrawStaffMenu);
-		option = Select(5, MenuStaff, 50, 12, 1);
-		switch (option)
+		choice = Select(5, MenuStaff, 50, 12, 1);
+		switch (choice)
 		{
 		case 0: {
 			system("cls");
@@ -300,7 +299,7 @@ void StudentMenu(User& student)
 				break;
 			}
 			case 1: {
-				//lenh xoa bot khoa hoc da dang ki
+				//xoa bot khoa hoc da dang ki
 				try {
 					int check = checkCourseSession();
 					if (check == 1) {

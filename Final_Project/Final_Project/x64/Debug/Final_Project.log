@@ -1,2 +1,10 @@
-﻿  Main.cpp
+﻿  List_Class.cpp
+  Login.cpp
+  Main.cpp
+  Menu.cpp
+  Read_Data.cpp
+C:\Users\Admin\OneDrive - VNU-HCMUS\Desktop\ktlt\Final_Project\Final_Project\Read_Data.cpp(167,14): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+C:\Users\Admin\OneDrive - VNU-HCMUS\Desktop\ktlt\Final_Project\Final_Project\Read_Data.cpp(172,10): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+  Generating Code...
+C:\Users\Admin\OneDrive - VNU-HCMUS\Desktop\ktlt\Final_Project\Final_Project\Read_Data.cpp(223): warning C4715: 'get_course': not all control paths return a value
   Final_Project.vcxproj -> C:\Users\Admin\OneDrive - VNU-HCMUS\Desktop\ktlt\Final_Project\x64\Debug\Final_Project.exe

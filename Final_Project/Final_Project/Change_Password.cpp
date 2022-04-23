@@ -25,16 +25,13 @@ void Rewrite_Info(User user) {
     }
     file_prv.close();
     file_aft.close();
-    // removing the existing file
     remove(oldName.c_str());
-    // renaming the updated file with the existing file name
     rename(newName.c_str(), oldName.c_str());
 };
 
 void Change_Password(User& user) {
 
     system("cls");
-
     drawRectangle(3, 3, 115, 8, 19);
     textBgColor(15, 19);
    

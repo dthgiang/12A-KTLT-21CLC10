@@ -52,7 +52,6 @@ void InsertUserName(string& Username)
                 gotoxy(ReturnX() - 1, ReturnY());
             }
         }
-        //Other key
         else if (key >= 33 && key <= 126 && Username.size() <= 15)
         {
             cout << key;
@@ -79,7 +78,6 @@ void InsertPassword(string& Password)
                 gotoxy(ReturnX() - 1, ReturnY());
             }
         }
-        //Other key
         else if (key >= 33 && key <= 126 && Password.size() <= 15)
         {
             cout << "*";

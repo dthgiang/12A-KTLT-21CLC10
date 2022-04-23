@@ -213,22 +213,7 @@ void drawASCIIMenuView()
 	
 }
 
-void ImportRandom(string& YearCourse, string& Class)
-{
-	fstream ofs, ifs;
-	string NameClass = "database//HCMUS//" + YearCourse + "//" + Class + csv_tail;
-	ofs.open(NameClass, ios::app);
-	ifs.open("database//InforNewStudent.csv", ios::in);
-	string  NameSt, BirthSt, SexSt, IdSocialSt;
-	int count = CheckRowInFile(NameClass);
-	int IDSt;
-	string CheckYear = { YearCourse };
-	string CheckNameYear = { CheckYear[2] , CheckYear[3] };
-	int MasoNam;
-	MasoNam = atoi(CheckNameYear.c_str()) * 1000000;
-	string str = { Class };
-	string CheckNameClass = { str[2] , str[3] , str[4] };
-	string CheckSTTClass = { str[5] };
+void setRandom(string CheckNameClass, string CheckSTTClass, int& IDSt, int MasoNam) {
 	if (CheckNameClass == "CTT")
 	{
 		if (CheckSTTClass == "1")
@@ -306,6 +291,27 @@ void ImportRandom(string& YearCourse, string& Class)
 			IDSt = MasoNam + 110300;
 		}
 	}
+}
+
+void ImportRandom(string& YearCourse, string& Class)
+{
+	fstream ofs, ifs;
+	string NameClass = "database//HCMUS//" + YearCourse + "//" + Class + csv_tail;
+	ofs.open(NameClass, ios::app);
+	ifs.open("database//InforNewStudent.csv", ios::in);
+	string  NameSt, BirthSt, SexSt, IdSocialSt;
+	int count = CheckRowInFile(NameClass);
+	int IDSt = 0;
+	string CheckYear = { YearCourse };
+	string CheckNameYear = { CheckYear[2] , CheckYear[3] };
+	int MasoNam;
+	MasoNam = atoi(CheckNameYear.c_str()) * 1000000;
+	string str = { Class };
+	string CheckNameClass = { str[2] , str[3] , str[4] };
+	string CheckSTTClass = { str[5] };
+	
+	setRandom(CheckNameClass, CheckSTTClass, IDSt, MasoNam);
+
 	string NumberOfStudent;
 	fstream file2;
 	file2.open("database//HCMUS//" + YearCourse + "//class_info.csv", ios::in);
@@ -324,7 +330,7 @@ void ImportRandom(string& YearCourse, string& Class)
 	}
 	int CheckNumberOfStudent = atoi(NumberOfStudent.c_str());
 	int countFile = CheckRowInFile("database//InforNewStudent.csv");
-	if (countFile < CheckNumberOfStudent)
+	if (countFile < CheckRowInFile("database//InforNewStudent.csv"))
 	{
 		gotoxy(43, 21);
 		cout << "FILE INPUT IS FAIL, DON'T IMPORT INFO TO CLASS" << endl;
@@ -539,20 +545,17 @@ void CreateAutoClassAndImportRandomInfo()
 int RunMenuCreateClass()
 {
 	char ch;
-	int command;
-
+	int choice;
 	while (true)
 	{
 		
 		showPointer();
 		system("cls");
 		gotoxy(40, 12);
-		string MenuView[] = { "1. Create 1 Class",
-			"2. Create Auto Classes And Import Info",
-			"3. Exit" };
+		string MenuView[] = { "1. Create 1 Class","2. Create Auto Classes And Import Info","3. Exit" };
 		drawMenu(MenuView, 3, 47, 12, 1, &drawASCIIMenuView);
-		command = Select(3, MenuView, 47, 12, 1);
-		switch (command)
+		choice = Select(3, MenuView, 47, 12, 1);
+		switch (choice)
 		{
 		case 0:
 		{

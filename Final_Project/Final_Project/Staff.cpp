@@ -1,6 +1,8 @@
 ﻿#include "Staff.h"
 #include "System_Function.h"
 
+// cái rename nó bị warning á, m gán giá trị rename thành 1 biến thử xem chạy dc ko
+
 void updateCourseFile(int currentColumn, int currentLine, string column[], string year, string semester) {
     fstream be, af;
     string filename = "database//HCMUS//" + year + "//" + semester + "//course_info.csv";
@@ -977,10 +979,10 @@ int checkSchoolYear(Semester semester) {
     if (stoi(a, 0, 10) >= stoi(b, 0, 10) || semester.schoolyear[4] != 45 || (stoi(a, 0, 10) < 1000 || stoi(a, 0, 10) > 9999) || (stoi(b, 0, 10) < 1000 || stoi(b, 0, 10) > 9999))
         return 0;
 
-    //Không tồn tại School Year
+    //Check School Year tồn tại
     if (IsPathExist("database//HCMUS//" + semester.schoolyear) == false) return -1;
 
-    //Kiểm tra thử trong School Year đã nhập đã có tồn tại semester vừa nhập chưa
+    //Kiểm tra thử trong School Year đã nhập đã có tồn tại Semester
     fstream file2;
     file2.open("database//year-semester.csv", ios::in);
     int check = 1;
@@ -1379,7 +1381,7 @@ int checkCourseSession()
             if (checkTimeStart(dateStart.substr(0, 2), dateStart.substr(3, 2), dateStart.substr(6, 4)) == false) return -1;//It's not time to start yet
             else {
                 if (checkTimeEnd(dateEnd.substr(0, 2), dateEnd.substr(3, 2), dateEnd.substr(6, 4)) == false) return -2;//It was late to register the course
-                else return 1;//can register the course 
+                else return 1; //can register the course 
             }
         }
     }
@@ -1540,13 +1542,11 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
                 textBgColor(0, 15);
                 Fun(A, Y, column[1]);
                 break;
-                //listClass(A, Y, Fun);
             }
             if (ch == 'c') {
                 textBgColor(0, 15);
                 change_Year_Semester(Y);
                 break;
-                //listClass(A, Y, Fun);
             }
         } while (true);
         textBgColor(0, 15);
@@ -1566,7 +1566,6 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
         printtext("-[c]: CHANGE SCHOOL", 97, 0);
         printtext(" YEAR", 97, 1);
         printtext("-[ESC]: BACK TO MENU", 97, 3);
-        //printtext("-[ENTER]: CHOSE", 97, 5);
 
         string filename = "database/HCMUS/" + year + "/" + classname + ".csv";
         int lineNum = countLine(filename);
@@ -1593,7 +1592,6 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
                 textBgColor(0, 15);
                 checkOut = true;
                 break;
-                //listClass(user, Y, &showStudentInclass);
             }
             if (ch == 72 && currentLine > 2) //up
             {
@@ -1616,8 +1614,9 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
             }
             if (ch == 80 && currentLine < lineNum) //down
             {
-                currentLine++;
                 lineInConsole++;
+                currentLine++;
+                
                 if (lineInConsole + y > 23) {
                     lineInConsole = 1;
                     drawRectangle(8, 10, 100, 15, 15);

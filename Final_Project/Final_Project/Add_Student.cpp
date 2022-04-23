@@ -3,7 +3,6 @@
 
 void AddStudentToClass()
 {
-	//drawASCIIMenuView();
 	textBgColor(0, 15);
 	string YearCourse;
 	string Class;
@@ -141,7 +140,6 @@ void AddStudentToClass()
 
 void AddRandomInfoStudentToClass()
 {
-	//drawASCIIMenuView();
 	textBgColor(5, 15);
 	string YearCourse;
 	string Class;
