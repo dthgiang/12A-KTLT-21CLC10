@@ -367,7 +367,7 @@ int editCourse(User A, string& year, string& semester) {
                     if (lineInConsole + y <= 11) {
                         lineInConsole = 12;
                         drawRectangle(0, 10, 120, 15, 15);
-                        drawRectangle(0, 10, 120, 15, 11);
+                        drawRectangle(0, 10, 120, 15, 19);
                         drawList(8, "database/HCMUS/" + year + "/" + semester + "/course_info.csv", y, a, b, line, currentLine - 11);
                         getLineInfoForStudent("database/HCMUS/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
                         drawRectangle(1, y + lineInConsole, 110, 1, 14);
@@ -387,7 +387,7 @@ int editCourse(User A, string& year, string& semester) {
                     if (lineInConsole + y > 23) {
                         lineInConsole = 1;
                         drawRectangle(0, 10, 120, 15, 15);
-                        drawRectangle(0, 10, 120, 15, 11);
+                        drawRectangle(0, 10, 120, 15, 19);
                         drawList(8, "database/HCMUS/" + year + "/" + semester + "/course_info.csv", y, a, b, line, currentLine);
                         getLineInfoForStudent("database/HCMUS/" + year + "/" + semester + "/course_info.csv", currentLine, column, 8);
                         drawRectangle(1, y + lineInConsole, 110, 1, 14);
@@ -429,7 +429,7 @@ int editCourse(User A, string& year, string& semester) {
                     }
                     line--;
 
-                    drawRectangle(0, 10, 120, 15, 11);
+                    drawRectangle(0, 10, 120, 15, 19);
                     if (line == 1) {
                         textBgColor(4, 15);
                         printtext("THERE ISN'T ANY COURSE EXIST, PRESS ENTER TO BACK TO MENU.", 30, 14);
@@ -480,8 +480,8 @@ void getLineInfoForStudent(string filename, int line, string column[], int colum
 void moveUp(string filename, int& currentLine, int columnNum, int indexB[], int y, string column[], int lineInConsole, int width, int x)
 {
     getLineInfoForStudent(filename, currentLine + 1, column, columnNum);
-    drawRectangle(x, y + lineInConsole + 1, width, 1, 11);
-    textBgColor(0, 11);
+    drawRectangle(x, y + lineInConsole + 1, width, 1, 19);
+    textBgColor(0, 19);
     for (int i = 0; i < columnNum; i++) {
         printtext(column[i], indexB[i], y + lineInConsole + 1);
     }
@@ -497,8 +497,8 @@ void moveUp(string filename, int& currentLine, int columnNum, int indexB[], int 
 void moveDown(string filename, int& currentLine, int columnNum, int indexB[], int y, string column[], int lineInConsole, int width, int x)
 {
     getLineInfoForStudent(filename, currentLine - 1, column, columnNum);
-    drawRectangle(x, y - 1 + lineInConsole, width, 1, 11);
-    textBgColor(0, 11);
+    drawRectangle(x, y - 1 + lineInConsole, width, 1, 19);
+    textBgColor(0, 19);
     for (int i = 0; i < columnNum; i++) {
         printtext(column[i], indexB[i], y + lineInConsole - 1);
     }
@@ -1258,13 +1258,13 @@ void drawList(int columnNum, string filename, int y, int indexA[], int indexB[],
     if (line == 0 || columnNum == 0) return;
     string* datanew = new string[line];
     string* column = new string[columnNum];
-    textBgColor(4, 11);
+    textBgColor(4, 19);
 
     getLineInfoForStudent(filename, 1, column, columnNum);
     for (int i = 0; i < columnNum; i++) {
         printtext(column[i], indexA[i], y);
     }
-    textBgColor(0, 11);
+    textBgColor(0, 19);
     y++;
     int j = flagLine, h = 1;
     while (j <= line && h <= 12) {
@@ -1293,13 +1293,13 @@ void listCourse(User A, string year, string semester) {
         hidePointer();
         system("cls");
 
-        drawRectangle(97, 0, 22, 5, 11);
-        textBgColor(4, 11);
+        drawRectangle(97, 0, 22, 5, 19);
+        textBgColor(4, 19);
         printtext("-[ESC]: BACK TO MENU", 97, 2);
         printtext("OR RETURN", 97, 3);
 
-        drawRectangle(0, 0, 26, 5, 11);
-        textBgColor(4, 11);
+        drawRectangle(0, 0, 26, 5, 19);
+        textBgColor(4, 19);
         printtext("-[x]: DELETE COURSE", 0, 0.5);
         printtext("-[ENTER]: EDIT COURSE", 0, 1.5);
         printtext("-USE UP,DOWN,LEFT,RIGHT", 0, 2.5);
@@ -1315,7 +1315,7 @@ void listCourse(User A, string year, string semester) {
             textBgColor(0, 15);
             break;
         }
-        drawRectangle(0, 10, 120, 15, 11);
+        drawRectangle(0, 10, 120, 15, 19);
         int a[8] = { 2,13,32,55,76,91,98,108 };
         int b[8] = { 1,9,32,63,79,91,101,111 };
         drawList(8, filename, 11, a, b, lineNum, 2);
@@ -1467,17 +1467,17 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
         char ch;
         hidePointer();
         system("cls");
-        drawRectangle(97, 0, 22, 6, 11);
-        textBgColor(4, 11);
+        drawRectangle(97, 0, 22, 6, 19);
+        textBgColor(15, 19);
         printtext("-[c]: CHANGE SCHOOL", 97, 0);
         printtext(" YEAR", 97, 1);
-        printtext("-[ESC]: BACK TO MENU", 97, 3);
-        printtext("-[ENTER]: CHOSE", 97, 5);
+        printtext("-[ESC]: BACK ", 97, 3);
+        printtext("-[ENTER]: CHOOSE", 97, 5);
 
         string filename = "database/HCMUS/" + year + "/class_info.csv";
         int lineNum = countLine(filename);
         int y = 11;
-        drawRectangle(8, 10, 95, 15, 11);
+        drawRectangle(8, 10, 95, 15, 19);
         int a[5] = { 11,17,33,65,90 };
         int b[5] = { 11.5,18.5,33,72,90 };
         drawList(5, filename, y, a, b, lineNum, 2);
@@ -1506,7 +1506,7 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
                 if (lineInConsole + y <= 11) {
                     lineInConsole = 12;
                     drawRectangle(8, 10, 95, 15, 15);
-                    drawRectangle(8, 10, 95, 15, 11);
+                    drawRectangle(8, 10, 95, 15, 19);
                     drawList(5, filename, y, a, b, lineNum, currentLine - 11);
                     getLineInfoForStudent(filename, currentLine, column, 5);
                     drawRectangle(8, y + lineInConsole, 95, 1, 14);
@@ -1525,7 +1525,7 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
                 if (lineInConsole + y > 23) {
                     lineInConsole = 1;
                     drawRectangle(8, 10, 95, 15, 15);
-                    drawRectangle(8, 10, 95, 15, 11);
+                    drawRectangle(8, 10, 95, 15, 19);
                     drawList(5, filename, y, a, b, lineNum, currentLine);
                     getLineInfoForStudent(filename, currentLine, column, 5);
                     drawRectangle(8, y + lineInConsole, 95, 1, 14);
@@ -1562,8 +1562,8 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
         hidePointer();
         system("cls");
 
-        drawRectangle(97, 0, 22, 6, 11);
-        textBgColor(4, 11);
+        drawRectangle(97, 0, 22, 6, 19);
+        textBgColor(4, 19);
         printtext("-[c]: CHANGE SCHOOL", 97, 0);
         printtext(" YEAR", 97, 1);
         printtext("-[ESC]: BACK TO MENU", 97, 3);
@@ -1572,7 +1572,7 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
         string filename = "database/HCMUS/" + year + "/" + classname + ".csv";
         int lineNum = countLine(filename);
         int y = 11;
-        drawRectangle(8, 10, 100, 15, 11);
+        drawRectangle(8, 10, 100, 15, 19);
         int a[6] = { 8,18,36,64,85,95 };
         int b[6] = { 8,18,36,64,85,95 };
         drawList(6, filename, y, a, b, lineNum, 2);
@@ -1603,7 +1603,7 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
                 if (lineInConsole + y <= 11) {
                     lineInConsole = 12;
                     drawRectangle(8, 10, 100, 15, 15);
-                    drawRectangle(8, 10, 100, 15, 11);
+                    drawRectangle(8, 10, 100, 15, 19);
                     drawList(6, filename, y, a, b, lineNum, currentLine - 11);
                     getLineInfoForStudent(filename, currentLine, column, 6);
                     drawRectangle(8, y + lineInConsole, 100, 1, 14);
@@ -1622,7 +1622,7 @@ void showStudentInclass(User user, SchoolYear Y, string classname) {
                 if (lineInConsole + y > 23) {
                     lineInConsole = 1;
                     drawRectangle(8, 10, 100, 15, 15);
-                    drawRectangle(8, 10, 100, 15, 11);
+                    drawRectangle(8, 10, 100, 15, 19);
                     drawList(6, filename, y, a, b, lineNum, currentLine);
                     getLineInfoForStudent(filename, currentLine, column, 6);
                     drawRectangle(8, y + lineInConsole, 100, 1, 14);
