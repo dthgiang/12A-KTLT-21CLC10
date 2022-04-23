@@ -81,7 +81,7 @@ void CreateNewClass()
 	drawASCIIMenuView();
 	string Year;
 	textBgColor(0, 11);
-	drawRectangle(35, 12, 60, 12, 11);
+	drawRectangle(35, 12, 60, 12, 19);
 	fstream fs;
 	fs.open("database//year-semester.csv", ios::in);
 	string tempYear;
@@ -93,17 +93,17 @@ void CreateNewClass()
 		Year = tempYear;
 	}
 	{
-		textBgColor(0, 11);
+		textBgColor(0, 19);
 		gotoxy(43, 14);
-		cout << "Enter Name Of Class(CTT,HOH,TTH,SHH):";
+		cout << "Enter Name Of Class(CTT,CLC,VP,SHH):";
 		drawRectangle(43, 15, 45, 1, 15);
 		gotoxy(43, 15);
 		getline(cin, name);
 		string str = { name };
 		string CheckNameClass = { str[2] , str[3] , str[4] };
 		string CheckSTTClass = { str[5] };
-		if (CheckNameClass == "CTT" || CheckNameClass == "HOH"
-			|| CheckNameClass == "TTH" || CheckNameClass == "SHH")
+		if (CheckNameClass == "CTT" || CheckNameClass == "CLC"
+			|| CheckNameClass == "VP" || CheckNameClass == "SHH")
 		{
 			if (CheckSTTClass == "1" || CheckSTTClass == "2"
 				|| CheckSTTClass == "3" || CheckSTTClass == "4")
@@ -134,7 +134,7 @@ void CreateNewClass()
 				{
 
 					string NameMajor;
-					textBgColor(0, 11);
+					textBgColor(0, 19);
 					gotoxy(43, 16);
 					cout << "Enter Name Of Major: ";
 					drawRectangle(43, 17, 45, 1, 15);
@@ -149,14 +149,14 @@ void CreateNewClass()
 					else
 					{
 						int numberStudent;
-						textBgColor(0, 11);
+						textBgColor(0, 19);
 						gotoxy(43, 18);
-						cout << "Enter Number Of Student(Max=100): ";
+						cout << "Enter Number Of Student(Max=50): ";
 						drawRectangle(43, 19, 45, 1, 15);
 						gotoxy(43, 19);
 						cin >> numberStudent;
 
-						if (numberStudent <= 100)
+						if (numberStudent <= 50)
 						{
 							string str = { Year };
 							string yearStudent = { Year[0],Year[1],Year[2],Year[3] };
@@ -182,7 +182,7 @@ void CreateNewClass()
 						else
 						{
 							gotoxy(43, 21);
-							cout << "Max Number Of Student is 100! Try again" << endl;
+							cout << "Max Number Of Student is 50! Try again" << endl;
 							Sleep(1000);
 						}
 					}
@@ -208,7 +208,7 @@ void CreateNewClass()
 
 void drawASCIIMenuView()
 {
-	textBgColor(0, 3);
+	textBgColor(0, 15);
 	DrawTextFile("_assets/class.txt", 38, 4);
 	
 }
@@ -249,7 +249,7 @@ void ImportRandom(string& YearCourse, string& Class)
 		}
 
 	}
-	if (CheckNameClass == "SHH")
+	if (CheckNameClass == "CLC")
 	{
 		if (CheckSTTClass == "1")
 		{
@@ -268,7 +268,7 @@ void ImportRandom(string& YearCourse, string& Class)
 			IDSt = MasoNam + 150300;
 		}
 	}
-	if (CheckNameClass == "HOH")
+	if (CheckNameClass == "VP")
 	{
 		if (CheckSTTClass == "1")
 		{
@@ -414,8 +414,8 @@ void CreateAutoClassAndImportRandomInfo()
 	system("cls");
 	drawASCIIMenuView();
 	string Year;
-	textBgColor(0, 11);
-	drawRectangle(35, 12, 60, 12, 11);
+	textBgColor(0, 19);
+	drawRectangle(35, 12, 60, 12, 19);
 	fstream fs;
 	fs.open("database//year-semester.csv", ios::in);
 	string tempYear;
@@ -427,15 +427,15 @@ void CreateAutoClassAndImportRandomInfo()
 		Year = tempYear;
 	}
 	{
-		textBgColor(0, 11);
+		textBgColor(0, 19);
 		gotoxy(43, 13);
-		cout << "Enter Name Abbreviations Of Class(CTT,HOH,TTH,SHH): ";
+		cout << "Enter Name Abbreviations Of Class(CTT,CLC,VP,SHH): ";
 		drawRectangle(43, 14, 45, 1, 15);
 		gotoxy(43, 14);
 		getline(cin, name);
 
-		if (name == "CTT" || name == "HOH"
-			|| name == "TTH" || name == "SHH")
+		if (name == "CTT" || name == "CLC"
+			|| name == "VP" || name == "SHH")
 		{
 			fstream file1;
 			bool check = true;
@@ -461,23 +461,23 @@ void CreateAutoClassAndImportRandomInfo()
 			if (check == true)
 			{
 				string NameMajor;
-				textBgColor(0, 11);
+				textBgColor(0, 19);
 				gotoxy(43, 15);
 				cout << "Enter Name Of Major: ";
 				drawRectangle(43, 16, 45, 1, 15);
 				gotoxy(43, 16);
 				getline(cin, NameMajor);
 				int numberStudent;
-				textBgColor(0, 11);
+				textBgColor(0, 19);
 				gotoxy(43, 17);
-				cout << "Enter Number Of Student(Max=100): ";
+				cout << "Enter Number Of Student(Max=50): ";
 				drawRectangle(43, 18, 45, 1, 15);
 				gotoxy(43, 18);
 				cin >> numberStudent;
-				if (numberStudent <= 100)
+				if (numberStudent <= 50)
 				{
 					int NumberOfClass;
-					textBgColor(0, 11);
+					textBgColor(0, 19);
 					gotoxy(43, 19);
 					cout << "Enter Number Of Class(Max = 4): ";
 					drawRectangle(43, 20, 45, 1, 15);
@@ -521,7 +521,7 @@ void CreateAutoClassAndImportRandomInfo()
 				else
 				{
 					gotoxy(43, 20);
-					cout << "Max Number Of Student is 100! Try Again!!!" << endl;
+					cout << "Max Number Of Student is 50! Try Again!!!" << endl;
 					Sleep(1000);
 				}
 
@@ -531,7 +531,7 @@ void CreateAutoClassAndImportRandomInfo()
 		else
 		{
 			gotoxy(43, 17);
-			cout << "Name abbreviations class is malformed!! Try again" << endl;
+			cout << "Name class is malformed!! Try again" << endl;
 			Sleep(1000);
 		}
 	}

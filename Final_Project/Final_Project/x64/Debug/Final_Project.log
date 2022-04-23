@@ -1,16 +1,2 @@
-﻿  Staff.cpp
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(167,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(171,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(175,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(179,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(183,76): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(617,17): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(617,17): warning C4566: character represented by universal-character-name '\u1ED1' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(617,17): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(617,17): warning C4566: character represented by universal-character-name '\u1ECD' cannot be represented in the current code page (1252)
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1482,22): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1482,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1482,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1482,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\Final_Project\Staff.cpp(1390): warning C4715: 'checkCourseSession': not all control paths return a value
+﻿  List_Class.cpp
   Final_Project.vcxproj -> C:\Users\GF75\Desktop\12A-KTLT-21CLC10\Final_Project\x64\Debug\Final_Project.exe
