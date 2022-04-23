@@ -1093,7 +1093,10 @@ void addCourse() {
     }
 
     else {
-        drawRectangle(25, 9, 70, 18, 11);
+        textBgColor(19, 15);
+
+        DrawTextFile("_assets\\create_course.txt", 15, 0);
+        drawRectangle(25, 9, 70, 18, 19);
         printtext("COURSE ID: ", 30, 10);
         printtext("COURSE NAME: ", 30, 12);
         printtext("TEACHER NAME: ", 30, 14);
