@@ -836,41 +836,44 @@ void addSemester(string& yearNow, string& semesterNow) {
     char ch;
     Semester semester;
     system("cls");
-    textBgColor(13, 15);
-        
-    textBgColor(0, 11);
-    drawRectangle(25, 8, 80, 12, 11);
-    printtext("Enter semester (1,2 or 3):", 35, 10);
-    printtext("Enter school year of the semester (Ex:2020-2021,...):", 35, 12);
-    printtext("Enter start date (dd/mm/yyyy):", 35, 14);
-    printtext("Enter end date (dd/mm/yyyy):", 35, 16);
-    drawRectangle(35, 11, 35, 1, 15);
-    drawRectangle(35, 13, 35, 1, 15);
-    drawRectangle(35, 15, 35, 1, 15);
-    drawRectangle(35, 17, 35, 1, 15);
+    //textBgColor(13, 15);
+    
+    drawRectangle(3, 3, 115, 8, 19);
+    textBgColor(15, 19);
+    DrawTextFile("_assets\\create_semester.txt", 12, 3);
+    textBgColor(0, 19);
+    drawRectangle(22, 13, 80, 12, 19);
+    printtext("Enter semester (1,2 or 3):", 35, 15);
+    printtext("Enter school year of the semester (Ex:2020-2021,...):", 35, 17);
+    printtext("Enter start date (dd/mm/yyyy):", 35, 19);
+    printtext("Enter end date (dd/mm/yyyy):", 35, 21);
+    drawRectangle(35, 16, 35, 1, 15);
+    drawRectangle(35, 18, 35, 1, 15);
+    drawRectangle(35, 20, 35, 1, 15);
+    drawRectangle(35, 22, 35, 1, 15);
 
-    gotoxy(35, 11);
+    gotoxy(35, 16);
     if (insertNameSemester(semester.Name) == 0) return;
 
     do {
-        gotoxy(35, 13);
+        gotoxy(35, 18);
         if (insertSchoolYear(semester.schoolyear) == 0) return;
         int check = checkSchoolYear(semester);
         if (check != 1) {
             hidePointer();
-            textBgColor(4, 11);
-            gotoxy(35, 19);
+            textBgColor(4, 19);
+            gotoxy(35, 24);
             if (check == 0)
-                printtext("ERROR:SCHOOL YEAR MUST HAVE FORMAT LIKE YYYY-YYYY,PRESS ENTER TO TRY AGAIN", 30, 19);
+                printtext("ERROR:SCHOOL YEAR MUST HAVE FORMAT LIKE YYYY-YYYY,PRESS ENTER TO TRY AGAIN", 26, 24);
             else if (check == -1)
-                printtext("ERROR:SCHOOL YEAR WASN'T EXISTED, PRESS ENTER TO TRY AGAIN", 30, 19);
+                printtext("ERROR:SCHOOL YEAR WASN'T EXISTED, PRESS ENTER TO TRY AGAIN", 26, 24);
             else if (check == -2)
-                printtext("ERROR:SEMESTER WAS EXISTED IN SCHOOL YEAR, PRESS ENTER TO TRY AGAIN", 30, 19);
+                printtext("ERROR:SEMESTER WAS EXISTED IN SCHOOL YEAR, PRESS ENTER TO TRY AGAIN", 26, 24);
             else if (check == -3)
-                printtext("ERROR:SEMESTER ISN'T COME UP,PRESS ENTER TO TRY AGAIN", 30, 19);
+                printtext("ERROR:SEMESTER ISN'T COME UP,PRESS ENTER TO TRY AGAIN", 26, 24);
             ch = _getch();
-            drawRectangle(30, 19, 75, 1, 11);
-            drawRectangle(35, 13, 10, 1, 15);
+            drawRectangle(25, 24, 75, 1, 19);
+            drawRectangle(35, 18, 10, 1, 15);
             textBgColor(0, 15);
             semester.schoolyear = "";
             showPointer();
@@ -879,19 +882,19 @@ void addSemester(string& yearNow, string& semesterNow) {
     } while (true);
 
     do {
-        gotoxy(35, 15);
+        gotoxy(35, 20);
         if (insertDate(semester.date_star) == 0) return;
         int check = checkDate(semester.date_star);
         if (check == 0) {
-            textBgColor(4, 11);
-            gotoxy(35, 18);
+            textBgColor(4, 19);
+            gotoxy(35, 23);
             hidePointer();
             cout << "ERROR: DATE MUST HAVE FORMAT LIKE DD/MM/YYYY (01/02/2020)";
-            printtext("PRESS ENTER TO TRY AGAIN", 35, 19);
+            printtext("PRESS ENTER TO TRY AGAIN", 35, 24);
             ch = _getch();
-            drawRectangle(30, 18, 70, 1, 11);
-            drawRectangle(30, 19, 70, 1, 11);
-            drawRectangle(35, 15, 10, 1, 15);
+            drawRectangle(30, 23, 70, 1, 11);
+            drawRectangle(30, 24, 70, 1, 11);
+            drawRectangle(35, 20, 10, 1, 15);
             textBgColor(0, 15);
             semester.date_star.clear();
             showPointer();
@@ -900,19 +903,19 @@ void addSemester(string& yearNow, string& semesterNow) {
     } while (true);
 
     do {
-        gotoxy(35, 17);
+        gotoxy(35, 22);
         if (insertDate(semester.date_end) == 0) return;
         int check = checkDate(semester.date_end);
         if (check == 0) {
-            textBgColor(4, 11);
-            gotoxy(35, 18);
+            textBgColor(4, 19);
+            gotoxy(35, 23);
             hidePointer();
             cout << "ERROR: DATE MUST HAVE FORMAT LIKE DD/MM/YYYY (01/02/2020)";
-            printtext("PRESS ENTER TO TRY AGAIN", 35, 19);
+            printtext("PRESS ENTER TO TRY AGAIN", 35, 24);
             ch = _getch();
-            drawRectangle(30, 18, 70, 1, 11);
-            drawRectangle(30, 19, 70, 1, 11);
-            drawRectangle(35, 17, 10, 1, 15);
+            drawRectangle(30, 23, 70, 1, 11);
+            drawRectangle(30, 24, 70, 1, 11);
+            drawRectangle(35, 22, 10, 1, 15);
             textBgColor(0, 15);
             semester.date_end.clear();
             showPointer();
