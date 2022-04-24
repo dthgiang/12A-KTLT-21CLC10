@@ -276,6 +276,7 @@ void StudentMenu(User& student)
 					int check = checkCourseSession();
 					if (check == 1) {
 						enroll_course(student, SchYr);
+						break;
 					}
 					else {
 						drawRectangle(35, 15, 50, 5, 4);
@@ -299,7 +300,6 @@ void StudentMenu(User& student)
 				break;
 			}
 			case 1: {
-				//xoa bot khoa hoc da dang ki
 				try {
 					int check = checkCourseSession();
 					if (check == 1) {

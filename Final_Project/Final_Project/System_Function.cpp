@@ -245,8 +245,7 @@ void DisPlay_Course_Of_Student(SchoolYear Y, User A) {
 	do {
 		drawRectangle(27, 29, 60, 1, 10);
 		textColor(496);
-		string text = Y.semester.Name + "; Year: " + Y.year + ".   Press[C] to change!";
-		printtext(text, 32, 29);
+		printtext(Y.semester.Name + "; Year: " + Y.year + ".   Press[C] to change!", 32, 29);
 		ch = _getch();
 		//[ESC]
 		if (ch == 27) {
@@ -296,21 +295,22 @@ void enroll_course(User& A, SchoolYear s_y) {
 	DrawSuccessfulEnrol();
 	Sleep(3000);
 }
+
+
 void delete_course(User& A, SchoolYear s_y) {
-	string semester_path = "_assets/SchoolYear/" + s_y.year + '/' + s_y.semester.Name + '/';
+	string semester_path = "database/HCMUS/" + s_y.year + '/' + s_y.semester.Name + '/';
 	string class_path = semester_path + "Class/";
 	string course_path = semester_path + "Course/";
-	//hàm trang trí
-	//hàm hiện danh sách các môn học.
-	Course* course_input = select_course(A, s_y, &get_course_of_student, &DrawBlank);
+	Course* course_input = select_course(A, s_y, &get_course_of_student, &DrawDeleteCourse);
 	if (course_input == NULL) {
 		return;
 	}
+	delete_Mark_node(A.info.phead, course_input->ID_course);
 	string file_cousre_of_class = class_path + A.info.Class;
 	rewrite_course_of_student_file(A, file_cousre_of_class, course_input->ID_course, -1);
 	string file_cousre = course_path + course_input->ID_course;
 	rewrite_course_file(A, file_cousre, -1);
-	//drawASCIIsuccessful()
+	DrawSuccessfulEnrol();
 	Sleep(3000);
 	return;
 }
@@ -318,7 +318,7 @@ void viewStudentInCourse(User user, SchoolYear SY) {
 	try {
 		while (true) {
 			User A;
-			Course* SLC = select_course(A, SY, &Read_File_List_Course, &DrawBlank);
+			Course* SLC = select_course(A, SY, &Read_File_List_Course, &DrawListCourse);
 			if (SLC == NULL) {
 				return;
 			}

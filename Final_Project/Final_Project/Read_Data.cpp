@@ -82,7 +82,7 @@ void read_course(User A, SchoolYear y)
 	gotoxy(90, 15); cout << "Max student";
 	gotoxy(102, 15); cout << "Schedule";
 	ifstream fi;
-	string fileName = "database/SchoolYear/" + y.year + "/" + y.semester.Name + "/course_info.csv";
+	string fileName = "database/HCMUS/" + y.year + "/" + y.semester.Name + "/course_info.csv";
 	MarkNode* tempo = new MarkNode;
 	tempo = A.info.phead;
 	int i = 1;
