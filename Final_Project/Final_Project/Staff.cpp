@@ -196,56 +196,6 @@ void deleteFile(string filename) {
     remove(a);
 }
 
-//int getyearData(string* data1, int* data2, string filename) {
-//
-//    ifstream f;
-//    f.open(filename, ios::in);
-//    string temp;
-//    int i = 0;
-//    getline(f, temp);
-//    while (!f.eof()) {
-//        getline(f, data1[i], ',');
-//        getline(f, temp);
-//        data2[i] = atoi(temp.c_str());
-//        i++;
-//    }
-//    return i;
-//}
-
-//void DisPlay_Course_Of_Student(SchoolYear Y, User A)
-//{
-//    char ch;
-//    hidePointer();
-//    get_course(A, Y);
-//    read_course(A, Y);
-//    do {
-//        drawRectangle(27, 29, 60, 1, 10);
-//        textColor(496);
-//        string text = Y.semester.Name + "; Year: " + Y.year + ".   Press[C] to change!";
-//        printtext(text, 32, 29);
-//        ch = _getch();
-//        //[ESC]
-//        if (ch == 27) {
-//            return;
-//        }
-//        else {
-//            //Control Up down 
-//            if (ch == 'c' || ch == 'C') //up
-//            {
-//                change_Year_Semester(Y);
-//                int a = get_course(A, Y);
-//                if (a == -1) {
-//                    drawRectangle(3, 14, 115, 3, 4);
-//                    printtext("Invalid school year ", 50, 15);
-//                    textBgColor(0, 15);
-//                    Sleep(1800);
-//                    determineYearSemesterNow(Y.year, Y.semester.Name);
-//                }
-//                read_course(A, Y);
-//            }
-//        }
-//    } while (true);
-//}
 
 void renameFile(string oldName, string newName) {
     char* a = new char[oldName.size() + 1];
@@ -682,20 +632,6 @@ bool IsPathExist(const std::string& s)
     struct stat buffer;
     return (stat(s.c_str(), &buffer) == 0);
 }
-//string CheckSem() {
-//	fstream classx;
-//	classx.open("database//year-semester.csv");
-//	string YearTem, SemTem;
-//	string CheckSem;
-//	while (!classx.eof())
-//	{
-//		getline(classx, YearTem, ',');
-//		classx >> SemTem;
-//		CheckSem = SemTem;
-//	}
-//	classx.close();
-//	return CheckSem;
-//}
 
 void determineYearSemesterNow(string& Year, string& semester) {
     fstream file1;
@@ -742,7 +678,6 @@ void addSchoolYear(SchoolYear& Y) {
     textBgColor(13, 15);
 
     while (true) {
-        //DrawTextFile("_assets/menu_schoolyear.txt", 20, 2);
         textBgColor(0, 11);
         DrawTextFile("_assets/menu_schoolyear.txt", 20, 2);
  
