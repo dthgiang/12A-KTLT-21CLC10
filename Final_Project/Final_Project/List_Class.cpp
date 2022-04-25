@@ -1,4 +1,4 @@
-#include "List_Class.h"
+﻿#include "List_Class.h"
 #include "System_Function.h"
 using namespace std;
 
@@ -76,8 +76,8 @@ void CreateClassInSemester(string& Year, string& name)
 }
 void CreateNewClass()
 {
-	string name;
 	system("cls");
+	string name;
 	drawASCIIMenuView();
 	string Year;
 	textBgColor(0, 11);
@@ -95,14 +95,14 @@ void CreateNewClass()
 	{
 		textBgColor(0, 19);
 		gotoxy(43, 14);
-		cout << "Enter Name Of Class(CTT,CLC,VP,SHH):";
+		cout << "Enter Name Of Class (CTT,CLC,VP,SHH, for ex: 20HOH1):";
 		drawRectangle(43, 15, 45, 1, 15);
 		gotoxy(43, 15);
 		getline(cin, name);
 		string str = { name };
 		string CheckNameClass = { str[2] , str[3] , str[4] };
 		string CheckSTTClass = { str[5] };
-		if (CheckNameClass == "CTT" || CheckNameClass == "CLC"
+		if (CheckNameClass == "CTT" || CheckNameClass == "HOH"
 			|| CheckNameClass == "VP" || CheckNameClass == "SHH")
 		{
 			if (CheckSTTClass == "1" || CheckSTTClass == "2"
