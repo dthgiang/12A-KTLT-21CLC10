@@ -4,24 +4,20 @@
 #include "System_Function.h"
 #include "List_Class.h"
 
-void DrawBlank() {}
+void DrawBlank() {} // không draw gì hết, test là chính
 
 void DrawStaffMenu() {
     SchoolYear SchYr;
 	determineYearSemesterNow(SchYr.year, SchYr.semester.Name);
-
 	drawRectangle(3, 1, 115, 8, 11);
 	drawRectangle(3, 23.5, 115, 5, 11);
 	drawRectangle(3, 22, 115, 1, 11);
-
 	drawRectangle(3, 9, 115, 14, 15);
 	drawRectangle(3, 26, 115, 1, 11);	
     drawRectangle(3, 26, 115, 1, 11);
 	textBgColor(2, 11);
-    
     DrawTextFile("_assets\\menu_staff.txt", 20, 1);
     DrawTextFile("_assets\\login_bg2.txt", 9, 23);
-
     printtext("     " + SchYr.semester.Name + " - " + SchYr.year + "     ", 44, 8);
     textBgColor(0, 11);
 }
@@ -30,11 +26,9 @@ void DrawStudentMenu()
 {
 	SchoolYear SchYr;
 	determineYearSemesterNow(SchYr.year, SchYr.semester.Name);
-
 	drawRectangle(3, 1, 115, 8, 11);
 	drawRectangle(3, 23.5, 115, 5, 11);
 	drawRectangle(3, 22, 115, 1, 11);
-
 	drawRectangle(3, 9, 115, 14, 15);
 	drawRectangle(3, 26, 115, 1, 11);
 	textBgColor(2, 11);
@@ -195,7 +189,7 @@ void StaffMenu(User& staff)
 			{
 			case 0: {
 				system("cls");
-				viewStudentInCourse(staff, SY);
+				viewStudent(staff, SY);
 				textBgColor(0, 15);
 				break;
 			}

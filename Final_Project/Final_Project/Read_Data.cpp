@@ -1,5 +1,7 @@
 ﻿#include "Read_Data.h"
 
+// t bị dính cái bug chỗ này nè, vô đọc được nhớ fix cái
+
 Course* Read_File_List_Course(User A, SchoolYear SchYr, int& n) {
 	string file = "database/HCMUS/" + SchYr.year + '/' + SchYr.semester.Name + "/course_info" + csv_tail;
 	ifstream fi;

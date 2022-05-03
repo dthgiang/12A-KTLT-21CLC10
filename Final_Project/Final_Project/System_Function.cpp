@@ -208,7 +208,7 @@ int getyearData(string* data1, int* data2, string filename) {
 	}
 	return i;
 }
-void change_Year_Semester(SchoolYear& S) {
+void change_Sem(SchoolYear& S) {
 	string* year;
 	int* semester;
 	string filename = "database/year-semester.csv";
@@ -255,7 +255,7 @@ void DisPlay_Course_Of_Student(SchoolYear Y, User A) {
 			//Control Up down 
 			if (ch == 'c' || ch == 'C') //up
 			{
-				change_Year_Semester(Y);
+				change_Sem(Y);
 				int a = get_course(A, Y);
 				if (a == -1) {
 					drawRectangle(3, 14, 115, 3, 4);
@@ -314,7 +314,7 @@ void delete_course(User& A, SchoolYear s_y) {
 	Sleep(3000);
 	return;
 }
-void viewStudentInCourse(User user, SchoolYear SY) {
+void viewStudent(User user, SchoolYear SY) {
 	try {
 		while (true) {
 			User A;
