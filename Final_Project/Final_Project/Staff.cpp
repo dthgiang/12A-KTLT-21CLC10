@@ -1195,11 +1195,11 @@ void listCourse(User A, string year, string semester) {
         printtext("OR RETURN", 97, 3);
         drawRectangle(0, 0, 26, 5, 19);
         textBgColor(4, 19);
-        printtext("-[x]: DELETE COURSE", 0, 0.5);
+        printtext("-[X]: DELETE COURSE", 0, 0.5);
         printtext("-[ENTER]: EDIT COURSE", 0, 1.5);
         printtext("-USE UP,DOWN,LEFT,RIGHT", 0, 2.5);
         printtext("KEY TO MOVE IN EDIT STATUS", 0, 3.5);
-        printtext("-[c]: CHANGE TIME", 0, 4.5);
+        printtext("-[C]: CHANGE TIME", 0, 4.5);
 
         string filename = "database/HCMUS/" + year + "/" + semester + "/course_info.csv";
         int lineNum = countLine(filename);
@@ -1348,7 +1348,7 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
         system("cls");
         drawRectangle(97, 0, 22, 6, 19);
         textBgColor(15, 19);
-        printtext("-[c]: CHANGE SCHOOL", 97, 0);
+        printtext("-[C]: CHANGE SCHOOL", 97, 0);
         printtext(" YEAR", 97, 1);
         printtext("-[ESC]: BACK ", 97, 3);
         printtext("-[ENTER]: CHOOSE", 97, 5);
@@ -1430,15 +1430,15 @@ void listClass(User A, SchoolYear Y, fun_show_class Fun) {
 void showStudentInclass(User user, SchoolYear Y, string classname) {
     bool checkOut = false;
     do {
-        string year = Y.year, semester = Y.semester.Name;
         char ch;
+        string year = Y.year, semester = Y.semester.Name;
         hidePointer();
         system("cls");
         drawRectangle(97, 0, 22, 6, 19);
         textBgColor(4, 19);
-        printtext("-[c]: CHANGE SCHOOL", 97, 0);
+        printtext("-[C]: CHANGE SCHOOL", 97, 0);
         printtext(" YEAR", 97, 1);
-        printtext("-[ESC]: BACK TO MENU", 97, 3);
+        printtext("-[ESC]: BACK ", 97, 3);
         string filename = "database/HCMUS/" + year + "/" + classname + ".csv";
         int lineNum = countLine(filename);
         int y = 11;

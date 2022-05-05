@@ -102,10 +102,9 @@ void StaffMenu(User& staff)
 	string MenuStaff1[] = { "1. Profile", "2. Change password","3. Back" };
 	string MenuStaff2[] = {"1. Create school year","2. Create semester ", 
 		"3. Create course registration session", "4. Create course",
-		"5. Create Class","6. Add Student to class","7. Back"
+		"5. Create Class","6. Add Student","7. Back"
 	};
-	string MenuStaff4[] = {
-	"1. View List Course And List Student in Course",
+	string MenuStaff4[] = {"1. View List Course And List Student in Course",
 	"2. Delete or Edit Course info","3. Back to Menu" };
 	do
 	{
@@ -139,7 +138,6 @@ void StaffMenu(User& staff)
 
 		case 1: {
 			system("cls");
-
 			drawMenu(MenuStaff2, 7, 44, 9, 1, &DrawStaffMenu);
 			int option1 = Select(7, MenuStaff2, 44, 9, 1);
 			switch (option1)
@@ -219,7 +217,7 @@ void StudentMenu(User& student)
 	determineYearSemesterNow(SchYr.year, SchYr.semester.Name);
 	if (SchYr.semester.Name == "Semester0") {
 		drawRectangle(3, 14, 115, 3, 4);
-		printtext("The school year hasn't started yet ", 40, 15);
+		printtext("The school year hadn't started yet ", 40, 15);
 		Sleep(1800);
 		LoginLoop(student);
 		return;
@@ -229,7 +227,7 @@ void StudentMenu(User& student)
 	int option;
 	string MenuStudent[] = { "YOUR INFO", "COURSE" ,"LOG OUT" };
 	string MenuStd1[] = { "1. Profile","2. Change password","3. Back" };
-	string MenuStd2[] = { "1. Enroll course","2. Remove course","3. View list of course you enrolled","4. Back" };
+	string MenuStd2[] = { "1. Enroll course","2. Remove course","3. View list course you've enrolled","4. Back" };
 
 	do
 	{
@@ -275,9 +273,9 @@ void StudentMenu(User& student)
 					else {
 						drawRectangle(35, 15, 50, 5, 4);
 						textBgColor(15, 4);
-						if (check == 0) printtext("NOT OPEN REGISTER COURSE YET", 45, 17);
-						else if (check == -1) printtext("IT'S NOT THE TIME TO START YET", 45, 17);
-						else printtext("It was late to register the course", 45, 17);
+						if (check == 0) printtext("CAN NOT OPEN REGISTER COURSE YET", 45, 17);
+						else if (check == -1) printtext("IT NOT THE TIME TO START YET", 45, 17);
+						else printtext("It was late for registering the course", 45, 17);
 						Sleep(1800);
 						textBgColor(0, 15);
 					}
@@ -302,9 +300,9 @@ void StudentMenu(User& student)
 					else {
 						drawRectangle(35, 15, 50, 5, 4);
 						textBgColor(15, 4);
-						if (check == 0) printtext("NOT OPEN REGISTER COURSE YET", 45, 17);
-						else if (check == -1) printtext("IT'S NOT THE TIME TO START YET", 45, 17);
-						else printtext("It was late to register the course", 45, 17);
+						if (check == 0) printtext("CAN NOT OPEN REGISTER COURSE YET", 45, 17);
+						else if (check == -1) printtext("IT NOT THE TIME TO START YET", 45, 17);
+						else printtext("It was late for registering the course", 45, 17);
 						Sleep(1800);
 						textBgColor(0, 15);
 					}
